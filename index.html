@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新山城市精品服务公寓 | JB Freehold Serviced Apartment for Singaporeans</title>
+  <meta name="description" content="月供SGD430起，步行到医院、超市、鱼菜市场，51种设施，Shuttle Bus直达新加坡关卡。Johor Bahru freehold serviced apartment near CIQ, from SGD 430/month.">
+  <meta name="keywords" content="KSL Nexus, JB property for Singaporeans, CIQ property Johor Bahru, freehold apartment JB, property near Southkey JB, 新山买房 新加坡人, RTS property Johor Bahru, JB apartment SGD 430">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold: #C9A84C;
+      --dark: #0A0A0A;
+      --dark2: #141414;
+      --dark3: #1E1E1E;
+      --light: #F5F0E8;
+      --white: #FFFFFF;
+      --green: #2ECC71;
+      --blue: #3498DB;
+      --text-muted: #999;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', 'Noto Sans SC', sans-serif; background: var(--dark); color: var(--white); overflow-x: hidden; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 1000;
+      padding: 16px 40px; display: flex; justify-content: space-between; align-items: center;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+    }
+    .nav-logo { font-size: 13px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; }
+    .nav-wa {
+      background: #25D366; color: white; padding: 8px 20px; border-radius: 30px;
+      text-decoration: none; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 8px;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative; height: 100vh; min-height: 600px;
+      display: flex; align-items: center; justify-content: center; text-align: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+      background-image: url('images/hero-bg.jpg');
+      background-size: cover; background-position: center;
+    }
+    .hero-video {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; z-index: 1; opacity: 0.5;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0; z-index: 2;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 100%);
+    }
+    .hero-content { position: relative; z-index: 3; padding: 20px; max-width: 800px; }
+    .hero-badge {
+      display: inline-block; border: 1px solid var(--gold); color: var(--gold);
+      padding: 6px 20px; border-radius: 30px; font-size: 11px; letter-spacing: 3px;
+      text-transform: uppercase; margin-bottom: 30px;
+    }
+    .hero-title {
+      font-size: clamp(28px, 5vw, 52px); font-weight: 700; line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .hero-title .price { color: var(--gold); }
+    .hero-subtitle {
+      font-size: clamp(14px, 2vw, 18px); color: rgba(255,255,255,0.8);
+      margin-bottom: 12px; font-weight: 300; letter-spacing: 1px;
+    }
+    .hero-tagline {
+      font-size: clamp(13px, 1.5vw, 16px); color: rgba(255,255,255,0.6);
+      margin-bottom: 40px; font-style: italic;
+    }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #25D366; color: white; padding: 16px 36px;
+      border-radius: 50px; font-size: 16px; font-weight: 700;
+      text-decoration: none; transition: all 0.3s;
+    }
+    .hero-cta:hover { background: #1ebe5a; transform: translateY(-2px); box-shadow: 0 10px 30px rgba(37,211,102,0.4); }
+    .hero-scroll { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 3; animation: bounce 2s infinite; }
+    .hero-scroll i { color: rgba(255,255,255,0.5); font-size: 24px; }
+    @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
+
+    /* ─── SECTION BASE ─── */
+    section { padding: 80px 20px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label { font-size: 11px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; }
+    .section-title { font-size: clamp(24px, 4vw, 42px); font-weight: 700; margin-bottom: 12px; }
+    .section-title span { color: var(--gold); }
+    .section-sub { font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 50px; }
+    .en { font-size: 0.85em; color: rgba(255,255,255,0.5); display: block; margin-top: 4px; }
+
+    /* ─── DAY IN LIFE ─── */
+    .life-section { background: var(--dark2); }
+    .life-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .life-card {
+      background: var(--dark3); border-radius: 16px; padding: 32px 28px;
+      border: 1px solid rgba(201,168,76,0.15); transition: all 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .life-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+    .life-card:hover { transform: translateY(-4px); border-color: rgba(201,168,76,0.4); }
+    .life-icon { font-size: 36px; margin-bottom: 16px; }
+    .life-time { font-size: 11px; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+    .life-desc { font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.85); }
+    .life-en { font-size: 12px; color: var(--text-muted); margin-top: 6px; }
+
+    /* ─── FACILITIES ─── */
+    .facilities-section { background: var(--dark); }
+    .fac-highlight {
+      background: linear-gradient(135deg, rgba(201,168,76,0.1), rgba(201,168,76,0.05));
+      border: 1px solid rgba(201,168,76,0.3); border-radius: 16px;
+      padding: 24px 32px; display: flex; align-items: center; gap: 20px;
+      margin-bottom: 40px; flex-wrap: wrap;
+    }
+    .fac-number { font-size: 64px; font-weight: 900; color: var(--gold); line-height: 1; }
+    .fac-text h3 { font-size: 20px; font-weight: 700; }
+    .fac-text p { font-size: 14px; color: var(--text-muted); margin-top: 4px; }
+    .fac-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; }
+    .fac-card {
+      background: var(--dark3); border-radius: 12px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06); transition: all 0.3s; cursor: pointer;
+    }
+    .fac-card:hover { transform: translateY(-4px); border-color: rgba(201,168,76,0.3); }
+    .fac-img {
+      width: 100%; aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #1a1a2e, #2d2d44);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 40px; overflow: hidden;
+    }
+    .fac-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+    .fac-card:hover .fac-img img { transform: scale(1.05); }
+    .fac-label { padding: 12px; font-size: 13px; font-weight: 600; }
+    .fac-label-en { font-size: 11px; color: var(--text-muted); display: block; margin-top: 2px; }
+
+    /* ─── LOCATION ─── */
+    .location-section { background: var(--dark2); }
+    .loc-photo-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px; margin-bottom: 40px;
+    }
+    .loc-photo-card {
+      border-radius: 14px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06); position: relative;
+      transition: transform 0.3s;
+    }
+    .loc-photo-card:hover { transform: translateY(-4px); }
+    .loc-photo-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+    .loc-photo-label {
+      padding: 12px 14px; font-size: 13px; font-weight: 600;
+      background: var(--dark3);
+    }
+    .loc-photo-label span { display: block; font-size: 11px; color: var(--text-muted); font-weight: 400; margin-top: 3px; }
+    .location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    @media(max-width:768px){ .location-grid { grid-template-columns: 1fr; } }
+    .loc-box { background: var(--dark3); border-radius: 20px; padding: 32px; }
+    .loc-box-title {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .loc-walk .loc-box-title { color: var(--green); }
+    .loc-drive .loc-box-title { color: var(--blue); }
+    .loc-item { display: flex; align-items: center; gap: 16px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .loc-item:last-child { border-bottom: none; }
+    .loc-icon-wrap {
+      width: 44px; height: 44px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; flex-shrink: 0;
+    }
+    .loc-walk .loc-icon-wrap { background: rgba(46,204,113,0.15); }
+    .loc-drive .loc-icon-wrap { background: rgba(52,152,219,0.15); }
+    .loc-info { flex: 1; }
+    .loc-name { font-size: 14px; font-weight: 600; }
+    .loc-name-en { font-size: 11px; color: var(--text-muted); }
+    .loc-dist {
+      font-size: 15px; font-weight: 800;
+    }
+    .loc-walk .loc-dist { color: var(--green); }
+    .loc-drive .loc-dist { color: var(--blue); }
+
+    /* ─── UNITS ─── */
+    .units-section { background: var(--dark); }
+    .units-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .unit-card {
+      background: var(--dark3); border-radius: 16px; padding: 28px;
+      border: 1px solid rgba(255,255,255,0.06); transition: all 0.3s;
+    }
+    .unit-card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-3px); }
+    .unit-type { font-size: 11px; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; }
+    .unit-size { font-size: 28px; font-weight: 900; margin-bottom: 4px; }
+    .unit-size span { font-size: 14px; font-weight: 400; color: var(--text-muted); }
+    .unit-name { font-size: 14px; color: var(--text-muted); margin-bottom: 20px; }
+    .unit-price-rm { font-size: 13px; color: var(--text-muted); margin-bottom: 4px; }
+    .unit-price-sgd {
+      font-size: 22px; font-weight: 800; color: var(--gold);
+    }
+    .unit-price-sgd span { font-size: 13px; font-weight: 400; color: var(--text-muted); }
+    .unit-plan { width: 100%; border-radius: 10px; margin-bottom: 16px; object-fit: cover; }
+    .unit-plan-placeholder {
+      width: 100%; aspect-ratio: 3/4; border-radius: 10px; margin-bottom: 16px;
+      background: linear-gradient(135deg, #1a1a2e, #2a2a3e);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      border: 1px dashed rgba(201,168,76,0.3); color: var(--text-muted); font-size: 13px; gap: 8px;
+    }
+    .unit-plan-placeholder i { font-size: 28px; color: rgba(201,168,76,0.4); }
+    .unit-cta {
+      display: block; margin-top: 20px; padding: 10px; text-align: center;
+      border: 1px solid rgba(37,211,102,0.4); border-radius: 8px;
+      color: #25D366; font-size: 13px; text-decoration: none; transition: all 0.3s;
+    }
+    .unit-cta:hover { background: rgba(37,211,102,0.1); }
+
+    /* ─── PROMO STRIP ─── */
+    .promo-strip { background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(201,168,76,0.05)); border-top: 1px solid rgba(201,168,76,0.2); border-bottom: 1px solid rgba(201,168,76,0.2); padding: 30px 20px; }
+    .promo-inner { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 16px 40px; }
+    .promo-item { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; }
+    .promo-item i { color: var(--gold); }
+
+    /* ─── CTA ─── */
+    .cta-section { background: var(--dark2); text-align: center; padding: 100px 20px; }
+    .cta-title { font-size: clamp(26px, 4vw, 48px); font-weight: 700; margin-bottom: 12px; }
+    .cta-title span { color: var(--gold); }
+    .cta-sub { font-size: 16px; color: var(--text-muted); margin-bottom: 40px; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: #25D366; color: white; padding: 20px 48px;
+      border-radius: 50px; font-size: 18px; font-weight: 800;
+      text-decoration: none; transition: all 0.3s;
+    }
+    .cta-btn:hover { background: #1ebe5a; transform: translateY(-3px); box-shadow: 0 15px 40px rgba(37,211,102,0.4); }
+    .cta-note { margin-top: 16px; font-size: 13px; color: var(--text-muted); }
+
+    /* ─── FLOATING WA ─── */
+    .float-wa {
+      position: fixed; bottom: 30px; right: 30px; z-index: 9999;
+      width: 60px; height: 60px; background: #25D366; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+      animation: pulse 2s infinite;
+    }
+    .float-wa i { font-size: 28px; color: white; }
+    @keyframes pulse { 0%,100%{box-shadow:0 4px 20px rgba(37,211,102,0.5)} 50%{box-shadow:0 4px 40px rgba(37,211,102,0.8)} }
+
+    /* ─── BENEFITS ─── */
+    .benefits-section { background: var(--dark); }
+    .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+    .benefit-card {
+      background: var(--dark3); border-radius: 16px; padding: 28px;
+      border: 1px solid rgba(255,255,255,0.06); display: flex; gap: 18px; align-items: flex-start;
+      transition: all 0.3s;
+    }
+    .benefit-card:hover { border-color: rgba(201,168,76,0.3); transform: translateY(-3px); }
+    .benefit-icon { font-size: 32px; flex-shrink: 0; }
+    .benefit-title { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+    .benefit-desc { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+
+    /* ─── VALUE BANNER ─── */
+    .value-banner {
+      background: linear-gradient(135deg, #1a120a, #2a1f0a);
+      border-top: 1px solid rgba(201,168,76,0.3); border-bottom: 1px solid rgba(201,168,76,0.3);
+      padding: 50px 20px; text-align: center;
+    }
+    .value-banner h2 { font-size: clamp(20px, 3vw, 36px); font-weight: 900; margin-bottom: 12px; }
+    .value-banner h2 span { color: var(--gold); }
+    .value-banner p { font-size: 15px; color: rgba(255,255,255,0.7); max-width: 650px; margin: 0 auto 8px; line-height: 1.8; }
+    .value-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 24px; }
+    .value-tag {
+      background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.4);
+      color: var(--gold); padding: 8px 18px; border-radius: 30px; font-size: 13px; font-weight: 600;
+    }
+
+    /* ─── SG BUYER ─── */
+    .sg-buyer-section { background: var(--dark2); }
+    .sg-banner {
+      background: linear-gradient(135deg, rgba(52,152,219,0.15), rgba(52,152,219,0.05));
+      border: 1px solid rgba(52,152,219,0.4); border-radius: 16px; padding: 28px 32px;
+      display: flex; align-items: center; gap: 20px; margin-bottom: 30px; flex-wrap: wrap;
+    }
+    .sg-flag { font-size: 48px; }
+    .sg-text h3 { font-size: 20px; font-weight: 800; color: var(--blue); margin-bottom: 6px; }
+    .sg-text p { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.7; }
+    .sg-units { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 14px; }
+    .sg-unit-card {
+      background: var(--dark3); border-radius: 12px; padding: 20px;
+      border: 1px solid rgba(52,152,219,0.2);
+    }
+    .sg-unit-type { font-size: 11px; color: var(--blue); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+    .sg-unit-size { font-size: 22px; font-weight: 800; margin-bottom: 4px; }
+    .sg-unit-price { font-size: 13px; color: var(--text-muted); }
+    .sg-unit-sgd { font-size: 17px; font-weight: 700; color: var(--gold); margin-top: 4px; }
+
+    /* ─── BATCH PRICING / FOMO ─── */
+    .batch-section { background: var(--dark); }
+    .batch-box {
+      background: linear-gradient(135deg, #0f0a00, #1a1200);
+      border: 1px solid rgba(201,168,76,0.3); border-radius: 20px; padding: 40px;
+    }
+    .batch-title { font-size: clamp(18px, 3vw, 28px); font-weight: 800; margin-bottom: 8px; }
+    .batch-title span { color: var(--gold); }
+    .batch-subtitle { font-size: 14px; color: var(--text-muted); margin-bottom: 36px; line-height: 1.7; }
+    .batch-timeline { display: flex; gap: 0; margin-bottom: 32px; overflow-x: auto; }
+    .batch-item {
+      flex: 1; min-width: 120px; text-align: center; position: relative;
+    }
+    .batch-item:not(:last-child)::after {
+      content: '→'; position: absolute; right: -10px; top: 18px;
+      font-size: 18px; color: rgba(201,168,76,0.4); z-index: 1;
+    }
+    .batch-dot {
+      width: 44px; height: 44px; border-radius: 50%; margin: 0 auto 10px;
+      display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 800;
+    }
+    .batch-item.active .batch-dot { background: var(--gold); color: #000; }
+    .batch-item.active .batch-label { color: var(--gold); font-weight: 700; }
+    .batch-item:not(.active) .batch-dot { background: rgba(255,255,255,0.08); color: var(--text-muted); }
+    .batch-label { font-size: 12px; color: var(--text-muted); }
+    .batch-price { font-size: 13px; font-weight: 700; margin-top: 4px; }
+    .batch-item.active .batch-price { color: var(--gold); }
+    .batch-badge {
+      display: inline-block; background: var(--gold); color: #000;
+      font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 20px;
+      margin-top: 6px; letter-spacing: 1px;
+    }
+    .batch-note {
+      background: rgba(201,168,76,0.08); border-left: 3px solid var(--gold);
+      padding: 16px 20px; border-radius: 0 10px 10px 0; font-size: 14px; line-height: 1.8;
+    }
+    .batch-note strong { color: var(--gold); }
+
+    /* ─── MAP ─── */
+    .map-section { background: var(--dark2); }
+    .map-infographic {
+      background: var(--dark3); border-radius: 20px; padding: 32px;
+      margin-bottom: 24px; display: flex; gap: 0; align-items: stretch;
+      flex-wrap: wrap;
+    }
+    .map-col { flex: 1; min-width: 200px; }
+    .map-divider { width: 1px; background: rgba(255,255,255,0.08); margin: 0 30px; }
+    .map-flag { font-size: 32px; margin-bottom: 8px; }
+    .map-place { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+    .map-desc { font-size: 12px; color: var(--text-muted); margin-bottom: 16px; }
+    .map-arrow {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; color: var(--text-muted); margin-bottom: 8px;
+    }
+    .map-arrow i { color: var(--gold); }
+    .map-time { font-size: 22px; font-weight: 900; color: var(--gold); }
+    .map-embed { width: 100%; height: 350px; border-radius: 16px; border: none; }
+    @media(max-width:768px) { .map-divider { width: 100%; height: 1px; margin: 20px 0; } .batch-timeline { gap: 4px; } }
+
+    /* ─── FOOTER ─── */
+    footer { background: var(--dark); padding: 30px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
+    footer p { font-size: 12px; color: var(--text-muted); }
+
+    /* ─── RESPONSIVE ─── */
+    @media(max-width:768px){
+      nav { padding: 16px 20px; }
+      .fac-grid { grid-template-columns: repeat(2, 1fr); }
+      .promo-inner { gap: 12px 20px; }
+      .float-wa { bottom: 20px; right: 20px; width: 54px; height: 54px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Johor Bahru · Freehold Living</div>
+  <a href="https://wa.me/60149183248?text=Hi%2C%20I'm%20interested%20to%20know%20more%20about%20the%20property" class="nav-wa" target="_blank">
+    <i class="fab fa-whatsapp"></i> WhatsApp
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="video-files/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Johor Bahru · Freehold · 47 Storeys</div>
+    <h1 class="hero-title">
+      月供 <span class="price">SGD 430</span>，<br>就能成为这里的屋主。
+    </h1>
+    <p class="hero-subtitle">享有的，比你想象的更多。</p>
+    <p class="hero-tagline">What comes with it? More than you'd expect.</p>
+    <a href="https://wa.me/60149183248?text=Hi%2C%20I'm%20interested%20to%20know%20more%20about%20the%20property" class="hero-cta" target="_blank">
+      <i class="fab fa-whatsapp"></i> WhatsApp 了解更多
+    </a>
+  </div>
+  <div class="hero-scroll"><i class="fas fa-chevron-down"></i></div>
+</section>
+
+<!-- DAY IN LIFE -->
+<section class="life-section">
+  <div class="container">
+    <p class="section-label">生活想象 · Lifestyle</p>
+    <h2 class="section-title">住在这里，<span>每一天都是这样的</span></h2>
+    <p class="section-sub">A day in your life here.<span class="en">这不是广告词，这是你的日常。</span></p>
+    <div class="life-grid">
+      <div class="life-card">
+        <div class="life-icon">🌅</div>
+        <div class="life-time">早晨 · Morning</div>
+        <p class="life-desc">推开门，新山城市天际线就是你的背景。新一天，从47层的高度开始。</p>
+        <p class="life-en">Wake up to the JB city skyline. Every morning starts from 47 floors up.</p>
+      </div>
+      <div class="life-card">
+        <div class="life-icon">🛍️</div>
+        <div class="life-time">下楼 · Downstairs</div>
+        <p class="life-desc">楼下就是店面，步行1分钟到鱼菜市场，3分钟到Giant超市。买菜、早餐，全部搞定。</p>
+        <p class="life-en">Shoplots below, wet market 1 min away, Giant Hypermarket in 3 mins.</p>
+      </div>
+      <div class="life-card">
+        <div class="life-icon">🏊</div>
+        <div class="life-time">上楼 · Level 11</div>
+        <p class="life-desc">51种设施，全部是你的。泳池、健身房、迷你高尔夫、迷你影院——不用出门，不用付额外费用。</p>
+        <p class="life-en">51 facilities — pool, gym, mini golf, theatre. All yours, every day.</p>
+      </div>
+      <div class="life-card">
+        <div class="life-icon">🚌</div>
+        <div class="life-time">回新加坡 · To Singapore</div>
+        <p class="life-desc">Shuttle Bus 直达关卡，不需要自己驾车排队。轻松通关，两地生活从未如此简单。</p>
+        <p class="life-en">Free shuttle bus to the checkpoint. No car needed, no queuing stress.</p>
+      </div>
+      <div class="life-card">
+        <div class="life-icon">🏥</div>
+        <div class="life-time">安心 · Peace of Mind</div>
+        <p class="life-desc">Columbia Hospital 就在对面。无论是日常检查还是紧急情况，医疗资源就在脚边。</p>
+        <p class="life-en">Columbia Hospital is directly opposite. Medical care is always steps away.</p>
+      </div>
+      <div class="life-card">
+        <div class="life-icon">💳</div>
+        <div class="life-time">每个月 · Every Month</div>
+        <p class="life-desc">SGD 430 月供。RM 0.20/sqft 管理费，享有51种设施。这一切，全部属于你。</p>
+        <p class="life-en">SGD 430/month. RM 0.20/sqft maintenance. 51 facilities. All yours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS OF OWNERSHIP -->
+<section class="benefits-section">
+  <div class="container">
+    <p class="section-label">成为屋主 · Why Own</p>
+    <h2 class="section-title">成为这里的屋主，<span>你得到的是什么？</span></h2>
+    <p class="section-sub">Every month you rent, you're building someone else's wealth. Here, you build your own.<span class="en">每个月的钱，付给自己，还是付给房东？</span></p>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">🏠</div>
+        <div>
+          <div class="benefit-title">钱付给自己，不是房东</div>
+          <div class="benefit-desc">每一分月供，都在累积你的资产。租房是消费，买房是投资。新加坡月租 SGD 2,000+，这里月供 SGD 430 — 你的钱，还是你的。</div>
+        </div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">📈</div>
+        <div>
+          <div class="benefit-title">RTS 通车，价值只会涨</div>
+          <div class="benefit-desc">JB-Singapore RTS Link 即将通车，新山房产需求已经在涨。现在买，是锁定今天的价格。明年后年，这个价格不会再有。</div>
+        </div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">💵</div>
+        <div>
+          <div class="benefit-title">新币强，马币买 — 汇率优势</div>
+          <div class="benefit-desc">用强势新元购买马元资产。同样的 SGD，在新山可以买到在新加坡根本买不起的房子和生活品质。</div>
+        </div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🏆</div>
+        <div>
+          <div class="benefit-title">Freehold — 永久属于你</div>
+          <div class="benefit-desc">不是99年，不是999年。永久地契，传给子女，再传给孙子。你买的不只是一间房，是家族永久的资产。</div>
+        </div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🔑</div>
+        <div>
+          <div class="benefit-title">可以出租，月供自己供自己</div>
+          <div class="benefit-desc">住在新加坡时把房子出租。JB 租金市场稳定，租金收入可以覆盖部分甚至全部月供。资产为你工作。</div>
+        </div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🌟</div>
+        <div>
+          <div class="benefit-title">生活品质全面升级</div>
+          <div class="benefit-desc">51种设施、城市地段、对面医院、步行到超市。同样的钱，在这里换来的生活品质，在新加坡根本无法想象。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACILITIES -->
+<section class="facilities-section">
+  <div class="container">
+    <p class="section-label">设施 · Facilities</p>
+    <h2 class="section-title">51种设施，<span>一层楼的精彩</span></h2>
+    <!-- Facilities Video -->
+    <div style="margin-bottom:40px; border-radius:16px; overflow:hidden; border:1px solid rgba(201,168,76,0.2);">
+      <video style="width:100%; display:block;" autoplay muted loop playsinline>
+        <source src="video-files/facilities.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="fac-highlight">
+      <div class="fac-number">51</div>
+      <div class="fac-text">
+        <h3>种顶级设施，全在 Level 11</h3>
+        <p>每平方尺只需 RM 0.20 管理费 · Just RM 0.20/sqft maintenance fee</p>
+      </div>
+    </div>
+    <div class="fac-grid">
+      <!-- Replace emoji with actual images when ready -->
+      <div class="fac-card">
+        <div class="fac-img"><img src="images/fac-pool.jpg" alt="Infinity Pool" loading="lazy"></div>
+        <div class="fac-label">无边际泳池<span class="fac-label-en">Infinity Pool</span></div>
+      </div>
+      <div class="fac-card">
+        <div class="fac-img"><img src="images/fac-theatre-real.jpg" alt="Mini Theatre" loading="lazy"></div>
+        <div class="fac-label">迷你影院<span class="fac-label-en">Mini Theatre</span></div>
+      </div>
+      <div class="fac-card">
+        <div class="fac-img"><img src="images/fac-ktv.jpg" alt="KTV Room" loading="lazy"></div>
+        <div class="fac-label">KTV 室<span class="fac-label-en">KTV Room</span></div>
+      </div>
+      <div class="fac-card">
+        <div class="fac-img"><img src="images/fac-games.jpg" alt="Game Room" loading="lazy"></div>
+        <div class="fac-label">娱乐游戏室<span class="fac-label-en">Game Room</span></div>
+      </div>
+      <div class="fac-card">
+        <div class="fac-img"><img src="images/fac-pickleball.jpg" alt="Pickleball Court" loading="lazy"></div>
+        <div class="fac-label">Pickleball 球场<span class="fac-label-en">Pickleball Court</span></div>
+      </div>
+      <div class="fac-card">
+        <div class="fac-img"><img src="images/fac-dining.jpg" alt="Gourmet Suite" loading="lazy"></div>
+        <div class="fac-label">私人餐厅<span class="fac-label-en">Gourmet Suite</span></div>
+      </div>
+      <div class="fac-card">
+        <div class="fac-img"><img src="images/fac-gym.jpg" alt="Gym" loading="lazy"></div>
+        <div class="fac-label">空中健身房<span class="fac-label-en">Fitness Centre</span></div>
+      </div>
+      <div class="fac-card">
+        <div class="fac-img"><img src="images/fac-waterplay.jpg" alt="Water Playground" loading="lazy"></div>
+        <div class="fac-label">儿童水上乐园<span class="fac-label-en">Water Playground</span></div>
+      </div>
+      <div class="fac-card">
+        <div class="fac-img"><img src="images/fac-kids.jpg" alt="Kids Indoor Play" loading="lazy"></div>
+        <div class="fac-label">儿童游乐区<span class="fac-label-en">Kids Play Zone</span></div>
+      </div>
+      <div class="fac-card">
+        <div class="fac-img"><img src="images/fac-bbq.jpg" alt="BBQ Pavilion" loading="lazy"></div>
+        <div class="fac-label">户外凉亭 BBQ<span class="fac-label-en">BBQ Pavilion</span></div>
+      </div>
+      <div class="fac-card">
+        <div class="fac-img"><img src="images/fac-lawn.jpg" alt="Open Lawn" loading="lazy"></div>
+        <div class="fac-label">开放草坪<span class="fac-label-en">Open Lawn</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUE BANNER -->
+<div class="value-banner">
+  <div class="container">
+    <h2>新山坡底，<span>最性价比的 Freehold</span></h2>
+    <p>城市核心地段 · 永久地契 · 47层地标建筑 · 51种顶级设施</p>
+    <p>在新山，Freehold + 市中心 + 这个价格 — 这个组合，几乎不存在。</p>
+    <p style="font-size:13px; color:#777; margin-top:4px">Southkey · The most value-for-money freehold in Johor Bahru city centre</p>
+    <div class="value-tags">
+      <span class="value-tag">🏆 Freehold 永久地契</span>
+      <span class="value-tag">📍 新山坡底核心地段</span>
+      <span class="value-tag">🏥 对面 Columbia Hospital</span>
+      <span class="value-tag">🚌 Shuttle Bus 直达关卡</span>
+      <span class="value-tag">💰 月供 SGD 430 起</span>
+      <span class="value-tag">⭐ 51种顶级设施</span>
+    </div>
+  </div>
+</div>
+
+<!-- LOCATION -->
+<section class="location-section">
+  <div class="container">
+    <p class="section-label">地理位置 · Location</p>
+    <h2 class="section-title">什么都在旁边，<span>什么都不缺</span></h2>
+    <p class="section-sub">Everything you need, right where you live.</p>
+
+    <!-- MAP INFOGRAPHIC -->
+    <div class="map-infographic">
+      <div class="map-col">
+        <div class="map-flag">🇸🇬</div>
+        <div class="map-place">新加坡 Singapore</div>
+        <div class="map-desc">Woodlands Checkpoint</div>
+        <div class="map-arrow"><i class="fas fa-arrow-down"></i> 过关后</div>
+        <div class="map-time">~15 分钟</div>
+      </div>
+      <div class="map-divider"></div>
+      <div class="map-col">
+        <div class="map-flag">🚔</div>
+        <div class="map-place">JB CIQ 关卡</div>
+        <div class="map-desc">Johor Bahru Checkpoint</div>
+        <div class="map-arrow"><i class="fas fa-arrow-down"></i> 驾车</div>
+        <div class="map-time">~10 分钟</div>
+      </div>
+      <div class="map-divider"></div>
+      <div class="map-col" style="position:relative">
+        <div style="position:absolute;top:-10px;right:-10px;background:var(--gold);color:#000;font-size:10px;font-weight:800;padding:4px 10px;border-radius:20px;">YOU ARE HERE</div>
+        <div class="map-flag">📍</div>
+        <div class="map-place" style="color:var(--gold)">这里 · Here</div>
+        <div class="map-desc">Johor Bahru Southkey</div>
+        <div class="map-arrow"><i class="fas fa-arrow-down"></i> 步行</div>
+        <div class="map-time" style="font-size:16px">🏥 医院对面 · 🏪 Giant 3分钟 · 🐟 市场 1分钟</div>
+      </div>
+    </div>
+
+    <!-- GOOGLE MAPS EMBED -->
+    <iframe class="map-embed"
+      src="https://maps.google.com/maps?q=1.504731,103.763254&z=17&output=embed"
+      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+
+    <!-- LOCATION PHOTO GRID -->
+    <div class="loc-photo-grid">
+      <div class="loc-photo-card">
+        <img src="images/loc-shuttle.jpg" alt="Shuttle Bus to CIQ" loading="lazy">
+        <div class="loc-photo-label">🚌 Shuttle Bus 直达关卡<span>Free shuttle to CIQ & RTS</span></div>
+      </div>
+      <div class="loc-photo-card">
+        <img src="images/loc-giant.jpg" alt="Giant Hypermarket" loading="lazy">
+        <div class="loc-photo-label">🏪 Giant Hypermarket<span>步行 3 分钟 · 3 min walk</span></div>
+      </div>
+      <div class="loc-photo-card">
+        <img src="images/loc-wetmarket.jpg" alt="Wet Market" loading="lazy">
+        <div class="loc-photo-label">🐟 鱼菜市场<span>步行 1 分钟 · 1 min walk</span></div>
+      </div>
+      <div class="loc-photo-card">
+        <img src="images/loc-midvalley.jpg" alt="Mid Valley Southkey" loading="lazy">
+        <div class="loc-photo-label">🛒 Mid Valley Southkey<span>驾车 8 分钟 · 8 min drive</span></div>
+      </div>
+      <div class="loc-photo-card">
+        <img src="images/loc-rts.jpg" alt="RTS Link" loading="lazy">
+        <div class="loc-photo-label">🚆 RTS Link（即将开通）<span>JB ↔ Singapore in 5 mins</span></div>
+      </div>
+    </div>
+
+    <div class="location-grid">
+      <!-- WALKING -->
+      <div class="loc-box loc-walk">
+        <div class="loc-box-title">
+          <i class="fas fa-walking"></i>
+          步行即达 · Walking Distance
+        </div>
+        <div class="loc-item">
+          <div class="loc-icon-wrap">🏥</div>
+          <div class="loc-info">
+            <div class="loc-name">Columbia Hospital</div>
+            <div class="loc-name-en">私立医院 · Private Hospital</div>
+          </div>
+          <div class="loc-dist">对面</div>
+        </div>
+        <div class="loc-item">
+          <div class="loc-icon-wrap">🛍️</div>
+          <div class="loc-info">
+            <div class="loc-name">Paragon Gateway</div>
+            <div class="loc-name-en">商场 · Mall</div>
+          </div>
+          <div class="loc-dist">旁边</div>
+        </div>
+        <div class="loc-item">
+          <div class="loc-icon-wrap">🐟</div>
+          <div class="loc-info">
+            <div class="loc-name">鱼菜市场</div>
+            <div class="loc-name-en">Wet Market</div>
+          </div>
+          <div class="loc-dist">1 分钟</div>
+        </div>
+        <div class="loc-item">
+          <div class="loc-icon-wrap">🏪</div>
+          <div class="loc-info">
+            <div class="loc-name">Giant Hypermarket</div>
+            <div class="loc-name-en">大型超市</div>
+          </div>
+          <div class="loc-dist">3 分钟</div>
+        </div>
+        <div class="loc-item">
+          <div class="loc-icon-wrap">☕</div>
+          <div class="loc-info">
+            <div class="loc-name">楼下店面</div>
+            <div class="loc-name-en">Shoplots Below</div>
+          </div>
+          <div class="loc-dist">楼下</div>
+        </div>
+        <div class="loc-item">
+          <div class="loc-icon-wrap">🚌</div>
+          <div class="loc-info">
+            <div class="loc-name">Shuttle Bus 站</div>
+            <div class="loc-name-en">To Singapore Checkpoint</div>
+          </div>
+          <div class="loc-dist">旁边</div>
+        </div>
+      </div>
+
+      <!-- DRIVING -->
+      <div class="loc-box loc-drive">
+        <div class="loc-box-title">
+          <i class="fas fa-car"></i>
+          驾车 · By Car
+        </div>
+        <div class="loc-item">
+          <div class="loc-icon-wrap">🍜</div>
+          <div class="loc-info">
+            <div class="loc-name">Jalan Sutera 美食街</div>
+            <div class="loc-name-en">Food Street</div>
+          </div>
+          <div class="loc-dist">5 分钟</div>
+        </div>
+        <div class="loc-item">
+          <div class="loc-icon-wrap">🛒</div>
+          <div class="loc-info">
+            <div class="loc-name">Mid Valley Southkey</div>
+            <div class="loc-name-en">大型购物中心</div>
+          </div>
+          <div class="loc-dist">8 分钟</div>
+        </div>
+        <div class="loc-item">
+          <div class="loc-icon-wrap">🏬</div>
+          <div class="loc-info">
+            <div class="loc-name">KSL City Mall</div>
+            <div class="loc-name-en">购物中心 · Shopping</div>
+          </div>
+          <div class="loc-dist">8 分钟</div>
+        </div>
+        <div class="loc-item">
+          <div class="loc-icon-wrap">🏘️</div>
+          <div class="loc-info">
+            <div class="loc-name">Mount Austin</div>
+            <div class="loc-name-en">生活区</div>
+          </div>
+          <div class="loc-dist">15 分钟</div>
+        </div>
+        <div class="loc-item">
+          <div class="loc-icon-wrap">🚔</div>
+          <div class="loc-info">
+            <div class="loc-name">JB CIQ 关卡</div>
+            <div class="loc-name-en">Singapore Checkpoint</div>
+          </div>
+          <div class="loc-dist">10 分钟</div>
+        </div>
+        <div class="loc-item">
+          <div class="loc-icon-wrap">🇸🇬</div>
+          <div class="loc-info">
+            <div class="loc-name">新加坡 Woodlands</div>
+            <div class="loc-name-en">Singapore</div>
+          </div>
+          <div class="loc-dist">过关 15 分钟</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UNITS & PRICING -->
+<section class="units-section">
+  <div class="container">
+    <p class="section-label">户型与价格 · Units & Pricing</p>
+    <h2 class="section-title">选择你的<span>理想空间</span></h2>
+    <p class="section-sub">Freehold · Commercial Title · 1% Down Payment · Full Loan Available</p>
+    <div class="units-grid">
+      <div class="unit-card">
+        <img src="images/plan-a.jpg" alt="Type A Floor Plan" class="unit-plan">
+        <div class="unit-type">Type A · Studio</div>
+        <div class="unit-size">398 <span>sqft</span></div>
+        <div class="unit-name">Studio · 1 Bathroom</div>
+        <div class="unit-price-rm">从 RM 300,000+</div>
+        <div class="unit-price-sgd">SGD 430 <span>/ 月</span></div>
+        <a href="https://wa.me/60149183248?text=Hi%2C%20I'm%20interested%20in%20Type%20A%20398sqft" class="unit-cta" target="_blank"><i class="fab fa-whatsapp"></i> 询问详情</a>
+      </div>
+      <div class="unit-card">
+        <img src="images/plan-b.jpg" alt="Type B Floor Plan" class="unit-plan">
+        <div class="unit-type">Type B · Studio</div>
+        <div class="unit-size">506 <span>sqft</span></div>
+        <div class="unit-name">Studio · 1 Bathroom</div>
+        <div class="unit-price-rm">从 RM 380,000+</div>
+        <div class="unit-price-sgd">SGD 550 <span>/ 月</span></div>
+        <a href="https://wa.me/60149183248?text=Hi%2C%20I'm%20interested%20in%20Type%20B%20506sqft" class="unit-cta" target="_blank"><i class="fab fa-whatsapp"></i> 询问详情</a>
+      </div>
+      <div class="unit-card">
+        <div class="unit-plan-placeholder"><i class="fas fa-drafting-compass"></i>平面图即将更新</div>
+        <div class="unit-type">Type C · 1 Bedroom</div>
+        <div class="unit-size">646 <span>sqft</span></div>
+        <div class="unit-name">1 Bedroom · 2 Bathrooms</div>
+        <div class="unit-price-rm">从 RM 458,000+</div>
+        <div class="unit-price-sgd">SGD 660 <span>/ 月</span></div>
+        <a href="https://wa.me/60149183248?text=Hi%2C%20I'm%20interested%20in%20Type%20C%20646sqft" class="unit-cta" target="_blank"><i class="fab fa-whatsapp"></i> 询问详情</a>
+      </div>
+      <div class="unit-card">
+        <div class="unit-plan-placeholder"><i class="fas fa-drafting-compass"></i>平面图即将更新</div>
+        <div class="unit-type">Type D · 2+1 Bedroom</div>
+        <div class="unit-size">743 <span>sqft</span></div>
+        <div class="unit-name">2+1 Bedrooms · 2 Bathrooms</div>
+        <div class="unit-price-rm">从 RM 525,000+</div>
+        <div class="unit-price-sgd">SGD 765 <span>/ 月</span></div>
+        <a href="https://wa.me/60149183248?text=Hi%2C%20I'm%20interested%20in%20Type%20D%20743sqft" class="unit-cta" target="_blank"><i class="fab fa-whatsapp"></i> 询问详情</a>
+      </div>
+      <div class="unit-card">
+        <div class="unit-plan-placeholder"><i class="fas fa-drafting-compass"></i>平面图即将更新</div>
+        <div class="unit-type">Type CD · Duplex Loft</div>
+        <div class="unit-size">807 <span>sqft</span></div>
+        <div class="unit-name">1 Bedroom Duplex · 2 Bathrooms</div>
+        <div class="unit-price-rm">从 RM 570,000+</div>
+        <div class="unit-price-sgd">SGD 825 <span>/ 月</span></div>
+        <a href="https://wa.me/60149183248?text=Hi%2C%20I'm%20interested%20in%20Type%20CD%20807sqft%20Duplex" class="unit-cta" target="_blank"><i class="fab fa-whatsapp"></i> 询问详情</a>
+      </div>
+      <div class="unit-card">
+        <div class="unit-plan-placeholder"><i class="fas fa-drafting-compass"></i>平面图即将更新</div>
+        <div class="unit-type">Type E · Dual Key</div>
+        <div class="unit-size">850 <span>sqft</span></div>
+        <div class="unit-name">3 Bedrooms Corner Dual Key</div>
+        <div class="unit-price-rm">从 RM 580,000+</div>
+        <div class="unit-price-sgd">SGD 835 <span>/ 月</span></div>
+        <a href="https://wa.me/60149183248?text=Hi%2C%20I'm%20interested%20in%20Type%20E%20850sqft%20Dual%20Key" class="unit-cta" target="_blank"><i class="fab fa-whatsapp"></i> 询问详情</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SG BUYER SECTION -->
+<section class="sg-buyer-section">
+  <div class="container">
+    <p class="section-label">新加坡买家 · For Singaporeans</p>
+    <h2 class="section-title">新加坡人，<span>你可以买这里</span></h2>
+    <div class="sg-banner">
+      <div class="sg-flag">🇸🇬</div>
+      <div class="sg-text">
+        <h3>RM500,000 以上单位，新加坡人可以购买</h3>
+        <p>外国买家（包括新加坡公民和 PR）可购买柔佛州 RM500,000 及以上的房产。<br>以下单位符合资格 — 用新元的汇率优势，拥有一个永久属于你的家。</p>
+      </div>
+    </div>
+    <div class="sg-units">
+      <div class="sg-unit-card">
+        <div class="sg-unit-type">Type D · 2+1 Bedroom</div>
+        <div class="sg-unit-size">743 sqft</div>
+        <div class="sg-unit-price">从 RM 525,000+</div>
+        <div class="sg-unit-sgd">≈ SGD 765 / 月</div>
+      </div>
+      <div class="sg-unit-card">
+        <div class="sg-unit-type">Type CD · Duplex Loft</div>
+        <div class="sg-unit-size">807 sqft</div>
+        <div class="sg-unit-price">从 RM 570,000+</div>
+        <div class="sg-unit-sgd">≈ SGD 825 / 月</div>
+      </div>
+      <div class="sg-unit-card">
+        <div class="sg-unit-type">Type E · 3BR Dual Key</div>
+        <div class="sg-unit-size">850 sqft</div>
+        <div class="sg-unit-price">从 RM 580,000+</div>
+        <div class="sg-unit-sgd">≈ SGD 835 / 月</div>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--text-muted);margin-top:16px">* 请咨询详情以确认资格。Prices subject to availability. WhatsApp us for eligibility confirmation.</p>
+  </div>
+</section>
+
+<!-- BATCH PRICING / FOMO -->
+<section class="batch-section">
+  <div class="container">
+    <div class="batch-box">
+      <p class="section-label" style="margin-bottom:12px">限时价格 · Early Bird</p>
+      <h2 class="batch-title">为什么现在可以用<span>这么低的价格</span>成为这里的屋主？</h2>
+      <p class="batch-subtitle">因为你看到的，是第一批 + Early Bird 的价格。<br>房产预售的规律是：越早买，价格越低。这不是促销噱头，这是事实。</p>
+
+      <div class="batch-timeline">
+        <div class="batch-item active">
+          <div class="batch-dot">1</div>
+          <div class="batch-label">第一批</div>
+          <div class="batch-price" style="color:var(--gold)">最低价</div>
+          <span class="batch-badge">你在这里</span>
+        </div>
+        <div class="batch-item">
+          <div class="batch-dot">2</div>
+          <div class="batch-label">第二批</div>
+          <div class="batch-price">涨价 ↑</div>
+        </div>
+        <div class="batch-item">
+          <div class="batch-dot">3</div>
+          <div class="batch-label">第三批</div>
+          <div class="batch-price">再涨 ↑↑</div>
+        </div>
+        <div class="batch-item">
+          <div class="batch-dot">4</div>
+          <div class="batch-label">第四批</div>
+          <div class="batch-price">再涨 ↑↑↑</div>
+        </div>
+      </div>
+
+      <div class="batch-note">
+        <strong>✅ 拿到 Early Bird 配套（名额有限）：</strong> 享有最低价格 + 额外回扣，是最划算的入场时机。<br><br>
+        <strong>⭐ 没拿到 Early Bird 也没关系：</strong> 第一批的价格，依然是整个项目里最性价比的。相比第二、三、四批，你依然赢在起跑线。<br><br>
+        <strong>📌 记住：</strong> 越早行动，你的成本越低，将来的升值空间越大。
+      </div>
+
+      <div style="text-align:center;margin-top:32px">
+        <a href="https://wa.me/60149183248?text=Hi%2C%20I'm%20interested%20in%20the%20early%20bird%20package" class="cta-btn" target="_blank" style="font-size:15px;padding:16px 36px">
+          <i class="fab fa-whatsapp"></i> WhatsApp 了解 Early Bird 配套
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROMO STRIP -->
+<div class="promo-strip">
+  <div class="promo-inner">
+    <div class="promo-item"><i class="fas fa-check-circle"></i> 1% 首付</div>
+    <div class="promo-item"><i class="fas fa-check-circle"></i> Full Loan 可申请</div>
+    <div class="promo-item"><i class="fas fa-check-circle"></i> Studio 回扣 10%</div>
+    <div class="promo-item"><i class="fas fa-check-circle"></i> 免 SPA 律师费</div>
+    <div class="promo-item"><i class="fas fa-check-circle"></i> 免贷款印花税</div>
+    <div class="promo-item"><i class="fas fa-check-circle"></i> 1年免管理费</div>
+    <div class="promo-item"><i class="fas fa-check-circle"></i> Freehold 永久地契</div>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <h2 class="cta-title">准备好想象<span>你的新生活</span>了吗？</h2>
+    <p class="cta-sub">WhatsApp 我，预约看房或 3D 虚拟参观。<br>Ready to see your future home? Let's talk.</p>
+    <a href="https://wa.me/60149183248?text=Hi%2C%20I'm%20interested%20to%20know%20more%20about%20the%20property" class="cta-btn" target="_blank">
+      <i class="fab fa-whatsapp"></i> WhatsApp 我 · +60 14-918 3248
+    </a>
+    <p class="cta-note">Show Unit 已开放参观 · Show Unit Now Open</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 · Johor Bahru Freehold Serviced Apartment · All Rights Reserved</p>
+  <p style="margin-top:8px">CIQ Property · RTS Property Johor Bahru · Freehold Apartment JB · 新山买房</p>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/60149183248?text=Hi%2C%20I'm%20interested%20to%20know%20more%20about%20the%20property" class="float-wa" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+</body>
+</html>

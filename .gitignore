@@ -1,0 +1,6 @@
+video/node_modules/
+video/package-lock.json
+video/public/
+video-output/
+docs/
+.claude/
