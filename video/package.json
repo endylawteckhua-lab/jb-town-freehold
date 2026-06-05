@@ -6,7 +6,8 @@
   "scripts": {
     "start": "npx remotion studio",
     "render:hero": "npx remotion render src/index.jsx HeroVideo ../video-output/hero.mp4",
-    "render:facilities": "npx remotion render src/index.jsx FacilitiesVideo ../video-output/facilities.mp4"
+    "render:facilities": "npx remotion render src/index.jsx FacilitiesVideo ../video-output/facilities.mp4",
+    "render:location": "npx remotion render src/index.jsx LocationVideo ../video-output/location.mp4 --width=1280 --height=720 --crf=28"
   },
   "keywords": [],
   "author": "",
