@@ -48,11 +48,11 @@ const SLIDES = [
   },
   {
     img: staticFile('loc-rts.jpg'),
-    name: 'RTS Link',
-    nameEn: 'JB ↔ Singapore',
+    name: 'RTS Link 轻快铁',
+    nameEn: 'JB ↔ Singapore Rail Link',
     tag: '🚆',
-    time: '5分钟直达新加坡',
-    timeEn: '5 min to Singapore',
+    time: '距 RTS 站约 7km',
+    timeEn: '~7km to RTS station',
     color: '#E74C3C',
   },
 ];
