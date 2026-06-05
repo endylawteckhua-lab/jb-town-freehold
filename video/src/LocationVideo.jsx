@@ -38,6 +38,15 @@ const SLIDES = [
     color: '#3498DB',
   },
   {
+    img: staticFile('loc-ciq.jpg'),
+    name: 'JB CIQ 关卡',
+    nameEn: 'Singapore Checkpoint',
+    tag: '🚗',
+    time: '驾车 10 分钟',
+    timeEn: '10 min drive',
+    color: '#3498DB',
+  },
+  {
     img: staticFile('loc-rts.jpg'),
     name: 'RTS Link',
     nameEn: 'JB ↔ Singapore',
