@@ -125,18 +125,25 @@
     .v430-card:hover .v430-bg { transform: scale(1.06); }
     .v430-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.25) 55%, rgba(0,0,0,0.08) 100%);
+      background: rgba(0,0,0,0.55);
     }
     .v430-num {
-      position: absolute; top: 22px; right: 22px;
-      font-size: 11px; font-weight: 800; letter-spacing: 3px; color: var(--gold);
-      background: rgba(0,0,0,0.55); padding: 4px 12px; border-radius: 20px;
-      border: 1px solid rgba(201,168,76,0.35);
+      position: absolute; top: 20px; left: 24px;
+      font-size: 11px; font-weight: 800; letter-spacing: 3px; color: rgba(255,255,255,0.4);
     }
-    .v430-content { position: absolute; bottom: 30px; left: 30px; right: 30px; }
-    .v430-zh { font-size: clamp(20px, 2.5vw, 28px); font-weight: 900; color: #fff; line-height: 1.2; margin-bottom: 8px; }
-    .v430-en { font-size: 13px; color: rgba(255,255,255,0.55); letter-spacing: 0.5px; }
-    @media(max-width: 480px) { .v430-card { height: 280px; } }
+    .v430-content {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 32px 36px;
+    }
+    .v430-bar { width: 36px; height: 3px; background: var(--gold); margin-bottom: 18px; }
+    .v430-zh {
+      font-size: clamp(26px, 3vw, 40px); font-weight: 900; color: #fff;
+      line-height: 1.25; margin-bottom: 12px;
+      text-shadow: 0 2px 24px rgba(0,0,0,0.6);
+    }
+    .v430-en { font-size: 13px; color: rgba(255,255,255,0.45); letter-spacing: 0.5px; }
+    @media(max-width: 480px) { .v430-card { height: 260px; } .v430-content { padding: 24px; } }
 
     /* ─── FACILITIES ─── */
     .facilities-section { background: var(--dark); }
@@ -428,6 +435,7 @@
         <div class="v430-overlay"></div>
         <div class="v430-num">01</div>
         <div class="v430-content">
+          <div class="v430-bar"></div>
           <div class="v430-zh">新山市中心的家</div>
           <div class="v430-en">A home in the heart of Johor Bahru</div>
         </div>
@@ -438,6 +446,7 @@
         <div class="v430-overlay"></div>
         <div class="v430-num">02</div>
         <div class="v430-content">
+          <div class="v430-bar"></div>
           <div class="v430-zh">永久地契，传给下一代</div>
           <div class="v430-en">Freehold — yours forever, pass it on</div>
         </div>
@@ -448,6 +457,7 @@
         <div class="v430-overlay"></div>
         <div class="v430-num">03</div>
         <div class="v430-content">
+          <div class="v430-bar"></div>
           <div class="v430-zh">51种设施，天天度假</div>
           <div class="v430-en">51 facilities — live like you're on holiday</div>
         </div>
@@ -458,6 +468,7 @@
         <div class="v430-overlay"></div>
         <div class="v430-num">04</div>
         <div class="v430-content">
+          <div class="v430-bar"></div>
           <div class="v430-zh">楼下Giant、鱼市场、医院</div>
           <div class="v430-en">Giant, wet market &amp; hospital steps away</div>
         </div>
@@ -468,6 +479,7 @@
         <div class="v430-overlay"></div>
         <div class="v430-num">05</div>
         <div class="v430-content">
+          <div class="v430-bar"></div>
           <div class="v430-zh">Shuttle Bus 直达新加坡关卡</div>
           <div class="v430-en">Free shuttle direct to Singapore checkpoint</div>
         </div>
@@ -478,6 +490,7 @@
         <div class="v430-overlay"></div>
         <div class="v430-num">06</div>
         <div class="v430-content">
+          <div class="v430-bar"></div>
           <div class="v430-zh">不是租房，是你自己的资产</div>
           <div class="v430-en">Not renting — building your own wealth</div>
         </div>
