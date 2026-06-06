@@ -98,23 +98,45 @@
     .section-sub { font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 50px; }
     .en { font-size: 0.85em; color: rgba(255,255,255,0.5); display: block; margin-top: 4px; }
 
-    /* ─── DAY IN LIFE ─── */
-    .life-section { background: var(--dark2); }
-    .life-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-    .life-card {
-      background: var(--dark3); border-radius: 16px; padding: 32px 28px;
-      border: 1px solid rgba(201,168,76,0.15); transition: all 0.3s;
-      position: relative; overflow: hidden;
+    /* ─── SGD430 VALUE ─── */
+    .value430-section { background: #080808; }
+    .value430-header { text-align: center; margin-bottom: 56px; }
+    .value430-headline { font-size: clamp(22px, 4vw, 44px); font-weight: 900; line-height: 1.3; }
+    .value430-headline span { color: var(--gold); }
+    .value430-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    @media(max-width: 680px) { .value430-grid { grid-template-columns: 1fr; } }
+    .v430-card {
+      position: relative; height: 380px; border-radius: 20px; overflow: hidden;
+      opacity: 0; transform: translateY(50px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
     }
-    .life-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, var(--gold), transparent);
+    .v430-card.in-view { opacity: 1; transform: translateY(0); }
+    .v430-card:nth-child(1) { transition-delay: 0s; }
+    .v430-card:nth-child(2) { transition-delay: 0.12s; }
+    .v430-card:nth-child(3) { transition-delay: 0.22s; }
+    .v430-card:nth-child(4) { transition-delay: 0.32s; }
+    .v430-card:nth-child(5) { transition-delay: 0.42s; }
+    .v430-card:nth-child(6) { transition-delay: 0.52s; }
+    .v430-bg {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      transition: transform 0.6s ease;
     }
-    .life-card:hover { transform: translateY(-4px); border-color: rgba(201,168,76,0.4); }
-    .life-icon { font-size: 36px; margin-bottom: 16px; }
-    .life-time { font-size: 11px; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
-    .life-desc { font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.85); }
-    .life-en { font-size: 12px; color: var(--text-muted); margin-top: 6px; }
+    .v430-card:hover .v430-bg { transform: scale(1.06); }
+    .v430-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.25) 55%, rgba(0,0,0,0.08) 100%);
+    }
+    .v430-num {
+      position: absolute; top: 22px; right: 22px;
+      font-size: 11px; font-weight: 800; letter-spacing: 3px; color: var(--gold);
+      background: rgba(0,0,0,0.55); padding: 4px 12px; border-radius: 20px;
+      border: 1px solid rgba(201,168,76,0.35);
+    }
+    .v430-content { position: absolute; bottom: 30px; left: 30px; right: 30px; }
+    .v430-zh { font-size: clamp(20px, 2.5vw, 28px); font-weight: 900; color: #fff; line-height: 1.2; margin-bottom: 8px; }
+    .v430-en { font-size: 13px; color: rgba(255,255,255,0.55); letter-spacing: 0.5px; }
+    @media(max-width: 480px) { .v430-card { height: 280px; } }
 
     /* ─── FACILITIES ─── */
     .facilities-section { background: var(--dark); }
@@ -253,18 +275,6 @@
     .float-wa i { font-size: 28px; color: white; }
     @keyframes pulse { 0%,100%{box-shadow:0 4px 20px rgba(37,211,102,0.5)} 50%{box-shadow:0 4px 40px rgba(37,211,102,0.8)} }
 
-    /* ─── BENEFITS ─── */
-    .benefits-section { background: var(--dark); }
-    .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
-    .benefit-card {
-      background: var(--dark3); border-radius: 16px; padding: 28px;
-      border: 1px solid rgba(255,255,255,0.06); display: flex; gap: 18px; align-items: flex-start;
-      transition: all 0.3s;
-    }
-    .benefit-card:hover { border-color: rgba(201,168,76,0.3); transform: translateY(-3px); }
-    .benefit-icon { font-size: 32px; flex-shrink: 0; }
-    .benefit-title { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
-    .benefit-desc { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
 
     /* ─── VALUE BANNER ─── */
     .value-banner {
@@ -391,12 +401,12 @@
   </video>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hero-badge">Johor Bahru · Freehold · 47 Storeys</div>
+    <div class="hero-badge">Johor Bahru · Freehold · 新山永久地契</div>
     <h1 class="hero-title">
-      月供 <span class="price">SGD 430</span>，<br>就能成为这里的屋主。
+      每个月 <span class="price">SGD 430</span>，<br>你能得到什么？
     </h1>
-    <p class="hero-subtitle">享有的，比你想象的更多。</p>
-    <p class="hero-tagline">What comes with it? More than you'd expect.</p>
+    <p class="hero-subtitle">往下看。</p>
+    <p class="hero-tagline">Scroll to find out what SGD 430 a month really gets you.</p>
     <a href="https://wa.me/60149183248?text=Hi%2C%20I'm%20interested%20to%20know%20more%20about%20the%20property" class="hero-cta" target="_blank">
       <i class="fab fa-whatsapp"></i> WhatsApp 了解更多
     </a>
@@ -404,102 +414,75 @@
   <div class="hero-scroll"><i class="fas fa-chevron-down"></i></div>
 </section>
 
-<!-- DAY IN LIFE -->
-<section class="life-section">
+<!-- SGD 430 VALUE -->
+<section class="value430-section">
   <div class="container">
-    <p class="section-label">生活想象 · Lifestyle</p>
-    <h2 class="section-title">住在这里，<span>每一天都是这样的</span></h2>
-    <p class="section-sub">A day in your life here.<span class="en">这不是广告词，这是你的日常。</span></p>
-    <div class="life-grid">
-      <div class="life-card">
-        <div class="life-icon">🌅</div>
-        <div class="life-time">早晨 · Morning</div>
-        <p class="life-desc">推开门，新山城市天际线就是你的背景。新一天，从47层的高度开始。</p>
-        <p class="life-en">Wake up to the JB city skyline. Every morning starts from 47 floors up.</p>
-      </div>
-      <div class="life-card">
-        <div class="life-icon">🛍️</div>
-        <div class="life-time">下楼 · Downstairs</div>
-        <p class="life-desc">楼下就是店面，步行1分钟到鱼菜市场，3分钟到Giant超市。买菜、早餐，全部搞定。</p>
-        <p class="life-en">Shoplots below, wet market 1 min away, Giant Hypermarket in 3 mins.</p>
-      </div>
-      <div class="life-card">
-        <div class="life-icon">🏊</div>
-        <div class="life-time">上楼 · Level 11</div>
-        <p class="life-desc">51种设施，全部是你的。泳池、健身房、迷你高尔夫、住户专属影院——不用出门，不用付额外费用。</p>
-        <p class="life-en">51 facilities — pool, gym, mini golf, theatre. All yours, every day.</p>
-      </div>
-      <div class="life-card">
-        <div class="life-icon">🚌</div>
-        <div class="life-time">回新加坡 · To Singapore</div>
-        <p class="life-desc">Shuttle Bus 直达关卡，不需要自己驾车排队。轻松通关，两地生活从未如此简单。</p>
-        <p class="life-en">Free shuttle bus to the checkpoint. No car needed, no queuing stress.</p>
-      </div>
-      <div class="life-card">
-        <div class="life-icon">🏥</div>
-        <div class="life-time">安心 · Peace of Mind</div>
-        <p class="life-desc">Columbia Hospital 就在对面。无论是日常检查还是紧急情况，医疗资源就在脚边。</p>
-        <p class="life-en">Columbia Hospital is directly opposite. Medical care is always steps away.</p>
-      </div>
-      <div class="life-card">
-        <div class="life-icon">💳</div>
-        <div class="life-time">每个月 · Every Month</div>
-        <p class="life-desc">SGD 430 月供。RM 0.20/sqft 管理费，享有51种设施。这一切，全部属于你。</p>
-        <p class="life-en">SGD 430/month. RM 0.20/sqft maintenance. 51 facilities. All yours.</p>
-      </div>
+    <div class="value430-header">
+      <p class="section-label">答案在这里 · Here's What You Get</p>
+      <h2 class="value430-headline">这 <span>6 件事</span>，全部属于你。</h2>
     </div>
-  </div>
-</section>
+    <div class="value430-grid">
 
-<!-- BENEFITS OF OWNERSHIP -->
-<section class="benefits-section">
-  <div class="container">
-    <p class="section-label">成为屋主 · Why Own</p>
-    <h2 class="section-title">成为这里的屋主，<span>你得到的是什么？</span></h2>
-    <p class="section-sub">Every month you rent, you're building someone else's wealth. Here, you build your own.<span class="en">每个月的钱，付给自己，还是付给房东？</span></p>
-    <div class="benefits-grid">
-      <div class="benefit-card">
-        <div class="benefit-icon">🏠</div>
-        <div>
-          <div class="benefit-title">钱付给自己，不是房东</div>
-          <div class="benefit-desc">每一分月供，都在累积你的资产。租房是消费，买房是投资。新加坡月租 SGD 2,000+，这里月供 SGD 430 — 你的钱，还是你的。</div>
+      <div class="v430-card">
+        <div class="v430-bg" style="background-image: url('images/lobby.jpg')"></div>
+        <div class="v430-overlay"></div>
+        <div class="v430-num">01</div>
+        <div class="v430-content">
+          <div class="v430-zh">新山市中心的家</div>
+          <div class="v430-en">A home in the heart of Johor Bahru</div>
         </div>
       </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">📈</div>
-        <div>
-          <div class="benefit-title">RTS 通车，价值只会涨</div>
-          <div class="benefit-desc">JB-Singapore RTS Link 即将通车，新山房产需求已经在涨。现在买，是锁定今天的价格。明年后年，这个价格不会再有。</div>
+
+      <div class="v430-card">
+        <div class="v430-bg" style="background-image: url('images/hero-bg.jpg')"></div>
+        <div class="v430-overlay"></div>
+        <div class="v430-num">02</div>
+        <div class="v430-content">
+          <div class="v430-zh">永久地契，传给下一代</div>
+          <div class="v430-en">Freehold — yours forever, pass it on</div>
         </div>
       </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">💵</div>
-        <div>
-          <div class="benefit-title">新币强，马币买 — 汇率优势</div>
-          <div class="benefit-desc">用强势新元购买马元资产。同样的 SGD，在新山可以买到在新加坡根本买不起的房子和生活品质。</div>
+
+      <div class="v430-card">
+        <div class="v430-bg" style="background-image: url('images/fac-pool.jpg')"></div>
+        <div class="v430-overlay"></div>
+        <div class="v430-num">03</div>
+        <div class="v430-content">
+          <div class="v430-zh">51种设施，天天度假</div>
+          <div class="v430-en">51 facilities — live like you're on holiday</div>
         </div>
       </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">🏆</div>
-        <div>
-          <div class="benefit-title">Freehold — 永久属于你</div>
-          <div class="benefit-desc">不是99年，不是999年。永久地契，传给子女，再传给孙子。你买的不只是一间房，是家族永久的资产。</div>
+
+      <div class="v430-card">
+        <div class="v430-bg" style="background-image: url('images/loc-wetmarket.jpg')"></div>
+        <div class="v430-overlay"></div>
+        <div class="v430-num">04</div>
+        <div class="v430-content">
+          <div class="v430-zh">楼下Giant、鱼市场、医院</div>
+          <div class="v430-en">Giant, wet market &amp; hospital steps away</div>
         </div>
       </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">🔑</div>
-        <div>
-          <div class="benefit-title">可以出租，月供自己供自己</div>
-          <div class="benefit-desc">住在新加坡时把房子出租。JB 租金市场稳定，租金收入可以覆盖部分甚至全部月供。资产为你工作。</div>
+
+      <div class="v430-card">
+        <div class="v430-bg" style="background-image: url('images/loc-shuttle.jpg')"></div>
+        <div class="v430-overlay"></div>
+        <div class="v430-num">05</div>
+        <div class="v430-content">
+          <div class="v430-zh">Shuttle Bus 直达新加坡关卡</div>
+          <div class="v430-en">Free shuttle direct to Singapore checkpoint</div>
         </div>
       </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">🌟</div>
-        <div>
-          <div class="benefit-title">生活品质全面升级</div>
-          <div class="benefit-desc">51种设施、城市地段、对面医院、步行到超市。同样的钱，在这里换来的生活品质，在新加坡根本无法想象。</div>
+
+      <div class="v430-card">
+        <div class="v430-bg" style="background-image: url('images/shopfront-night.jpg')"></div>
+        <div class="v430-overlay"></div>
+        <div class="v430-num">06</div>
+        <div class="v430-content">
+          <div class="v430-zh">不是租房，是你自己的资产</div>
+          <div class="v430-en">Not renting — building your own wealth</div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -971,5 +954,20 @@
   <i class="fab fa-whatsapp"></i>
 </a>
 
+<script>
+  // Animate SGD430 cards in on scroll
+  const grid430 = document.querySelector('.value430-grid');
+  if (grid430) {
+    const obs = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) {
+        document.querySelectorAll('.v430-card').forEach(function(c) {
+          c.classList.add('in-view');
+        });
+        obs.unobserve(grid430);
+      }
+    }, { threshold: 0.08 });
+    obs.observe(grid430);
+  }
+</script>
 </body>
 </html>
