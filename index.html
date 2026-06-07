@@ -163,6 +163,9 @@
       border: 1px solid rgba(255,255,255,0.06); transition: all 0.3s; cursor: pointer;
     }
     .fac-card:hover { transform: translateY(-4px); border-color: rgba(201,168,76,0.3); }
+    a.fac-card { display: block; text-decoration: none; }
+    .fac-card-more:hover { border-color: rgba(201,168,76,0.5); }
+    .fac-card-more .fac-label { color: var(--gold); }
     .fac-img {
       width: 100%; aspect-ratio: 4/3;
       background: linear-gradient(135deg, #1a1a2e, #2d2d44);
@@ -660,6 +663,15 @@
         <div class="fac-img"><img src="images/fac-lawn.jpg" alt="Open Lawn" loading="lazy"></div>
         <div class="fac-label">开放草坪<span class="fac-label-en">Open Lawn</span></div>
       </div>
+      <a href="https://wa.me/60189016789?text=nexus51%20-%20Hi%2C%20I%20want%20to%20see%20the%20full%20list%20of%2051%20facilities" class="fac-card fac-card-more" target="_blank">
+        <div class="fac-img" style="display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg, rgba(201,168,76,0.15), rgba(201,168,76,0.04));">
+          <div style="text-align:center; padding:16px;">
+            <div style="font-size:28px; font-weight:900; color:var(--gold);">+40</div>
+            <div style="font-size:13px; color:var(--text-muted); margin-top:4px;">更多设施</div>
+          </div>
+        </div>
+        <div class="fac-label">查看全部 51 种<span class="fac-label-en">See All 51 · WhatsApp Us</span></div>
+      </a>
     </div>
   </div>
 </section>
