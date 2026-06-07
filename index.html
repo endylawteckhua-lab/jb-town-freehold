@@ -247,23 +247,15 @@
     }
     .unit-price-sgd span { font-size: 13px; font-weight: 400; color: var(--text-muted); }
     .unit-plan { width: 100%; border-radius: 10px; margin-bottom: 16px; object-fit: cover; }
-    .unit-plan-3d { display: block; position: relative; border-radius: 10px; overflow: hidden; margin-bottom: 16px; }
-    .unit-plan-3d .unit-plan { margin-bottom: 0; display: block; transition: transform 0.4s; }
-    .unit-plan-3d:hover .unit-plan { transform: scale(1.04); }
-    .unit-plan-3d-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.1) 55%, transparent 100%);
-      display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
-      padding: 16px; text-align: center; gap: 8px;
+    .unit-3d-btn {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      width: 100%; margin-bottom: 16px; padding: 14px; border-radius: 10px;
+      background: var(--gold); color: #000; font-size: 14px; font-weight: 800;
+      text-decoration: none; letter-spacing: 0.5px;
+      box-shadow: 0 4px 20px rgba(201,168,76,0.35); transition: all 0.25s;
     }
-    .unit-plan-3d-play {
-      width: 52px; height: 52px; border-radius: 50%;
-      background: rgba(201,168,76,0.95); color: #000; font-size: 20px;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 20px rgba(201,168,76,0.5);
-    }
-    .unit-plan-3d-text { color: #fff; font-size: 13px; font-weight: 700; }
-    .unit-plan-3d-text span { display: block; font-size: 11px; font-weight: 400; color: rgba(255,255,255,0.7); margin-top: 2px; }
+    .unit-3d-btn i { font-size: 18px; }
+    .unit-3d-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 26px rgba(201,168,76,0.5); }
     .unit-plan-placeholder {
       width: 100%; aspect-ratio: 3/4; border-radius: 10px; margin-bottom: 16px;
       background: linear-gradient(135deg, #1a1a2e, #2a2a3e);
@@ -592,12 +584,9 @@
         <a href="https://wa.me/60189016789?text=nexus51%20-%20Hi%2C%20I'm%20interested%20in%20Type%20D%20743sqft" class="unit-cta" target="_blank"><i class="fab fa-whatsapp"></i> 询问详情</a>
       </div>
       <div class="unit-card">
-        <a href="https://www.8mospher.com/Type_CD_360/" target="_blank" class="unit-plan-3d">
-          <img src="images/plan-cd.jpg" alt="Type CD Floor Plan" class="unit-plan">
-          <div class="unit-plan-3d-overlay">
-            <div class="unit-plan-3d-play"><i class="fas fa-expand"></i></div>
-            <div class="unit-plan-3d-text">🏠 点击进入 3D 实景导览<span>Tap for fullscreen 360° Virtual Tour</span></div>
-          </div>
+        <img src="images/plan-cd.jpg" alt="Type CD Floor Plan" class="unit-plan">
+        <a href="https://www.8mospher.com/Type_CD_360/" target="_blank" class="unit-3d-btn">
+          <i class="fas fa-vr-cardboard"></i> 3D 实景 · 3D Virtual Tour
         </a>
         <div class="unit-type">Type CD · Duplex Loft</div>
         <div class="unit-size">807 <span>sqft</span></div>
