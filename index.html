@@ -196,12 +196,18 @@
     @media(max-width:768px){ .location-grid { grid-template-columns: 1fr; } }
     .loc-box { background: var(--dark3); border-radius: 20px; padding: 32px; }
     .loc-box-title {
-      display: flex; align-items: center; gap: 12px;
-      font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      display: flex; align-items: center; gap: 14px;
+      font-size: 22px; font-weight: 900; letter-spacing: 0.5px;
       margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.08);
     }
+    .loc-box-title i {
+      display: flex; align-items: center; justify-content: center;
+      width: 44px; height: 44px; border-radius: 12px; font-size: 20px;
+    }
     .loc-walk .loc-box-title { color: var(--green); }
+    .loc-walk .loc-box-title i { background: rgba(46,204,113,0.15); }
     .loc-drive .loc-box-title { color: var(--blue); }
+    .loc-drive .loc-box-title i { background: rgba(52,152,219,0.15); }
     .loc-item { display: flex; align-items: center; gap: 16px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
     .loc-item:last-child { border-bottom: none; }
     .loc-icon-wrap {
@@ -699,7 +705,7 @@
       </div>
       <div class="map-divider"></div>
       <div class="map-col">
-        <div class="map-flag">🚔</div>
+        <div class="map-flag">🛂</div>
         <div class="map-place">JB CIQ 关卡</div>
         <div class="map-desc">Johor Bahru Checkpoint</div>
         <div class="map-arrow"><i class="fas fa-arrow-down"></i> 驾车</div>
@@ -718,7 +724,7 @@
 
     <!-- GOOGLE MAPS EMBED -->
     <iframe class="map-embed"
-      src="https://maps.google.com/maps?q=1.504731,103.763254&z=17&output=embed"
+      src="https://maps.google.com/maps?q=1.504731,103.763254&z=17&t=k&output=embed"
       allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
     </iframe>
 
@@ -849,7 +855,7 @@
           <div class="loc-dist">15 分钟</div>
         </div>
         <div class="loc-item">
-          <div class="loc-icon-wrap">🚔</div>
+          <div class="loc-icon-wrap">🛂</div>
           <div class="loc-info">
             <div class="loc-name">JB CIQ 关卡</div>
             <div class="loc-name-en">Singapore Checkpoint</div>
