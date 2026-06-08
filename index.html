@@ -108,7 +108,7 @@
     @media(max-width: 680px) { .value430-grid { grid-template-columns: 1fr; } }
     .v430-card {
       position: relative; height: 380px; border-radius: 20px; overflow: hidden;
-      opacity: 0; transform: translateY(50px);
+      opacity: 0; transform: translateY(50px); cursor: pointer;
       transition: opacity 0.7s ease, transform 0.7s ease;
     }
     .v430-card.in-view { opacity: 1; transform: translateY(0); }
@@ -450,7 +450,7 @@
     </div>
     <div class="value430-grid">
 
-      <div class="v430-card">
+      <div class="v430-card" data-target="#location">
         <div class="v430-bg" style="background-image: url('images/val-city.jpg')"></div>
         <div class="v430-overlay"></div>
         <div class="v430-num">01</div>
@@ -461,7 +461,7 @@
         </div>
       </div>
 
-      <div class="v430-card">
+      <div class="v430-card" data-target="#units">
         <div class="v430-bg" style="background-image: url('images/val-family.jpg')"></div>
         <div class="v430-overlay"></div>
         <div class="v430-num">02</div>
@@ -472,7 +472,7 @@
         </div>
       </div>
 
-      <div class="v430-card">
+      <div class="v430-card" data-target="#facilities">
         <div class="v430-bg" style="background-image: url('images/fac-pool.jpg')"></div>
         <div class="v430-overlay"></div>
         <div class="v430-num">03</div>
@@ -483,7 +483,7 @@
         </div>
       </div>
 
-      <div class="v430-card">
+      <div class="v430-card" data-target="#location">
         <div class="v430-bg" style="background-image: url('images/val-nearby.jpg')"></div>
         <div class="v430-overlay"></div>
         <div class="v430-num">04</div>
@@ -494,7 +494,7 @@
         </div>
       </div>
 
-      <div class="v430-card">
+      <div class="v430-card" data-target="#location">
         <div class="v430-bg" style="background-image: url('images/val-shuttle.jpg')"></div>
         <div class="v430-overlay"></div>
         <div class="v430-num">05</div>
@@ -505,7 +505,7 @@
         </div>
       </div>
 
-      <div class="v430-card">
+      <div class="v430-card" data-target="#units">
         <div class="v430-bg" style="background-image: url('images/val-asset.jpg')"></div>
         <div class="v430-overlay"></div>
         <div class="v430-num">06</div>
@@ -537,7 +537,7 @@
 </section>
 
 <!-- UNITS & PRICING -->
-<section class="units-section">
+<section class="units-section" id="units">
   <div class="container">
     <p class="section-label">户型与价格 · Units & Pricing</p>
     <h2 class="section-title">选择你的<span>理想空间</span></h2>
@@ -611,7 +611,7 @@
 </section>
 
 <!-- FACILITIES -->
-<section class="facilities-section">
+<section class="facilities-section" id="facilities">
   <div class="container">
     <p class="section-label">设施 · Facilities</p>
     <h2 class="section-title">51种设施，<span>一层楼的精彩</span></h2>
@@ -712,7 +712,7 @@
 </div>
 
 <!-- LOCATION -->
-<section class="location-section">
+<section class="location-section" id="location">
   <div class="container">
     <p class="section-label">地理位置 · Location</p>
     <h2 class="section-title">什么都在旁边，<span>什么都不缺</span></h2>
@@ -1048,6 +1048,14 @@
     }, { threshold: 0.08 });
     obs.observe(grid430);
   }
+
+  // Click on a SGD430 card to scroll to its related section
+  document.querySelectorAll('.v430-card[data-target]').forEach(function(card) {
+    card.addEventListener('click', function() {
+      const target = document.querySelector(card.getAttribute('data-target'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
 </script>
 </body>
 </html>
