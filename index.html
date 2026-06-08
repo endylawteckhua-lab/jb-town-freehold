@@ -408,9 +408,30 @@
       .promo-inner { gap: 12px 20px; }
       .float-wa { bottom: 20px; right: 20px; width: 54px; height: 54px; }
     }
+    .scroll-progress {
+      position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+      background: linear-gradient(90deg, var(--gold), #fff3d0);
+      z-index: 999; transition: width 0.1s ease-out;
+    }
+    .scroll-tease {
+      text-align: center; margin-top: 48px; padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      color: var(--text-muted); font-size: 14px; letter-spacing: 0.5px;
+    }
+    .scroll-tease span { color: var(--gold); font-weight: 700; }
+    .scroll-tease i {
+      display: block; margin-top: 10px; color: var(--gold); font-size: 16px;
+      animation: scrollBounce 1.6s ease-in-out infinite;
+    }
+    @keyframes scrollBounce {
+      0%, 100% { transform: translateY(0); opacity: 0.5; }
+      50% { transform: translateY(6px); opacity: 1; }
+    }
   </style>
 </head>
 <body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
 
 <!-- NAV -->
 <nav>
@@ -607,6 +628,7 @@
         <a href="https://wa.me/60189016789?text=nexus51%20-%20Hi%2C%20I'm%20interested%20in%20Type%20E%20850sqft%20Dual%20Key" class="unit-cta" target="_blank"><i class="fab fa-whatsapp"></i> 询问详情</a>
       </div>
     </div>
+    <p class="scroll-tease">价格看完了，但你还没看到<span>这里到底有多好住</span>……<i class="fas fa-chevron-down"></i></p>
   </div>
 </section>
 
@@ -685,6 +707,7 @@
         <div class="fac-label">查看全部 51 种<span class="fac-label-en">See All 51 · WhatsApp Us</span></div>
       </a>
     </div>
+    <p class="scroll-tease">设施都看完了，那<span>地点到底有多方便</span>？往下看就知道<i class="fas fa-chevron-down"></i></p>
   </div>
 </section>
 
@@ -896,6 +919,7 @@
         </div>
       </div>
     </div>
+    <p class="scroll-tease">如果你是<span>新加坡人或 PR</span>，这里有你需要知道的事<i class="fas fa-chevron-down"></i></p>
   </div>
 </section>
 
@@ -1035,6 +1059,14 @@
 </a>
 
 <script>
+  // Top scroll progress bar
+  const scrollProgress = document.getElementById('scrollProgress');
+  window.addEventListener('scroll', function() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    scrollProgress.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + '%';
+  });
+
   // Animate SGD430 cards in on scroll
   const grid430 = document.querySelector('.value430-grid');
   if (grid430) {
