@@ -182,6 +182,18 @@
     .fac-card:hover .fac-img img { transform: scale(1.05); }
     .fac-label { padding: 12px; font-size: 13px; font-weight: 600; }
     .fac-label-en { font-size: 11px; color: var(--text-muted); display: block; margin-top: 2px; }
+    .fac-full-list {
+      margin-top: 20px; padding: 24px 28px; background: var(--dark3);
+      border: 1px solid rgba(201,168,76,0.15); border-radius: 16px;
+    }
+    .fac-list-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 4px 24px; }
+    .fac-list-item {
+      display: flex; gap: 10px; align-items: flex-start; padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 13px;
+    }
+    .fac-list-num { color: var(--gold); font-weight: 700; font-size: 12px; flex-shrink: 0; width: 22px; }
+    .fac-list-name { font-weight: 600; line-height: 1.5; }
+    .fac-list-en { display: block; font-size: 11px; color: var(--text-muted); font-weight: 400; margin-top: 1px; }
 
     /* ─── LOCATION ─── */
     .location-section { background: var(--dark2); }
@@ -706,15 +718,70 @@
         <div class="fac-img"><img src="images/fac-lawn.jpg" alt="Open Lawn" loading="lazy"></div>
         <div class="fac-label">开放草坪<span class="fac-label-en">Open Lawn</span></div>
       </div>
-      <a href="https://wa.me/60189016789?text=nexus51%20-%20Hi%2C%20I%20want%20to%20see%20the%20full%20list%20of%2051%20facilities" class="fac-card fac-card-more" target="_blank">
+      <div class="fac-card fac-card-more" id="facMoreBtn">
         <div class="fac-img" style="display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg, rgba(201,168,76,0.15), rgba(201,168,76,0.04));">
           <div style="text-align:center; padding:16px;">
             <div style="font-size:28px; font-weight:900; color:var(--gold);">+40</div>
             <div style="font-size:13px; color:var(--text-muted); margin-top:4px;">更多设施</div>
           </div>
         </div>
-        <div class="fac-label">查看全部 51 种<span class="fac-label-en">See All 51 · WhatsApp Us</span></div>
-      </a>
+        <div class="fac-label" id="facMoreLabel">查看全部 51 种 <i class="fas fa-chevron-down"></i><span class="fac-label-en">Tap to see full list</span></div>
+      </div>
+    </div>
+    <div class="fac-full-list" id="facFullList" style="display:none;">
+      <div class="fac-list-grid">
+        <div class="fac-list-item"><span class="fac-list-num">01</span><span class="fac-list-name">多功能运动场<span class="fac-list-en">Multipurpose Sports Court</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">02</span><span class="fac-list-name">迷你高尔夫<span class="fac-list-en">Mini Golf</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">03</span><span class="fac-list-name">儿童游乐场<span class="fac-list-en">Children Playground</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">04</span><span class="fac-list-name">BBQ 烧烤区 1<span class="fac-list-en">BBQ Pit 1</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">05</span><span class="fac-list-name">BBQ 烧烤区 2<span class="fac-list-en">BBQ Pit 2</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">06</span><span class="fac-list-name">活动凉亭<span class="fac-list-en">Event Pavilion</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">07</span><span class="fac-list-name">城市景观跑道<span class="fac-list-en">City View Jogging Trail</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">08</span><span class="fac-list-name">开放草坪<span class="fac-list-en">Open Lawn</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">09</span><span class="fac-list-name">花园大道跑道<span class="fac-list-en">Garden Boulevard Jogging Trail</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">10</span><span class="fac-list-name">树岛景观<span class="fac-list-en">Tree Island</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">11</span><span class="fac-list-name">休闲舱座<span class="fac-list-en">Leisure Pod</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">12</span><span class="fac-list-name">户外洗手间<span class="fac-list-en">Outdoor Toilet</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">13</span><span class="fac-list-name">户外更衣室<span class="fac-list-en">Outdoor Changing Room</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">14</span><span class="fac-list-name">桑拿房<span class="fac-list-en">Sauna</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">15</span><span class="fac-list-name">空中花园舞台<span class="fac-list-en">Skypark Stage</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">16</span><span class="fac-list-name">工艺草坪<span class="fac-list-en">Artisan Lawn</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">17</span><span class="fac-list-name">露天剧场<span class="fac-list-en">Amphitheatre</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">18</span><span class="fac-list-name">泳池甲板<span class="fac-list-en">Pool Deck</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">19</span><span class="fac-list-name">户外淋浴区<span class="fac-list-en">Outdoor Shower Area</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">20</span><span class="fac-list-name">无边际泳池<span class="fac-list-en">Infinity Swimming Pool</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">21</span><span class="fac-list-name">按摩池<span class="fac-list-en">Jacuzzi</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">22</span><span class="fac-list-name">浅水池<span class="fac-list-en">Shallow Pool</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">23</span><span class="fac-list-name">户外瑜伽区<span class="fac-list-en">Outdoor Yoga</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">24</span><span class="fac-list-name">儿童戏水池<span class="fac-list-en">Wading Pool</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">25</span><span class="fac-list-name">树冠露台<span class="fac-list-en">Tree Canopy Terrace</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">26</span><span class="fac-list-name">儿童水上乐园<span class="fac-list-en">Water Playground</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">27</span><span class="fac-list-name">休闲凉亭<span class="fac-list-en">Relaxation Pavilion</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">28</span><span class="fac-list-name">阶梯座位区<span class="fac-list-en">Cascade Hill Seat</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">29</span><span class="fac-list-name">草坪豆袋椅区<span class="fac-list-en">Lawn Bean Bag</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">30</span><span class="fac-list-name">户外健身广场<span class="fac-list-en">Outdoor Gym Plaza</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">31</span><span class="fac-list-name">棋艺凉亭<span class="fac-list-en">Chess Pavilion</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">32</span><span class="fac-list-name">室内洗手间<span class="fac-list-en">Indoor Toilet</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">33</span><span class="fac-list-name">美食宴会厅<span class="fac-list-en">Gourmet Suite</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">34</span><span class="fac-list-name">手作工坊角<span class="fac-list-en">Workshop Corner</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">35</span><span class="fac-list-name">室内露台<span class="fac-list-en">Indoor Terrace</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">36</span><span class="fac-list-name">宴会前厅露台<span class="fac-list-en">Pre-Functions Terrace</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">37</span><span class="fac-list-name">多功能厅<span class="fac-list-en">Multipurpose Hall</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">38</span><span class="fac-list-name">Pickleball 球场<span class="fac-list-en">Pickleball Court</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">39</span><span class="fac-list-name">男士祈祷室<span class="fac-list-en">Surau (M)</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">40</span><span class="fac-list-name">女士祈祷室<span class="fac-list-en">Surau (F)</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">41</span><span class="fac-list-name">迷你影院<span class="fac-list-en">Mini Theatre</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">42</span><span class="fac-list-name">KTV 包房<span class="fac-list-en">KTV Room</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">43</span><span class="fac-list-name">家庭休闲廊<span class="fac-list-en">Family Lounge Path</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">44</span><span class="fac-list-name">托管 / 儿童游乐区<span class="fac-list-en">Childcare / Play Zone</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">45</span><span class="fac-list-name">室内瑜伽室<span class="fac-list-en">Indoor Yoga Room</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">46</span><span class="fac-list-name">观景阳台<span class="fac-list-en">Viewing Balcony</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">47</span><span class="fac-list-name">阅读角<span class="fac-list-en">Reading Corner</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">48</span><span class="fac-list-name">管理处<span class="fac-list-en">Management Office</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">49</span><span class="fac-list-name">半户外健身房<span class="fac-list-en">Semi Outdoor Gym</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">50</span><span class="fac-list-name">室内健身房<span class="fac-list-en">Indoor Gym Room</span></span></div>
+        <div class="fac-list-item"><span class="fac-list-num">51</span><span class="fac-list-name">电动车充电站（地面层）<span class="fac-list-en">EV Charging Station (GF)</span></span></div>
+      </div>
     </div>
     <p class="scroll-tease">设施都看完了，那<span>地点到底有多方便</span>？<small>往下看 · 以下还有更多资料信息</small><i class="fas fa-chevron-down"></i></p>
   </div>
@@ -1232,6 +1299,21 @@
       if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
+
+  // Toggle the full 51-facility list
+  const facMoreBtn = document.getElementById('facMoreBtn');
+  const facFullList = document.getElementById('facFullList');
+  const facMoreLabel = document.getElementById('facMoreLabel');
+  if (facMoreBtn && facFullList) {
+    facMoreBtn.addEventListener('click', function() {
+      const isOpen = facFullList.style.display !== 'none';
+      facFullList.style.display = isOpen ? 'none' : 'block';
+      facMoreLabel.innerHTML = isOpen
+        ? '查看全部 51 种 <i class="fas fa-chevron-down"></i><span class="fac-label-en">Tap to see full list</span>'
+        : '收起列表 <i class="fas fa-chevron-up"></i><span class="fac-label-en">Hide list</span>';
+      if (!isOpen) facFullList.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  }
 </script>
 </body>
 </html>
