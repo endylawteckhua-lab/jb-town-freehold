@@ -81,11 +81,11 @@
     }
     .hero-cta {
       display: inline-flex; align-items: center; gap: 10px;
-      background: #25D366; color: white; padding: 16px 36px;
+      background: var(--gold); color: #000; padding: 16px 36px;
       border-radius: 50px; font-size: 16px; font-weight: 700;
-      text-decoration: none; transition: all 0.3s;
+      text-decoration: none; transition: all 0.3s; cursor: pointer; border: none; font-family: inherit;
     }
-    .hero-cta:hover { background: #1ebe5a; transform: translateY(-2px); box-shadow: 0 10px 30px rgba(37,211,102,0.4); }
+    .hero-cta:hover { background: #ddc06a; transform: translateY(-2px); box-shadow: 0 10px 30px rgba(201,168,76,0.4); }
     .hero-scroll { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 3; animation: bounce 2s infinite; }
     .hero-scroll i { color: rgba(255,255,255,0.5); font-size: 24px; }
     @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
@@ -493,9 +493,9 @@
     </h1>
     <p class="hero-subtitle">往下看。</p>
     <p class="hero-tagline">Scroll to find out what SGD 430 a month really gets you.</p>
-    <a href="https://wa.me/60178665587?text=jbciqresidence%20-%20Hi%2C%20I'm%20interested%20to%20know%20more%20about%20the%20property" class="hero-cta" target="_blank">
-      <i class="fab fa-whatsapp"></i> WhatsApp 了解更多
-    </a>
+    <button class="hero-cta" id="heroScrollBtn" type="button">
+      <i class="fas fa-arrow-down"></i> 往下看，了解更多
+    </button>
   </div>
   <div class="hero-scroll"><i class="fas fa-chevron-down"></i></div>
 </section>
@@ -577,7 +577,7 @@
       </div>
 
     </div>
-    <p class="scroll-tease">这只是 <span>6 件事</span> 的快速预览，价格、户型、实景视频都在下面<small>往下看 · 以下还有更多资料信息</small><i class="fas fa-chevron-down"></i></p>
+    <p class="scroll-tease">新山市中心<span>黄金地段</span>，有一套完全属于你的房子——价格、户型都在下面<small>往下看 · 以下还有更多资料信息</small><i class="fas fa-chevron-down"></i></p>
   </div>
 </section>
 
@@ -668,7 +668,7 @@
         <a href="https://wa.me/60178665587?text=jbciqresidence%20-%20Hi%2C%20I'm%20interested%20in%20Type%20E%20850sqft%20Dual%20Key" class="unit-cta" target="_blank"><i class="fab fa-whatsapp"></i> 询问详情</a>
       </div>
     </div>
-    <p class="scroll-tease">价格看了，往下看<span>51 种设施</span>，让生活更添色彩<small>往下看 · 以下还有更多资料信息</small><i class="fas fa-chevron-down"></i></p>
+    <p class="scroll-tease">价格看完了，<span>度假式生活</span>从这 51 种设施开始<small>往下看 · 以下还有更多资料信息</small><i class="fas fa-chevron-down"></i></p>
   </div>
 </section>
 
@@ -802,7 +802,7 @@
         <div class="fac-list-item"><span class="fac-list-num">51</span><span class="fac-list-name">电动车充电站（地面层）<span class="fac-list-en">EV Charging Station (GF)</span></span></div>
       </div>
     </div>
-    <p class="scroll-tease">设施都看完了，那<span>地点到底有多方便</span>？<small>往下看 · 以下还有更多资料信息</small><i class="fas fa-chevron-down"></i></p>
+    <p class="scroll-tease">设施都看完了，而这一切，就在新山市中心<span>黄金地段</span><small>往下看 · 以下还有更多资料信息</small><i class="fas fa-chevron-down"></i></p>
   </div>
 </section>
 
@@ -1050,7 +1050,7 @@
         </div>
       </div>
     </div>
-    <p class="scroll-tease">如果你是<span>新加坡人或 PR</span>，这里有你需要知道的事<small>往下看 · 以下还有更多资料信息</small><i class="fas fa-chevron-down"></i></p>
+    <p class="scroll-tease">新加坡人，也能在这个<span>黄金地段</span>，拥有自己的房子<small>往下看 · 以下还有更多资料信息</small><i class="fas fa-chevron-down"></i></p>
   </div>
 </section>
 
@@ -1304,6 +1304,15 @@
       }
     }, { threshold: 0.08 });
     obs.observe(grid430);
+  }
+
+  // Hero CTA scrolls to the next section instead of jumping straight to WhatsApp
+  const heroScrollBtn = document.getElementById('heroScrollBtn');
+  if (heroScrollBtn) {
+    heroScrollBtn.addEventListener('click', function() {
+      const next = document.querySelector('.value430-section');
+      if (next) next.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
   }
 
   // Click on a SGD430 card to scroll to its related section
