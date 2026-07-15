@@ -259,11 +259,12 @@
     .unit-size { font-size: 28px; font-weight: 900; margin-bottom: 4px; }
     .unit-size span { font-size: 14px; font-weight: 400; color: var(--text-muted); }
     .unit-name { font-size: 14px; color: var(--text-muted); margin-bottom: 20px; }
-    .unit-price-rm { font-size: 13px; color: var(--text-muted); margin-bottom: 4px; }
-    .unit-price-sgd {
-      font-size: 22px; font-weight: 800; color: var(--gold);
+    .unit-price-rm { font-size: 13px; color: var(--text-muted); margin-bottom: 6px; }
+    .unit-price-monthly {
+      font-size: 22px; font-weight: 800; color: var(--gold); margin-bottom: 2px;
     }
-    .unit-price-sgd span { font-size: 13px; font-weight: 400; color: var(--text-muted); }
+    .unit-price-monthly span { font-size: 13px; font-weight: 400; color: var(--text-muted); }
+    .unit-price-sgd-note { font-size: 11px; color: var(--text-muted); margin-bottom: 12px; }
     .unit-plan { width: 100%; border-radius: 10px; margin-bottom: 16px; object-fit: cover; }
     .unit-3d-btn {
       display: flex; align-items: center; justify-content: center; gap: 10px;
@@ -537,32 +538,13 @@
   </div>
   <p class="chapter-sub">下楼就是菜市场、Giant、医院。驾车 10 分钟到 CIQ 关卡。</p>
 
-    <!-- MAP INFOGRAPHIC -->
-    <div class="map-infographic">
-      <div class="map-col">
-        <div class="map-flag">🇸🇬</div>
-        <div class="map-place">新加坡 Singapore</div>
-        <div class="map-desc">Woodlands Checkpoint</div>
-        <div class="map-arrow"><i class="fas fa-arrow-down"></i> 过关后</div>
-        <div class="map-time">~15 分钟</div>
-      </div>
-      <div class="map-divider"></div>
-      <div class="map-col">
-        <div class="map-flag">🛂</div>
-        <div class="map-place">JB CIQ 关卡</div>
-        <div class="map-desc">Johor Bahru Checkpoint</div>
-        <div class="map-arrow"><i class="fas fa-arrow-down"></i> 驾车</div>
-        <div class="map-time">~10 分钟</div>
-      </div>
-      <div class="map-divider"></div>
-      <div class="map-col" style="position:relative">
-        <div style="position:absolute;top:-10px;right:-10px;background:var(--gold);color:#000;font-size:10px;font-weight:800;padding:4px 10px;border-radius:20px;">YOU ARE HERE</div>
-        <div class="map-flag">📍</div>
-        <div class="map-place" style="color:var(--gold)">这里 · Here</div>
-        <div class="map-desc">Johor Bahru Southkey</div>
-        <div class="map-arrow"><i class="fas fa-arrow-down"></i> 步行</div>
-        <div class="map-time" style="font-size:16px">🏥 医院对面 · 🏪 Giant 3分钟 · 🐟 市场 1分钟</div>
-      </div>
+    <!-- Journey line -->
+    <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:28px; font-size:13px; color:var(--text-muted);">
+      <span>🇸🇬 新加坡 Woodlands</span>
+      <span style="color:var(--gold);">→ 过关约 15 分钟 →</span>
+      <span>🛂 JB CIQ 关卡</span>
+      <span style="color:var(--gold);">→ 驾车 10 分钟 →</span>
+      <span style="background:var(--gold);color:#000;font-size:11px;font-weight:800;padding:3px 10px;border-radius:20px;">📍 这里</span>
     </div>
 
     <!-- GOOGLE MAPS EMBED -->
@@ -571,37 +553,23 @@
       allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
     </iframe>
 
-    <!-- Quick distance icons -->
-    <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin:32px 0 40px;">
-      <div style="background:var(--dark3); border:1px solid rgba(201,168,76,0.2); border-radius:12px; padding:16px 20px; text-align:center; min-width:130px;">
-        <div style="font-size:24px;">🏥</div>
-        <div style="font-size:13px; font-weight:700; color:#fff; margin-top:6px;">Columbia Hospital</div>
-        <div style="font-size:12px; color:var(--gold);">对面</div>
+    <!-- Quick distance icons — 4 most relevant -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:24px 0 40px;">
+      <div style="background:var(--dark3); border:1px solid rgba(201,168,76,0.2); border-radius:12px; padding:14px 16px; display:flex; align-items:center; gap:12px;">
+        <div style="font-size:26px; flex-shrink:0;">🏥</div>
+        <div><div style="font-size:13px; font-weight:700; color:#fff;">Columbia Hospital</div><div style="font-size:12px; color:var(--gold);">对面</div></div>
       </div>
-      <div style="background:var(--dark3); border:1px solid rgba(201,168,76,0.2); border-radius:12px; padding:16px 20px; text-align:center; min-width:130px;">
-        <div style="font-size:24px;">🐟</div>
-        <div style="font-size:13px; font-weight:700; color:#fff; margin-top:6px;">鱼菜市场</div>
-        <div style="font-size:12px; color:var(--gold);">步行 1 分钟</div>
+      <div style="background:var(--dark3); border:1px solid rgba(201,168,76,0.2); border-radius:12px; padding:14px 16px; display:flex; align-items:center; gap:12px;">
+        <div style="font-size:26px; flex-shrink:0;">🐟</div>
+        <div><div style="font-size:13px; font-weight:700; color:#fff;">鱼菜市场</div><div style="font-size:12px; color:var(--gold);">步行 1 分钟</div></div>
       </div>
-      <div style="background:var(--dark3); border:1px solid rgba(201,168,76,0.2); border-radius:12px; padding:16px 20px; text-align:center; min-width:130px;">
-        <div style="font-size:24px;">🏪</div>
-        <div style="font-size:13px; font-weight:700; color:#fff; margin-top:6px;">Giant Hypermarket</div>
-        <div style="font-size:12px; color:var(--gold);">步行 3 分钟</div>
+      <div style="background:var(--dark3); border:1px solid rgba(201,168,76,0.2); border-radius:12px; padding:14px 16px; display:flex; align-items:center; gap:12px;">
+        <div style="font-size:26px; flex-shrink:0;">🛂</div>
+        <div><div style="font-size:13px; font-weight:700; color:#fff;">JB CIQ 关卡</div><div style="font-size:12px; color:var(--gold);">驾车 10 分钟</div></div>
       </div>
-      <div style="background:var(--dark3); border:1px solid rgba(201,168,76,0.2); border-radius:12px; padding:16px 20px; text-align:center; min-width:130px;">
-        <div style="font-size:24px;">🚌</div>
-        <div style="font-size:13px; font-weight:700; color:#fff; margin-top:6px;">Shuttle Bus to SG</div>
-        <div style="font-size:12px; color:var(--gold);">楼旁边</div>
-      </div>
-      <div style="background:var(--dark3); border:1px solid rgba(201,168,76,0.2); border-radius:12px; padding:16px 20px; text-align:center; min-width:130px;">
-        <div style="font-size:24px;">🛂</div>
-        <div style="font-size:13px; font-weight:700; color:#fff; margin-top:6px;">JB CIQ 关卡</div>
-        <div style="font-size:12px; color:var(--gold);">驾车 10 分钟</div>
-      </div>
-      <div style="background:var(--dark3); border:1px solid rgba(201,168,76,0.2); border-radius:12px; padding:16px 20px; text-align:center; min-width:130px;">
-        <div style="font-size:24px;">🚆</div>
-        <div style="font-size:13px; font-weight:700; color:#fff; margin-top:6px;">RTS Link（即将）</div>
-        <div style="font-size:12px; color:var(--gold);">JB ↔ SG 5分钟</div>
+      <div style="background:var(--dark3); border:1px solid rgba(201,168,76,0.2); border-radius:12px; padding:14px 16px; display:flex; align-items:center; gap:12px;">
+        <div style="font-size:26px; flex-shrink:0;">🚆</div>
+        <div><div style="font-size:13px; font-weight:700; color:#fff;">RTS Link（即将）</div><div style="font-size:12px; color:var(--gold);">JB ↔ SG 5 分钟</div></div>
       </div>
     </div>
   </div>
@@ -749,7 +717,8 @@
         <div style="display:inline-block; font-size:11px; font-weight:700; padding:3px 10px; border-radius:20px; margin-bottom:8px; background:rgba(255,255,255,0.08); color:#aaa;">🇲🇾 马来西亚公民 / PR 可买</div>
         <div style="font-size:12px; color:var(--gold); margin-bottom:8px;">🚗 Free 1 Parking Lot</div>
         <div class="unit-price-rm">从 RM 303,000+</div>
-        <div class="unit-price-sgd">SGD 475 <span>/ 月</span></div>
+        <div class="unit-price-monthly">月供约 RM 1,210 <span>/ 月</span></div>
+        <div class="unit-price-sgd-note">≈ SGD 378 / 月（汇率 3.2）</div>
         <a href="https://wa.me/60178665587?text=jbciqresidence%20-%20Hi%2C%20I'm%20interested%20in%20Type%20A%20398sqft" class="unit-cta" target="_blank"><i class="fab fa-whatsapp"></i> 询问详情</a>
       </div>
       <div class="unit-card">
@@ -760,7 +729,8 @@
         <div style="display:inline-block; font-size:11px; font-weight:700; padding:3px 10px; border-radius:20px; margin-bottom:8px; background:rgba(255,255,255,0.08); color:#aaa;">🇲🇾 马来西亚公民 / PR 可买</div>
         <div style="font-size:12px; color:var(--gold); margin-bottom:8px;">🚗 Free 1 Parking Lot</div>
         <div class="unit-price-rm">从 RM 380,000+</div>
-        <div class="unit-price-sgd">SGD 605 <span>/ 月</span></div>
+        <div class="unit-price-monthly">月供约 RM 1,515 <span>/ 月</span></div>
+        <div class="unit-price-sgd-note">≈ SGD 474 / 月（汇率 3.2）</div>
         <a href="https://wa.me/60178665587?text=jbciqresidence%20-%20Hi%2C%20I'm%20interested%20in%20Type%20B%20506sqft" class="unit-cta" target="_blank"><i class="fab fa-whatsapp"></i> 询问详情</a>
       </div>
       <div class="unit-card">
@@ -771,7 +741,8 @@
         <div style="display:inline-block; font-size:11px; font-weight:700; padding:3px 10px; border-radius:20px; margin-bottom:8px; background:rgba(255,255,255,0.08); color:#aaa;">🇲🇾 马来西亚公民 / PR 可买</div>
         <div style="font-size:12px; color:var(--gold); margin-bottom:8px;">🚗 Free 1 Parking Lot &nbsp;·&nbsp; 💡 屋主可自行改成两房</div>
         <div class="unit-price-rm">从 RM 458,000+</div>
-        <div class="unit-price-sgd">SGD 720 <span>/ 月</span></div>
+        <div class="unit-price-monthly">月供约 RM 1,825 <span>/ 月</span></div>
+        <div class="unit-price-sgd-note">≈ SGD 571 / 月（汇率 3.2）</div>
         <a href="https://wa.me/60178665587?text=jbciqresidence%20-%20Hi%2C%20I'm%20interested%20in%20Type%20C%20646sqft" class="unit-cta" target="_blank"><i class="fab fa-whatsapp"></i> 询问详情</a>
       </div>
       <div class="unit-card">
@@ -782,7 +753,8 @@
         <div style="display:inline-block; font-size:11px; font-weight:700; padding:3px 10px; border-radius:20px; margin-bottom:8px; background:rgba(46,204,113,0.15); color:#2ecc71; border:1px solid rgba(46,204,113,0.3);">🌍 外国人 / 新加坡人 可买</div>
         <div style="font-size:12px; color:var(--gold); margin-bottom:8px;">🚗 Free 1 Parking Lot</div>
         <div class="unit-price-rm">从 RM 525,000+</div>
-        <div class="unit-price-sgd">SGD 835 <span>/ 月</span></div>
+        <div class="unit-price-monthly">月供约 RM 2,090 <span>/ 月</span></div>
+        <div class="unit-price-sgd-note">≈ SGD 653 / 月（汇率 3.2）</div>
         <a href="https://wa.me/60178665587?text=jbciqresidence%20-%20Hi%2C%20I'm%20interested%20in%20Type%20D%20743sqft" class="unit-cta" target="_blank"><i class="fab fa-whatsapp"></i> 询问详情</a>
       </div>
       <div class="unit-card">
@@ -796,7 +768,8 @@
         <div style="display:inline-block; font-size:11px; font-weight:700; padding:3px 10px; border-radius:20px; margin-bottom:8px; background:rgba(46,204,113,0.15); color:#2ecc71; border:1px solid rgba(46,204,113,0.3);">🌍 外国人 / 新加坡人 可买</div>
         <div style="font-size:12px; color:var(--gold); margin-bottom:8px;">🚗 Free 1 Parking Lot</div>
         <div class="unit-price-rm">从 RM 570,000+</div>
-        <div class="unit-price-sgd">SGD 900 <span>/ 月</span></div>
+        <div class="unit-price-monthly">月供约 RM 2,270 <span>/ 月</span></div>
+        <div class="unit-price-sgd-note">≈ SGD 710 / 月（汇率 3.2）</div>
         <a href="https://wa.me/60178665587?text=jbciqresidence%20-%20Hi%2C%20I'm%20interested%20in%20Type%20CD%20807sqft%20Duplex" class="unit-cta" target="_blank"><i class="fab fa-whatsapp"></i> 询问详情</a>
       </div>
       <div class="unit-card">
@@ -807,7 +780,8 @@
         <div style="display:inline-block; font-size:11px; font-weight:700; padding:3px 10px; border-radius:20px; margin-bottom:8px; background:rgba(46,204,113,0.15); color:#2ecc71; border:1px solid rgba(46,204,113,0.3);">🌍 外国人 / 新加坡人 可买</div>
         <div style="font-size:12px; color:var(--gold); margin-bottom:8px;">🚗 Free 2 Parking Lots</div>
         <div class="unit-price-rm">从 RM 580,000+</div>
-        <div class="unit-price-sgd">SGD 915 <span>/ 月</span></div>
+        <div class="unit-price-monthly">月供约 RM 2,310 <span>/ 月</span></div>
+        <div class="unit-price-sgd-note">≈ SGD 722 / 月（汇率 3.2）</div>
         <a href="https://wa.me/60178665587?text=jbciqresidence%20-%20Hi%2C%20I'm%20interested%20in%20Type%20E%20850sqft%20Dual%20Key" class="unit-cta" target="_blank"><i class="fab fa-whatsapp"></i> 询问详情</a>
       </div>
     </div>
