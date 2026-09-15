@@ -96,7 +96,7 @@ tr:last-child td{border-bottom:0}
 .chapters li{display:grid;grid-template-columns:2em 1fr auto;gap:10px;padding:10px 14px;border-bottom:1px solid var(--rule);counter-increment:c;font-size:15.5px}
 .chapters li:last-child{border-bottom:0}
 .chapters li::before{content:counter(c);font-family:var(--serif);font-weight:700;color:var(--accent)}
-.chapters small{color:var(--ink-2);font-size:13.5px}
+.chapters span{white-space:nowrap}.chapters small{color:var(--ink-2);font-size:13.5px;text-align:right}
 
 /* quiz */
 .quiz{border-top:1px solid var(--rule);padding-top:20px;display:flex;flex-direction:column;gap:10px}
@@ -565,7 +565,7 @@ var ADD=[
 {id:'welcome',title:'欢迎，这是你的第一周',html:
  '<p>这份引导<b>一天一段，一次只讲一件事</b>。读懂了，按下面的「我明白了，下一个」。</p>'+
  '<p>有些卡片最后有一题，答对才能往下。这不是考试，是帮你确认自己真的懂了。</p>'+
- '<ol class="chapters"><li><span>第 1 天 · 9/15</span><small>认识你、我们做什么、看懂资料、上广告</small></li><li><span>第 2 天</span><small>学会 key in</small></li><li><span>第 3 天</span><small>独立做：5 间</small></li><li><span>第 4 天</span><small>独立做：8 间</small></li><li><span>第 5 天</span><small>独立做：10 间</small></li></ol>'+
+ '<ol class="chapters"><li><span>第 1 天</span><small>9/15 · 认识你、我们做什么、看懂资料、上广告</small></li><li><span>第 2 天</span><small>学会 key in</small></li><li><span>第 3 天</span><small>独立做：5 间</small></li><li><span>第 4 天</span><small>独立做：8 间</small></li><li><span>第 5 天</span><small>独立做：10 间</small></li></ol>'+
  '<p style="color:var(--ink-2);font-size:15px">进度会自动记住，关掉再打开会回到这里。</p>'+
  '<p style="color:var(--ink-2);font-size:15px">这份引导会记录你每张卡片读了多久、题目答错几次，每天下班跟汇报一起发给主管，用来安排怎么带你。</p>'},
 {id:'me-intro',title:'先认识你：没有对错',html:
