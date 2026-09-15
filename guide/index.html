@@ -1,0 +1,934 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<style>html{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Listing 新人引导</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700;900&display=swap">
+<style>
+:root{
+  --ground:#EEF2EF; --surface:#FFFFFF; --sunk:#E4EBE7; --ink:#15261F; --ink-2:#4B5D55; --rule:#D3DDD7;
+  --accent:#1E5A47; --accent-soft:#DCEBE4; --on-accent:#FFFFFF; --ok:#2B7349; --ok-soft:#E3F1E7; --bad:#B23A2C; --bad-soft:#F8E4E0;
+  --mark:#F6DE74; --mark-ink:#15261F; --warn:#8A5A00; --warn-soft:#FBEFD2; --bar-muted:#B9C8C0;
+  --serif:"Noto Serif SC","Songti SC","SimSun",serif;
+  --sans:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0E1613; --surface:#16211C; --sunk:#1D2A24; --ink:#E3ECE7; --ink-2:#A2B4AB; --rule:#2C3B34;
+    --accent:#7DC9AA; --accent-soft:#1D3A2F; --on-accent:#0E1613; --ok:#7CCB97; --ok-soft:#183324; --bad:#F08A7C; --bad-soft:#3A1F1B;
+    --mark:#6E5C10; --mark-ink:#FFF3C4; --warn:#E8B95A; --warn-soft:#3A2E12; --bar-muted:#3D5249;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0E1613; --surface:#16211C; --sunk:#1D2A24; --ink:#E3ECE7; --ink-2:#A2B4AB; --rule:#2C3B34;
+  --accent:#7DC9AA; --accent-soft:#1D3A2F; --on-accent:#0E1613; --ok:#7CCB97; --ok-soft:#183324; --bad:#F08A7C; --bad-soft:#3A1F1B;
+  --mark:#6E5C10; --mark-ink:#FFF3C4; --warn:#E8B95A; --warn-soft:#3A2E12; --bar-muted:#3D5249;
+}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:16.5px;line-height:1.75;padding:0 16px;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--serif);text-wrap:balance;margin:0;line-height:1.35}
+p{margin:0}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+mark{background:linear-gradient(transparent 55%,var(--mark) 55%);color:var(--mark-ink);padding:0 .1em}
+.mono{font-family:var(--mono);font-size:.85em}
+
+.app{max-width:660px;margin:0 auto;padding-block:18px 140px;display:flex;flex-direction:column;gap:16px}
+
+/* top */
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-size:13px;letter-spacing:.12em;color:var(--ink-2);font-weight:700}
+.menu-btn{border:1px solid var(--rule);background:var(--surface);border-radius:8px;padding:5px 12px;font-size:14px;cursor:pointer}
+.bar{display:flex;gap:4px}
+.seg{height:6px;border-radius:3px;background:var(--sunk);overflow:hidden;position:relative}
+.seg i{position:absolute;inset:0 auto 0 0;background:var(--accent);border-radius:3px;transition:width .25s}
+.where{display:flex;justify-content:space-between;font-size:13.5px;color:var(--ink-2)}
+.where b{color:var(--ink);font-weight:700}
+.where .mono{font-variant-numeric:tabular-nums}
+
+/* card */
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:14px;padding:30px 30px 28px;display:flex;flex-direction:column;gap:20px}
+.card h2{font-size:clamp(24px,5vw,30px);font-weight:900;outline:none}
+.card h3{font-size:16px;font-family:var(--sans);font-weight:700}
+.sys{font-family:var(--mono);font-size:12.5px;color:var(--accent);background:var(--accent-soft);padding:2px 8px;border-radius:4px;margin-right:6px;display:inline-block;line-height:1.7}
+.why{background:var(--accent-soft);border-radius:10px;padding:14px 18px;display:flex;flex-direction:column;gap:4px}
+.lab{font-size:12px;letter-spacing:.14em;font-weight:700;color:var(--accent)}
+.lab.dim{color:var(--ink-2)}
+.blk{display:flex;flex-direction:column;gap:6px}
+.card ul,.card ol{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px}
+.defs{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:15.5px}
+.defs b{font-family:var(--mono);font-weight:500;font-size:13px;padding-top:3px;white-space:nowrap}
+.big{font-family:var(--serif);font-size:clamp(20px,4vw,24px);font-weight:700;line-height:1.55;border-left:4px solid var(--accent);padding:2px 0 2px 16px}
+.chain{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;font-size:15px}
+.chain span{background:var(--sunk);border-radius:6px;padding:3px 10px}
+.chain span.me{background:var(--accent);color:var(--on-accent);font-weight:700}
+.chain i{font-style:normal;color:var(--ink-2)}
+.wrong{display:grid;grid-template-columns:1.2em 1fr;gap:2px 6px;font-size:15.5px}
+.wrong .x{color:var(--bad);font-weight:700}.wrong .v{color:var(--ok);font-weight:700}
+.wrong + .wrong{border-top:1px dashed var(--rule);padding-top:10px}
+.errs{display:flex;flex-direction:column;gap:10px;border:1px solid var(--rule);border-radius:10px;padding:14px 16px}
+pre.fmt{margin:0;background:var(--sunk);border-radius:8px;padding:12px 14px;font-family:var(--mono);font-size:13.5px;line-height:1.7;overflow-x:auto;white-space:pre}
+.tbl{overflow-x:auto;border:1px solid var(--rule);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:15px;min-width:460px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-size:12px;letter-spacing:.1em;color:var(--ink-2);background:var(--sunk)}
+tr:last-child td{border-bottom:0}
+.tag{display:inline-block;font-size:11.5px;font-weight:700;border-radius:3px;padding:0 6px;line-height:1.8;vertical-align:1px;white-space:nowrap}
+.t-req{background:var(--accent);color:var(--on-accent)}
+.t-red{background:var(--bad);color:var(--surface)}
+.t-opt{background:var(--sunk);color:var(--ink-2)}
+.t-no{color:var(--ink-2);border:1px dashed var(--ink-2);line-height:1.6}
+.pins{list-style:none;padding:0 !important;counter-reset:p}
+.pins li{display:grid;grid-template-columns:22px 1fr;gap:10px;counter-increment:p;font-size:15.5px}
+.pins li::before{content:counter(p);width:20px;height:20px;border-radius:50%;background:var(--accent);color:var(--on-accent);font-family:var(--mono);font-size:11px;display:grid;place-items:center;margin-top:5px}
+.pins small{display:block;color:var(--ink-2);font-size:14.5px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pair > div{border:1px solid var(--rule);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.pair h3.g{color:var(--ok)}.pair h3.b{color:var(--bad)}
+.pair ul{font-size:15px}
+.chapters{list-style:none;padding:0 !important;counter-reset:c;gap:0 !important;border:1px solid var(--rule);border-radius:10px;overflow:hidden}
+.chapters li{display:grid;grid-template-columns:2em 1fr auto;gap:10px;padding:10px 14px;border-bottom:1px solid var(--rule);counter-increment:c;font-size:15.5px}
+.chapters li:last-child{border-bottom:0}
+.chapters li::before{content:counter(c);font-family:var(--serif);font-weight:700;color:var(--accent)}
+.chapters small{color:var(--ink-2);font-size:13.5px}
+
+/* quiz */
+.quiz{border-top:1px solid var(--rule);padding-top:20px;display:flex;flex-direction:column;gap:10px}
+.quiz .q{font-weight:700}
+.opt{display:block;width:100%;text-align:left;border:1.5px solid var(--rule);background:var(--surface);border-radius:10px;padding:10px 14px;cursor:pointer;font-size:15.5px;line-height:1.55}
+.opt:hover{border-color:var(--ink-2)}
+.opt.no{border-color:var(--bad);background:var(--bad-soft)}
+.opt.yes{border-color:var(--ok);background:var(--ok-soft);font-weight:700}
+.fb{font-size:15px;border-radius:8px;padding:10px 14px}
+.fb.no{background:var(--bad-soft);color:var(--bad)}
+.fb.yes{background:var(--ok-soft);color:var(--ok)}
+
+/* checklist */
+.chk{display:grid;grid-template-columns:22px 1fr;gap:10px;padding:9px 0;border-bottom:1px dashed var(--rule);cursor:pointer;font-size:15.5px;line-height:1.6}
+.chk:last-child{border-bottom:0}
+.chk input{width:18px;height:18px;margin:4px 0 0;accent-color:var(--accent)}
+.chk.red input{accent-color:var(--bad)}
+.chk small{display:block;color:var(--ink-2);font-size:14px}
+.cnt{font-family:var(--mono);font-size:13px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+
+.opt.sel{border-color:var(--accent);background:var(--accent-soft);font-weight:700}
+.bigq{font-family:var(--serif);font-size:clamp(19px,4vw,22px);font-weight:700;line-height:1.55}
+.ti{width:100%;border:1.5px solid var(--rule);border-radius:10px;padding:10px 12px;font:inherit;font-size:16px;background:var(--surface);color:var(--ink);resize:vertical}
+.ti:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.meta{font-size:13.5px;color:var(--ink-2)}
+.sendrow{display:flex;flex-wrap:wrap;gap:10px}
+.btn.wa{text-decoration:none;display:inline-block}
+.sides{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sides > div{border:1px solid var(--rule);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.sides h3{font-family:var(--serif);font-size:18px}
+.sides p{font-size:15px;color:var(--ink-2)}
+.line{list-style:none;padding:0 !important;gap:0 !important;counter-reset:ln}
+.line li{display:grid;grid-template-columns:34px 1fr;gap:12px;counter-increment:ln;position:relative;padding-bottom:14px}
+.line li::before{content:counter(ln);width:28px;height:28px;border-radius:50%;border:2px solid var(--rule);background:var(--surface);display:grid;place-items:center;font-family:var(--mono);font-size:12px;color:var(--ink-2);z-index:1}
+.line li:not(:last-child)::after{content:"";position:absolute;left:13px;top:28px;bottom:0;width:2px;background:var(--rule)}
+.line li.me::before{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.line li span{padding-top:2px}
+.line li b{display:block}
+.line li small{display:block;color:var(--ink-2);font-size:14px}
+.line li.me b::after{content:"你负责";font-family:var(--sans);font-size:11px;font-weight:700;color:var(--on-accent);background:var(--accent);border-radius:3px;padding:0 6px;margin-left:8px;vertical-align:2px}
+.line li.later b::after{content:"之后会教";font-family:var(--sans);font-size:11px;font-weight:700;color:var(--ink-2);border:1px dashed var(--ink-2);border-radius:3px;padding:0 5px;margin-left:8px;vertical-align:2px}
+@media (max-width:560px){.sides{grid-template-columns:1fr}}
+.std-line{font-size:15px;border-left:3px solid var(--accent);padding-left:12px}
+.boss{position:fixed;inset:0;z-index:50;background:var(--ground);overflow:auto;padding:0 16px}
+.boss-in{max-width:760px;margin:0 auto;padding-block:20px 60px;display:flex;flex-direction:column;gap:18px}
+.boss-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.boss-top h2{font-size:24px;font-weight:900}
+.bpanel{background:var(--surface);border:1px solid var(--rule);border-radius:14px;padding:20px 22px;display:flex;flex-direction:column;gap:12px}
+.err{color:var(--bad);font-size:14.5px}
+.who{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 20px;align-items:baseline}
+.who h2{font-size:clamp(22px,4.5vw,28px);font-weight:900}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:10px;overflow:hidden}
+.facts div{background:var(--surface);padding:10px 14px;display:flex;flex-direction:column}
+.facts b{font-family:var(--mono);font-size:18px;font-variant-numeric:tabular-nums;font-weight:500}
+.facts span{font-size:12.5px;color:var(--ink-2)}
+.trust{display:flex;gap:12px;align-items:flex-start;border-radius:10px;padding:12px 16px}
+.trust.hi{background:var(--ok-soft)}.trust.mid{background:var(--warn-soft)}.trust.lo{background:var(--bad-soft)}
+.pill{font-size:12.5px;font-weight:700;border-radius:99px;padding:1px 10px;white-space:nowrap;margin-top:3px;color:var(--surface)}
+.hi .pill{background:var(--ok)}.mid .pill{background:var(--warn)}.lo .pill{background:var(--bad)}
+.trust ul{margin:0;padding-left:1.1em;font-size:14.5px}
+.dbars{display:flex;flex-direction:column;gap:10px}
+.dbar,.dscale{display:grid;grid-template-columns:7.5em 1fr 4.2em;gap:12px;align-items:center}
+.dbar{font-size:15px}
+.dtrack{height:18px;background:var(--sunk);border-radius:4px;position:relative}
+.dfill{position:absolute;left:0;top:0;bottom:0;border-radius:0 4px 4px 0;background:var(--bar-muted);min-width:2px}
+.dbar.top .dfill{background:var(--accent)}
+.dbar .v{font-family:var(--mono);font-size:14px;font-variant-numeric:tabular-nums;color:var(--ink-2)}
+.dbar.top .nm,.dbar.top .v{color:var(--ink);font-weight:700}
+.dscale{font-family:var(--mono);font-size:11px;color:var(--ink-2)}
+.dscale div{display:flex;justify-content:space-between}
+.type-h{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:baseline}
+.type-h h3{font-size:22px;font-weight:900;font-family:var(--serif)}
+.type-h span{color:var(--ink-2)}
+.prof{display:grid;grid-template-columns:7em 1fr;gap:10px 16px;font-size:15.5px;margin:0}
+.prof dt{font-size:13px;font-weight:700;color:var(--ink-2);padding-top:2px}
+.prof dd{margin:0}
+.prof dd.watch{color:var(--bad)}
+.blend{font-size:14.5px;border-left:3px solid var(--rule);padding-left:12px;color:var(--ink-2)}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right}
+.say{display:flex;flex-direction:column;gap:4px;padding:10px 0;border-bottom:1px dashed var(--rule)}
+.say:last-child{border-bottom:0}
+.say b{font-size:14px;color:var(--ink-2)}
+.say p{white-space:pre-wrap}
+.note{background:var(--sunk);border-radius:10px;padding:14px 18px;font-size:14.5px;display:flex;flex-direction:column;gap:6px}
+@media (max-width:600px){.facts{grid-template-columns:1fr 1fr}.prof{grid-template-columns:1fr;gap:0}.prof dd{margin-bottom:10px}.dbar,.dscale{grid-template-columns:5.5em 1fr 3.6em}}
+/* bottom nav */
+.nav{position:fixed;left:0;right:0;bottom:0;background:var(--ground);border-top:1px solid var(--rule);padding:12px 16px calc(12px + env(safe-area-inset-bottom))}
+.nav-in{max-width:660px;margin:0 auto;display:flex;gap:10px;align-items:center}
+.nav .hint{flex:1;font-size:13.5px;color:var(--ink-2);text-align:right}
+.btn{border-radius:10px;padding:11px 18px;font-weight:700;cursor:pointer;border:1px solid var(--rule);background:var(--surface);font-size:15.5px;white-space:nowrap}
+.btn.primary{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+
+/* menu dialog */
+dialog{border:1px solid var(--rule);border-radius:14px;padding:0;background:var(--surface);color:var(--ink);width:min(440px,calc(100% - 32px))}
+dialog::backdrop{background:rgba(10,20,16,.45)}
+.dlg{padding:20px;display:flex;flex-direction:column;gap:12px}
+.dlg h2{font-size:20px}
+.jump{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;width:100%;text-align:left;border:1px solid var(--rule);background:var(--surface);border-radius:10px;padding:10px 14px;cursor:pointer}
+.jump:disabled{opacity:.45;cursor:not-allowed}
+.jump small{color:var(--ink-2);font-family:var(--mono);font-size:12px}
+.jump.cur{border-color:var(--accent);background:var(--accent-soft)}
+.dlg .row{display:flex;justify-content:space-between;gap:10px}
+.linkish{background:none;border:0;color:var(--ink-2);text-decoration:underline;cursor:pointer;font-size:14px;padding:0}
+
+/* mock screenshot — stays app-light in both themes on purpose */
+.shot{background:#F3F4F6;border-radius:12px;padding:12px;border:1px solid var(--rule);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#1F2937;font-size:12.5px;line-height:1.4}
+.shot .cap{font-size:10.5px;color:#6B7280;margin:0 2px 8px}
+.shot .cd{background:#fff;border:1px solid #EEF0F2;border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:9px}
+.shot .ch{font-weight:600;font-size:13px}
+.shot .lb{font-size:11.5px;color:#374151;font-weight:500;display:flex;align-items:center;gap:6px}
+.shot .in{border:1px solid #D1D5DB;border-radius:9px;padding:7px 9px;color:#9CA3AF;background:#fff}
+.shot .in.f{color:#111827}
+.shot .row{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+.shot .b{border:2px solid #E5E7EB;border-radius:9px;padding:4px 8px;color:#4B5563;background:#fff;font-size:11.5px;white-space:nowrap}
+.shot .b.on{border-color:#3B82F6;background:#EFF6FF;color:#1D4ED8}
+.shot .b.dash{border-style:dashed;color:#9CA3AF}
+.shot .okt{color:#16A34A;font-size:10.5px}
+.shot .lk{color:#2563EB;font-size:11.5px;font-weight:500}
+.shot .save{background:#2563EB;color:#fff;border-radius:10px;text-align:center;padding:9px;font-weight:600}
+.shot .pin{width:16px;height:16px;border-radius:50%;background:#1E5A47;color:#fff;font-family:var(--mono);font-size:9.5px;display:inline-grid;place-items:center;flex:none}
+.shot .tp{display:flex;justify-content:space-between;align-items:center;padding:4px 2px 8px}
+.shot .tp b{font-size:16px}
+.shot .add{background:#2563EB;color:#fff;border-radius:9px;padding:5px 10px;font-weight:600;display:flex;gap:6px;align-items:center}
+.shot .srch{border:1px solid #D1D5DB;border-radius:9px;padding:6px 9px;background:#fff;color:#111827;margin-bottom:8px;display:flex;gap:6px;align-items:center}
+.shot .lc{background:#fff;border-radius:12px;padding:10px;border:1px solid #EEF0F2;margin-bottom:6px;color:#6B7280}
+.shot .lc b{color:#111827;display:block}
+.shot .compass{display:grid;grid-template-columns:repeat(3,26px);gap:3px}
+.shot .compass span{height:24px;border:2px solid #E5E7EB;border-radius:6px;display:grid;place-items:center;font-size:9.5px;color:#4B5563;background:#fff}
+.shot .compass span.e{border:0;background:transparent}
+.shot .compass span.on{border-color:#3B82F6;background:#EFF6FF;color:#1D4ED8}
+.shot .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}
+.shot .ph{aspect-ratio:4/3;border-radius:8px;position:relative;background:linear-gradient(160deg,#C9D6CF,#9FB3A8)}
+.shot .ph.p2{background:linear-gradient(160deg,#E4D9C6,#C2B08F)}
+.shot .ph.p3{background:linear-gradient(160deg,#D5DCE6,#A9B6C8)}
+.shot .ph.pv{outline:2px solid #FB923C}
+.shot .ph.cover{outline:2px solid #FACC15}
+.shot .ph i{position:absolute;font-style:normal;font-size:9px;font-weight:700;border-radius:99px;padding:0 4px;line-height:14px}
+.shot .ph .tl{top:3px;left:3px;background:#3B82F6;color:#fff}
+.shot .ph .tl.o{background:#FB923C}
+.shot .ph .tr{top:3px;right:3px;background:#EF4444;color:#fff;width:14px;padding:0;text-align:center}
+.shot .ph .bl{bottom:3px;left:3px;background:#FACC15;color:#713F12}
+.shot .upl{border:2px dashed #D1D5DB;border-radius:12px;text-align:center;padding:12px;color:#6B7280}
+.shot .flag{background:#FEF3C7;color:#92400E;border-radius:6px;padding:3px 7px;font-size:10.5px}
+
+@media (max-width:560px){
+  .card{padding:22px 18px}
+  .pair{grid-template-columns:1fr}
+  .defs{grid-template-columns:1fr;gap:0 0}
+  .defs span{margin-bottom:6px}
+  .nav .hint{display:none}
+  .nav-in{justify-content:space-between}
+  .btn.primary{flex:1}
+}
+@media (prefers-reduced-motion:reduce){.seg i{transition:none}}
+</style>
+
+</head>
+<body>
+<div class="app">
+  <div class="top">
+    <span class="brand">啦啦啦 · LISTING 新人引导</span>
+    <button type="button" class="menu-btn" id="menuBtn">目录</button>
+  </div>
+  <div class="bar" id="bar" aria-hidden="true"></div>
+  <div class="where"><span id="chName"></span><span class="mono" id="count"></span></div>
+  <article class="card" id="card" aria-live="polite"></article>
+</div>
+
+<div class="nav"><div class="nav-in">
+  <button type="button" class="btn" id="prevBtn">上一步</button>
+  <span class="hint" id="hint"></span>
+  <button type="button" class="btn primary" id="nextBtn">我明白了，下一个</button>
+</div></div>
+
+<dialog id="menu"><div class="dlg">
+  <h2>目录</h2>
+  <div id="jumpList" style="display:flex;flex-direction:column;gap:8px"></div>
+  <div class="row"><span style="font-size:13px;color:var(--ink-2)">没读到的部分会先锁住</span><button type="button" class="linkish" id="bossBtn">主管入口</button></div>
+  <button type="button" class="btn" id="closeMenu">关闭</button>
+</div></dialog>
+
+<div class="boss" id="boss" hidden><div class="boss-in">
+  <div class="boss-top"><h2>主管入口</h2><button type="button" class="btn" id="bossClose">回到引导</button></div>
+  <form class="bpanel" id="bossLock" autocomplete="off" data-f="1">
+    <p>这里是员工结果分析，只给主管看。</p>
+    <label class="blk" for="bossPin"><span class="lab dim">主管密码</span><input class="ti" id="bossPin" type="password" inputmode="numeric"></label>
+    <div class="row"><button type="submit" class="btn primary">打开</button><span class="err" id="pinErr"></span></div>
+  </form>
+  <div id="bossBody" hidden style="display:flex;flex-direction:column;gap:18px">
+    <section class="bpanel">
+      <label class="lab dim" for="bossCode">贴上员工 WhatsApp 发来的内容</label>
+      <textarea class="ti" id="bossCode" rows="4" style="font-family:var(--mono);font-size:13px"></textarea>
+      <div class="row"><button type="button" class="btn primary" id="bossGo">解读</button><button type="button" class="btn" id="bossLocal">看这台设备上的记录</button><span class="err" id="bossErr"></span></div>
+    </section>
+    <div id="bossOut" style="display:flex;flex-direction:column;gap:18px"></div>
+  </div>
+</div></div>
+
+<script>
+(function(){
+var REQ='<span class="tag t-req">必填</span>', RED='<span class="tag t-red">红线</span>', OPT='<span class="tag t-opt">有就填</span>', NO='<span class="tag t-no">不要碰</span>';
+function why(t){return '<div class="why"><span class="lab">为什么</span><p>'+t+'</p></div>'}
+function how(t){return '<div class="blk"><span class="lab dim">怎么做</span>'+t+'</div>'}
+function what(t){return '<div class="blk"><span class="lab dim">是什么</span>'+t+'</div>'}
+function errs(list){return '<div class="errs"><span class="lab dim">最常写错</span>'+list.map(function(p){return '<div class="wrong"><span class="x">✗</span><span>'+p[0]+'</span><span class="v">✓</span><span>'+p[1]+'</span></div>'}).join('')+'</div>'}
+function sys(){return [].slice.call(arguments).map(function(s){return '<span class="sys">'+s+'</span>'}).join('')}
+
+var CH=[
+ {name:'开始'}, {name:'你的第一周'}, {name:'看懂资料'}, {name:'Key in Ownzon'}, {name:'下班汇报'}, {name:'自查表'}, {name:'认识你'}
+];
+
+var C=[
+/* ───── 1 开始 ───── */
+{ch:0,id:'welcome',title:'欢迎，这是你的第一周',html:
+ '<p>这份引导<b>一次只讲一件事</b>。读懂了，按下面的「我明白了，下一个」。</p>'+
+ '<p>有些卡片最后有一题，答对了才能往下。这不是考试，是帮你确认自己真的懂了。</p>'+
+ '<ol class="chapters"><li><span>开始</span><small>我们做什么生意</small></li><li><span>你的第一周</span><small>每天做什么</small></li><li><span>看懂资料</span><small>17 项</small></li><li><span>Key in Ownzon</span><small>一步步输入</small></li><li><span>下班汇报</span><small>一行字</small></li><li><span>自查表</span><small>交出去之前</small></li><li><span>认识你</span><small>没有对错</small></li></ol>'+
+ '<p style="color:var(--ink-2);font-size:15px">不用一次读完。进度会自动记住，下次打开会回到这里。</p>'+
+ '<p style="color:var(--ink-2);font-size:15px">这份引导会记录你每张卡片读了多久、题目答错几次，最后跟你的答案一起发给主管，用来安排怎么带你。</p>'},
+{ch:0,id:'biz',title:'我们做什么生意',html:
+ '<p>市场上有很多屋主想卖房子，也有很多买家在找房子。两边都有困难：</p>'+
+ '<div class="sides"><div><h3>屋主</h3><p>想卖，但找不到买家。</p><p><b style="color:var(--ink)">我们帮他找买家。</b></p></div><div><h3>买家</h3><p>想买，但资料不齐，不敢决定。</p><p><b style="color:var(--ink)">我们给他最齐全、可信的资料。</b></p></div></div>'+
+ '<p class="big">我们站在中间：帮屋主找买家，给买家齐全可信的资料。成交了，公司收佣金。</p>',
+ quiz:{q:'买家为什么要找我们，而不是自己去看网上的广告？',o:['因为我们比较便宜','因为我们给的资料最齐全、可以相信','因为网上没有广告'],a:1,e:'齐全、可信的资料，就是我们给买家的价值——这正是你的工作。'}},
+{ch:0,id:'flow',title:'一间屋怎么走到成交',html:
+ why('我们要把二手买卖做成<b>工厂流水线</b>：每一站有人负责、有标准。前一站做好，下一站才能开工；一站停下来，整条线都停。')+
+ '<ol class="line">'+
+ '<li><span><b>找屋主</b><small>公司找到想卖房子的屋主。</small></span></li>'+
+ '<li class="me"><span><b>收资料</b><small>屋主有兴趣卖，我们拿到屋子的资料和照片。</small></span></li>'+
+ '<li class="me"><span><b>入库总站 Ownzon</b><small>把资料 key 进系统。公司只留这一份正确资料，后面每一站都从这里拿。</small></span></li>'+
+ '<li class="later"><span><b>重新检查、重新拍照和视频</b><small>员工到现场核对资料，拍公司标准的照片和视频。</small></span></li>'+
+ '<li class="later"><span><b>分发各平台</b><small>网站、Facebook 等，让更多买家看到。</small></span></li>'+
+ '<li><span><b>买家联系、带看</b><small>买家看了资料来问，约时间看屋。</small></span></li>'+
+ '<li><span><b>成交</b><small>买卖双方签约，公司收佣金。</small></span></li>'+
+ '</ol>'+
+ '<p>第一周，你只学<b>第 2、3 站</b>。你入库的资料错一处，后面每一站都跟着错。</p>'},
+{ch:0,id:'rules',title:'三条铁律',html:
+ '<div class="blk"><h3>1. 不确定就问，不要猜</h3><p style="color:var(--ink-2)">猜错一个栏位，买家就白跑一趟。下一张讲怎么问。</p></div>'+
+ '<div class="blk"><h3>2. 资料没写就留空</h3><p style="color:var(--ink-2)">留空，主管一眼看得到；编错了，主管看不出来。</p></div>'+
+ '<div class="blk"><h3>3. 新 listing 一律 Offline</h3><p style="color:var(--ink-2)">主管审核通过之前，错的资料不能让买家看到。</p></div>',
+ quiz:{q:'资料没写朝向，你怎么做？',o:['看 Google Map 自己判断','留空，问给资料的人','选最常见的方向'],a:1,e:'第 1 条和第 2 条：不猜，留空，去问。'}},
+{ch:0,id:'ask',title:'卡住了：马上问，不要等',html:
+ why('公司是一条流水线，你后面还有好几站。<b>你停下来等，整条线就跟着停。</b>你不好意思问的那 10 分钟，可能就是买家等不到回复、转去找别人的 10 分钟。')+
+ how('<ol><li><b>先自己查 5 分钟</b>：翻这份引导，找得到就照做。</li><li><b>5 分钟找不到，马上发信息问主管。</b>不要等他有空，不要等到下班。</li><li><b>问完不要干等</b>：这一间先 Save（Offline），在 Hidden Notes 写「待确认：……」，马上做下一间。回复来了再回去改。</li></ol>')+
+ '<div class="blk"><span class="lab dim">问法</span><pre class="fmt">【问】Eco Botanic 排屋 RM860,000\n卡在：资料写 2.5 storey，系统没有这个选项\n我打算：按 + Add 输入 2.5，对吗？</pre><p class="meta">带着「我打算怎么做」来问，主管回一个「对」就解决了，最快。</p></div>'+
+ errs([['等主管开完会、有空了再问。','现在就发信息。他有空自然会回，你先做下一间。'],['把问题存起来，下班写进不懂清单。','不懂清单是回顾用的。卡住的事，当下就问。'],['怕被说笨，自己猜一个先填。','问问题不会被骂。猜错了，才会出事。']]),
+ quiz:{q:'下午 3 点你卡在一个栏位，主管在开会。你怎么做？',o:['等主管开完会再问','马上发信息问；这一间先存、写待确认，做下一间','自己猜一个先填，之后再说'],a:1,e:'问了不要干等，线不能停。'}},
+
+/* ───── 2 第一周 ───── */
+{ch:1,id:'week',title:'你的第一周怎么过',html:
+ why('一次学太多，错误会变成习惯。先做对，再做快，所以量是一天一天加上去的。')+
+ '<div class="tbl"><table><thead><tr><th>天</th><th>做什么</th><th>过关标准</th></tr></thead><tbody>'+
+ '<tr><td><b>1</b></td><td>认识系统，练习 3 间</td><td>做完就算</td></tr>'+
+ '<tr><td><b>2</b></td><td>读熟「看懂资料」，小测 10 题</td><td>对 9 题</td></tr>'+
+ '<tr><td><b>3</b></td><td>自己输入 5 间</td><td>红线错误 0</td></tr>'+
+ '<tr><td><b>4</b></td><td>输入 8 间，用自查表检查</td><td>红线 0，一般错误每间 ≤ 2</td></tr>'+
+ '<tr><td><b>5</b></td><td>输入 10 间</td><td>红线 0，一般错误每间 ≤ 1</td></tr>'+
+ '</tbody></table></div>'+
+ '<p style="color:var(--ink-2);font-size:15px">达不到标准不用紧张：第二天重做前一天的量，不加量。</p>'},
+{ch:1,id:'day1',title:'第一天',html:
+ why('第一天的目标不是做对，是<b>找出自己哪里不懂</b>。')+
+ how('<ul><li><b>上午</b>：主管带你看系统，对照 3 间旧 listing 和它的原始资料，再示范输入 1 间。</li><li><b>下午</b>：你自己输入 3 间（排屋、Cluster 或 Semi-D、Condo 各一间），每间 45 分钟内，全部设 Offline。</li><li><b>4:30</b>：主管对答案，你自己改。</li><li><b>下班前</b>：写「不懂清单」发给主管。卡住的事当下就要问，清单写的是「今天还不熟的地方」。</li></ul>')+
+ '<pre class="fmt">【不懂清单 9/15】\n1. 卡在哪：资料写 2.5 storey，系统只有 1/2/3/3.5\n   我怎么做：按 + Add 输入 2.5\n   我想问：这样对吗？</pre>'+
+ '<p style="font-size:15px;color:var(--ink-2)">至少写 3 条。不能写「都懂了」——第一天一定有不懂的地方。</p>'},
+
+/* ───── 3 看懂资料 ───── */
+{ch:2,id:'read-intro',title:'看懂资料：先懂，再输入',html:
+ why('一个缩写看错（把 L/A 地段当成 B/U 建筑面积），后面就全部跟着错。接下来 17 项，也正是买家挑屋时会问的问题。')+
+ how('<ul><li>每张卡片讲一项：是什么、为什么重要、最常写错的地方。</li><li>绿色小标签是它在 Ownzon 里的英文栏位名。</li><li>每张最后一题，答对才能下一个。</li></ul>')},
+{ch:2,id:'f1',title:'1 · 花园 / 区',html:sys('Area / Project','Precinct / Phase')+
+ what('<p>屋子所在的花园或项目，例如 Eco Botanic、Horizon Hills。大花园里的小区或期数，填在 Precinct。</p>')+
+ why('买家按花园找屋。同一个花园，不同小区价钱可以差很多。')+
+ errs([['下拉找不到，就自己新建一个花园，系统里变成两个 "Eco Botanic"。','换几种写法再找（空格、缩写）。还是没有，截图问主管。']]),
+ quiz:{q:'下拉找不到 "Eco Botanic"，你怎么做？',o:['按 + Create new area 新建','换几种写法再找，还是没有就问主管','选一个名字差不多的'],a:1,e:'新建会出现重复的花园，买家就搜不到。'}},
+{ch:2,id:'f2',title:'2 · 类型',html:sys('Type')+
+ what('<div class="defs"><b>Terrace</b><span>排屋，一整排连在一起</span><b>Cluster</b><span>3–4 间一组</span><b>Semi-D</b><span>两间一栋，共用一面墙</span><b>Bungalow</b><span>独立洋房，四面不贴邻居</span><b>Condo</b><span>高楼，有泳池 / 健身房 + 保安</span><b>Apartment</b><span>高楼，设施少</span></div>')+
+ why('类型决定预算档次，也是买家在网站上第一个筛选条件。选错，买家就搜不到。')+
+ errs([['广告写「Cluster Semi-D」，就选 Semi-D。','数一组几间：2 间 = Semi-D，3–4 间 = Cluster。']]),
+ quiz:{q:'广告写「Cluster Semi-D」，一组有 4 间屋。选哪个？',o:['Semi-D','Cluster','Terrace'],a:1,e:'一组 3–4 间就是 Cluster，不管广告怎么叫。'}},
+{ch:2,id:'f3',title:'3 · 层数',html:sys('Storeys')+
+ what('<p>有地屋本身有几层。2.5 层 = 两层 + 半层（阁楼）。</p>')+
+ why('家里有老人小孩的怕楼梯多；层数也影响屋子有多大。')+
+ errs([['Condo 在第 12 楼，Storeys 填 12。','Condo 的 Storeys 留空，楼层写进卖点。']]),
+ quiz:{q:'Condo 在第 12 楼，Storeys 填什么？',o:['12','留空，楼层写进卖点','1'],a:1,e:'Storeys 是「屋子有几层」，不是「住第几楼」。'}},
+{ch:2,id:'f4',title:'4 · 中间 / 尾间 / 角头',html:sys('Lot')+
+ what('<div class="defs"><b>Intermediate</b><span>中间：两边都有邻居</span><b>End-lot</b><span>尾间：一排最后一间，旁边<b>不是</b>路口</span><b>Corner</b><span>角头：在路口转角，通常多出一块地</span></div>')+
+ why('尾间和角头采光好、地多，开价通常比较高。很多买家只找角头。')+
+ errs([['一排最后一间就写 Corner。','旁边是马路转角才是 Corner；旁边是围墙、绿地 = End-lot。']]),
+ quiz:{q:'一排最后一间，旁边是绿地，不是路口。选哪个？',o:['Corner','End-lot','Intermediate'],a:1,e:'没有在路口转角，就是尾间 End-lot。'}},
+{ch:2,id:'f5',title:'5 · 地段类别',html:sys('Lot Category')+
+ what('<div class="defs"><b>International Lot</b><span>非土著都可以买</span><b>Bumi Lot</b><span>只限土著买</span><b>Malay Reserve</b><span>只限马来人买</span></div>')+
+ why('这是「<b>能不能买</b>」的问题。我们大部分买家是华人，Bumi Lot 他们买不了，看了只是浪费双方时间。')+
+ errs([['资料没提，就默认 International。','一定要问到。这一栏空着，listing 不能交出去。']]),
+ quiz:{q:'资料没写地段类别，你怎么做？',o:['默认 International，最常见','留空，不影响','问清楚，这一栏不能空'],a:2,e:'这是红线：买家能不能买，全靠这一栏。'}},
+{ch:2,id:'f6',title:'6 · 地段尺寸',html:sys('Land Area')+
+ what('<p>地的大小，单位是尺。资料常写「22x75」或「L/A」。</p><p class="mono">22 × 75 = 1,650 sqft</p>')+
+ why('地大 = 可以扩建、停车位多。有地屋的价值大部分在地。')+
+ errs([['资料是平方米（m²），直接照数字填。','m² × 10.764 = sqft。150 m² ≈ 1,615 sqft。']]),
+ quiz:{q:'资料写「22x75」，这是什么？',o:['建筑面积','地段尺寸，1,650 sqft','客厅大小'],a:1,e:'「宽 x 深」的写法就是地段尺寸。'}},
+{ch:2,id:'f7',title:'7 · 建筑面积',html:sys('Built-up (sqft)')+
+ what('<p>屋子室内面积，<b>所有楼层加起来</b>。资料常写「B/U」。</p>')+
+ why('买家用「每尺多少钱」比较贵不贵。这个数字错，比较就全错。')+
+ errs([['跟地段尺寸对调。','自己检查：有地屋的建筑面积，几乎不可能大过「地段 × 层数」。']]),
+ quiz:{q:'双层屋，地段 1,650 sqft，建筑面积写 3,800。你判断？',o:['正常，照填','不可能大过 1,650 × 2 = 3,300，一定有错，去问','自己把两个数字对调'],a:1,e:'发现不合理就问，不要自己改。'}},
+{ch:2,id:'f8',title:'8 · 几房几厕',html:sys('Bedrooms','Bathrooms')+
+ what('<p>「4+1」= 4 间房 + 1 间佣人房或小书房。</p>')+
+ why('家里几个人就要几间房，这是买家第二个筛选条件。')+
+ errs([['「4+1」加起来写成 5。','照写「4+1」，系统接受这个写法。']]),
+ quiz:{q:'资料写「4+1 房」，Bedrooms 填什么？',o:['5','4','4+1'],a:2,e:'照资料写，不要自己算。'}},
+{ch:2,id:'f9',title:'9 · 地契',html:sys('Tenure','Title Type')+
+ what('<div class="defs"><b>Freehold</b><span>永久地契</span><b>Leasehold</b><span>租赁地契，通常 99 年，要问剩几年</span><b>Individual</b><span>独立地契</span><b>Strata</b><span>分层地契（Condo 常见）</span><b>Master</b><span>母地契，还没分契</span></div>')+
+ why('地契影响买家能不能贷款、以后好不好转卖。')+
+ errs([['选了花园，系统自动填的地契没核对。','同一个花园也可能有两种地契。以资料为准。']]),
+ quiz:{q:'系统自动填了 Freehold，资料却写 Leasehold。以哪个为准？',o:['系统自动填的','资料上写的','两个都不填'],a:1,e:'系统是按花园猜的，资料才是这一间的事实。'}},
+{ch:2,id:'f10',title:'10 · 保安',html:sys('Gated & Guarded')+
+ what('<p>有围墙或闸门 <b>加上</b> 24 小时保安亭，两样都有才选 Yes。</p>')+
+ why('买家在乎安全，家里有小孩的特别在乎。有保安，就一定有管理费。')+
+ errs([['只有保安巡逻、没有围墙，也选 Yes。','选 No。']]),
+ quiz:{q:'花园只有保安骑摩托巡逻，没有围墙。选？',o:['Yes','No'],a:1,e:'围墙和保安亭两样都要有。'}},
+{ch:2,id:'f11',title:'11 · 管理费',html:sys('G&G Fee (RM/month)')+
+ what('<p>每个月付给管理层的费用。</p>')+
+ why('买家算每月开销时会加进去。')+
+ how('<p>一律换成<b>每个月</b>，只填数字。</p>')+
+ errs([['季缴 RM600，直接填 600。','600 ÷ 3 = 200。'],['Condo 写「每尺 RM0.30」，就填 0.30。','乘上面积：0.30 × 1,000 sqft = 300。']]),
+ quiz:{q:'管理费每季 RM600，填什么？',o:['600','200','RM600/季'],a:1,e:'换成每月，只填数字。'}},
+{ch:2,id:'f12',title:'12 · 装修状况',html:sys('Condition')+
+ what('<p>屋子<b>本身</b>有没有改过，不是家具。</p><div class="defs"><b>Original</b><span>发展商交屋的样子</span><b>Partially Reno</b><span>改了一两样</span><b>Fully Renovated</b><span>厨房、地砖、天花、铁花大部分都做了</span></div>')+
+ why('决定买家买了之后还要花多少钱装修。')+
+ errs([['屋主说「有装修」，就选 Fully。','看照片，一样一样数。']]),
+ quiz:{q:'只装了铁花和厨房橱柜。选？',o:['Original','Partially Reno','Fully Renovated'],a:1,e:'只做一两样，是部分装修。'}},
+{ch:2,id:'f13',title:'13 · 家具',html:sys('Furnishing')+
+ what('<p>可以<b>搬走</b>的东西留下多少。</p><div class="defs"><b>Fully</b><span>床、沙发、家电都留</span><b>Partially</b><span>留一部分</span><b>Basic Fitting</b><span>只有冷气、热水器、灯、窗帘</span><b>Unfurnished</b><span>什么都没有</span></div>')+
+ why('买来出租的要家具齐全；自住的有时反而想要空屋。')+
+ errs([['屋子全装，就写 Fully Furnished。','装修和家具分开看：装修看屋子，家具看能搬走的东西。']]),
+ quiz:{q:'屋子全装，家具全搬走，只剩冷气和热水器。Furnishing 选？',o:['Fully Furnished','Basic Fitting','Partially'],a:1,e:'冷气、热水器是装上去的，算 Basic Fitting。'}},
+{ch:2,id:'f14',title:'14 · 朝向',html:sys('Facing')+
+ what('<p>大门对着的方向。<mark>站在大门口，背对屋子</mark>，手机指南针显示的方向就是朝向。</p>')+
+ why('很多华人买家看风水；大门朝西，下午比较热。')+
+ errs([['站在屋外面对大门量，方向刚好反过来。','背对屋子量。']]),
+ quiz:{q:'怎么量朝向？',o:['站屋外，面对大门','站大门口，背对屋子','看 Google Map'],a:1,e:'背对屋子，你面对的方向就是朝向。'}},
+{ch:2,id:'f15',title:'15 · 屋龄',html:sys('Property Age (years)')+
+ what('<p class="mono">屋龄 = 今年 − 完工年份</p><p>2015 年完工，今年 2026 → 11。</p>')+
+ why('影响银行贷款年限，也决定屋顶、水管要不要开始修。')+
+ errs([['填完工年份「2015」。','填年数「11」。']]),
+ quiz:{q:'2015 年完工，填什么？',o:['2015','11','屋主买进的那一年'],a:1,e:'填年数，用发展商完工的年份算。'}},
+{ch:2,id:'f16',title:'16 · 开价',html:sys('Asking Price (RM)','Price Type')+
+ what('<div class="defs"><b>Nett</b><span>不议价</span><b>Negotiable</b><span>可以谈</span><b>Open</b><span>资料没说</span></div>')+
+ why('价钱是买家第一眼看的。位数错了，整间 listing 就没人相信。')+
+ errs([['打「860k」→ 系统只留数字，存成 <b>RM860</b>。','打完整的 860000，看到变成「860,000」才往下。']]),
+ quiz:{q:'屋主开价 86 万。Asking Price 打什么？',o:['860k','86','860000'],a:2,e:'只打完整的数字。860k 会被存成 RM860。'}},
+{ch:2,id:'f17',title:'17 · 卖点',html:sys('Talking Points')+
+ what('<p>给买家看的几句<b>事实</b>。<mark>这一栏是公开的</mark>，会出现在网站上。</p>')+
+ why('同样价钱的两间屋，卖点决定买家先看哪一间。')+
+ how('<ul><li>写事实，每一句都可以被验证。至少 2 句。</li><li>不写门牌、屋主资料、「急卖」「可以砍」。</li></ul>'),
+ quiz:{q:'哪一句可以写进卖点？',o:['屋主急卖，可以砍价','尾间，旁边是绿地。2023 年换新厨房。','超靓！全柔最抵！必买！'],a:1,e:'只写事实。「急卖」是谈判底牌，不能公开。'}},
+{ch:2,id:'missing',title:'资料不齐怎么办',html:
+ why('一项一项去问，对方会烦，你也等很久。一次问完最快。')+
+ how('<ol><li>照样先入库，设 Offline。</li><li>在 Hidden Notes 写「待补：地段类别、朝向」。</li><li>把缺的全部写成一条信息发出去：</li></ol>')+
+ '<pre class="fmt">你好，这间 Eco Botanic 双层排屋我在入库，还缺：\n1. 地段类别：International 还是 Bumi？\n2. 朝向：麻烦站大门口背对屋子，拍指南针截图\n3. 管理费每个月多少？\n谢谢！</pre>'},
+
+/* ───── 4 Key in Ownzon ───── */
+{ch:3,id:'k-intro',title:'Key in Ownzon：先知道规则',html:
+ why('Ownzon 是公司<b>唯一的资料源头</b>，网站和分享出去的文字都从这里生成。')+
+ '<p>系统只强制填<b>开价</b>一格，其他空着也能存。所以「系统让你存」<b>不代表你做对了</b>。每一格我们用标签告诉你：</p>'+
+ '<div class="defs" style="font-size:15px"><span>'+REQ+'</span><span>资料有就要填；资料没有 → 去问</span><span>'+RED+'</span><span>填错直接退回</span><span>'+OPT+'</span><span>资料有才填</span><span>'+NO+'</span><span>第一周由主管处理</span></div>',
+ quiz:{q:'你按 Save，系统存成功了。代表资料都对了吗？',o:['对，系统会检查','不一定，系统只检查开价有没有填'],a:1,e:'所以要靠你自己和自查表把关。'}},
+{ch:3,id:'k1',title:'步骤 1 · 先搜，再新增',html:
+ why('同一间屋被两个人入库，网站上会出现两个一样的广告，买家会以为是假广告。')+
+ '<div class="shot" aria-hidden="true"><div class="cap">画面示意 · Listings</div><div class="tp"><b>Listings</b><span class="add"><span class="pin">2</span>+ Add</span></div><div class="srch"><span class="pin">1</span>Eco Botanic</div><div class="lc"><b>Eco Botanic</b>Terrace · RM 860,000</div></div>'+
+ how('<ol class="pins"><li><span>在 Listings 页搜花园名，看有没有同样价钱的屋。'+RED+'<small>有 → 不要新增，告诉主管。</small></span></li><li><span>没有，按右上角蓝色 <b>+ Add</b>。</span></li></ol>')},
+{ch:3,id:'k2',title:'步骤 2 · 屋主资料',html:
+ why('成交要联系屋主；有租客、钥匙没交这些状况，决定能不能带看。这一段只有公司自己人看得到。')+
+ '<div class="shot" aria-hidden="true"><div class="cap">画面示意 · 第 1 段</div><div class="cd"><div class="ch">👤 Owner (Private)</div><div class="lb"><span class="pin">1</span>Owner Name</div><div class="in f">Tan Ah Kow</div><div class="lb"><span class="pin">2</span>Phone</div><div class="in f">0123456789</div><div class="lb"><span class="pin">3</span>Address + Hidden Notes</div><div class="in f">No. 12, Jalan …<br>待补：朝向</div><div class="lb"><span class="pin">4</span>⚠️ Current Situation</div><div class="row"><span class="b" style="border-color:#FB923C;background:#FFF7ED;color:#C2410C">🏠 Tenanted</span><span class="b">🔑 Key not ready</span></div></div></div>'+
+ how('<ol class="pins"><li><span><b>Owner Name</b> '+REQ+'</span></li><li><span><b>Phone</b> '+REQ+'<small>只打数字，不加空格或横线。</small></span></li><li><span><b>Address + Hidden Notes</b> '+REQ+'<small>第一行写地址，第二行起写「待补」和内部备注。</small></span></li><li><span><b>Current Situation</b> '+OPT+'<small>有租客、钥匙没交等，按对应按钮，写细节。</small></span></li></ol>')},
+{ch:3,id:'k3',title:'步骤 3 · 评估：跳过',html:
+ why('判断盘好不好卖、屋主急不急需要经验。第一周交给主管。')+
+ '<div class="shot" aria-hidden="true"><div class="cap">画面示意 · 第 2 段</div><div class="cd"><div class="ch">📊 My Assessment</div><div class="lb">Stock Quality</div><div class="row"><span class="b">🟢 AAA</span><span class="b on">🟡 AA</span><span class="b">⚫ A</span></div><div class="lb">Owner Motivation</div><div class="row"><span class="b">🔴 Urgent</span><span class="b">🟡 Serious</span><span class="b">⚪ Not Hurry</span></div></div></div>'+
+ how('<p>整段 '+NO+'，保持原样，直接往下。</p>')},
+{ch:3,id:'k4',title:'步骤 4 · 花园',html:
+ why('买家按花园找屋。花园选错，买家就搜不到这间。')+
+ '<div class="shot" aria-hidden="true"><div class="cap">画面示意 · 第 3 段</div><div class="cd"><div class="ch">📍 Area / Project</div><div class="lb"><span class="pin">1</span>Select Area</div><div class="in f">Eco Botanic ▾</div><div class="okt"><span class="pin" style="vertical-align:-3px">2</span> ✓ Auto-filled: freehold · G&amp;G · individual</div><div class="lk">+ Create new area</div><div class="lb"><span class="pin">3</span>Precinct / Phase</div><div class="in">e.g. Phase 2A</div></div></div>'+
+ how('<ol class="pins"><li><span><b>Select Area</b> '+REQ+' '+RED+'<small>从下拉选。找不到问主管，不按「+ Create new area」。</small></span></li><li><span><b>看绿色小字</b><small>系统自动填了地契和保安，记住它，步骤 6 要跟资料核对。</small></span></li><li><span><b>Precinct / Phase</b> '+OPT+'</span></li></ol>')},
+{ch:3,id:'k5a',title:'步骤 5 · 屋子是什么',html:
+ why('类型、层数、位置是买家筛选的条件。填错，买家搜不到，或者来看才发现不对。')+
+ '<div class="shot" aria-hidden="true"><div class="cap">画面示意 · 第 4 段（上半）</div><div class="cd"><div class="ch">🏡 Property</div><div class="lb"><span class="pin">1</span>Property Class</div><div class="row"><span class="b on" style="flex:1;text-align:center">🏡 Residential</span><span class="b" style="flex:1;text-align:center">🏪 Commercial</span></div><div class="lb"><span class="pin">2</span>Type</div><div class="row"><span class="b">Bungalow</span><span class="b">Semi-D</span><span class="b">Cluster</span><span class="b on">Terrace</span><span class="b">More ▾</span></div><div class="lb"><span class="pin">3</span>Storeys</div><div class="row"><span class="b">1 storey</span><span class="b on">2 storeys</span><span class="b">3 storeys</span><span class="b dash">+ Add</span></div><div class="lb"><span class="pin">4</span>Lot</div><div class="row"><span class="b">Intermediate</span><span class="b">Corner</span><span class="b on">End-lot</span></div><div class="lb"><span class="pin">5</span>Lot Category</div><div class="row"><span class="b on">International Lot</span><span class="b">Bumi Lot</span><span class="b">Malay Reserve</span></div></div></div>'+
+ how('<ol class="pins"><li><span><b>Property Class</b> '+REQ+'<small>住宅选 Residential。店屋、办公室先问主管。</small></span></li><li><span><b>Type</b> '+REQ+' '+RED+'<small>Condo、Apartment 在「More ▾」里面。</small></span></li><li><span><b>Storeys</b> '+REQ+'<small>2.5 层用「+ Add」。Condo 留空。</small></span></li><li><span><b>Lot</b> '+REQ+' '+RED+'<small>Condo 留空。</small></span></li><li><span><b>Lot Category</b> '+REQ+' '+RED+'<small>不能空。</small></span></li></ol>')},
+{ch:3,id:'k5b',title:'步骤 5 · 屋子多大',html:
+ why('买家用面积算「每尺多少钱」，用房数判断够不够住。')+
+ '<div class="shot" aria-hidden="true"><div class="cap">画面示意 · 第 4 段（下半）</div><div class="cd"><div class="lb"><span class="pin">1</span>Land Area</div><div class="row"><span class="in f" style="width:42px">22</span>×<span class="in f" style="width:42px">75</span>=<span class="in f" style="width:60px;color:#15803D;border-color:#86EFAC;background:#F9FAFB">1650</span> sqft</div><div class="lb"><span class="pin">2</span>Built-up (sqft)</div><div class="in f">1980</div><div class="row" style="gap:10px"><div style="flex:1"><div class="lb"><span class="pin">3</span>Bedrooms</div><div class="in f">4+1</div></div><div style="flex:1"><div class="lb">Bathrooms</div><div class="in f">3</div></div></div><div class="lb"><span class="pin">4</span>Facing</div><div class="compass"><span>NW</span><span>N</span><span>NE</span><span>W</span><span class="e"></span><span>E</span><span>SW</span><span class="on">S</span><span>SE</span></div></div></div>'+
+ how('<ol class="pins"><li><span><b>Land Area</b> '+REQ+'<small>填宽和深，右边自动算。不是长方形 → 右边直接填总数。</small></span></li><li><span><b>Built-up</b> '+REQ+'<small>填完检查：不大过「地段 × 层数」。</small></span></li><li><span><b>Bedrooms / Bathrooms</b> '+REQ+'<small>照写「4+1」。</small></span></li><li><span><b>Facing</b> '+OPT+'<small>没有指南针依据就留空。</small></span></li></ol>')},
+{ch:3,id:'k6',title:'步骤 6 · 状况和地契',html:
+ why('装修和家具决定买家还要花多少钱；地契决定买家能不能贷款。')+
+ '<div class="shot" aria-hidden="true"><div class="cap">画面示意 · 第 5 段</div><div class="cd"><div class="ch">🔧 Condition &amp; Details</div><div class="lb"><span class="pin">1</span>Furnishing</div><div class="row"><span class="b">Fully</span><span class="b">Partially</span><span class="b on">Basic Fitting</span><span class="b">Unfurnished</span></div><div class="lb"><span class="pin">2</span>Condition</div><div class="row"><span class="b">Original</span><span class="b on">Partially Reno</span><span class="b">Fully Renovated</span></div><div class="lb"><span class="pin">3</span>Property Age (years)</div><div class="in f">11</div><div class="lb"><span class="pin">4</span>Gated &amp; Guarded · Tenure · Title Type</div><div class="row"><span class="b on">Yes</span><span class="b on">🟢 Freehold</span><span class="b on">Individual</span></div></div></div>'+
+ how('<ol class="pins"><li><span><b>Furnishing</b> '+REQ+'<small>看能搬走的东西。</small></span></li><li><span><b>Condition</b> '+REQ+'<small>看屋子本身。</small></span></li><li><span><b>Property Age</b> '+REQ+'<small>填年数。</small></span></li><li><span><b>保安、地契、地契类型</b> '+REQ+' '+RED+'<small>这三样可能已被花园自动选好。<b>逐一对资料</b>，不一样就改。</small></span></li></ol>')},
+{ch:3,id:'k7',title:'步骤 7 · 价钱',html:
+ why('价钱是买家第一眼看的。位数错，整间 listing 没人相信。')+
+ '<div class="shot" aria-hidden="true"><div class="cap">画面示意 · 第 6 段</div><div class="cd"><div class="ch">💰 Price</div><div class="lb"><span class="pin">1</span>Asking Price (RM) *</div><div class="in f">860,000</div><div class="lb"><span class="pin">2</span>Bank Value (RM)</div><div class="in">leave blank if unknown</div><div class="lb"><span class="pin">3</span>Price Type</div><div class="row"><span class="b">Open</span><span class="b">Nett</span><span class="b on">Negotiable</span></div><div class="lb"><span class="pin">4</span>G&amp;G Fee (RM/month)</div><div class="in f">200</div></div></div>'+
+ how('<ol class="pins"><li><span><b>Asking Price</b> '+REQ+' '+RED+'<small>打完整数字，看一眼有没有变成「860,000」。</small></span></li><li><span><b>Bank Value</b> '+OPT+'<small>看到银行估价文件才填。</small></span></li><li><span><b>Price Type</b> '+REQ+'<small>照屋主原话。没说 = Open。</small></span></li><li><span><b>G&amp;G Fee</b> '+REQ+'<small>保安选 Yes 才会出现。每月，只填数字。</small></span></li></ol>'),
+ quiz:{q:'屋主开价 1.2 百万。打完后，框里应该显示什么？',o:['12','1.2','1,200,000'],a:2,e:'看到「1,200,000」才算打对。'}},
+{ch:3,id:'k8',title:'步骤 8 · 卖点和存档',html:
+ why('卖点让买家决定先看哪一间。设 Offline，是为了主管审核之前，错的资料不会被买家看到。')+
+ '<div class="shot" aria-hidden="true"><div class="cap">画面示意 · 第 7 段</div><div class="cd"><div class="ch">💬 Marketing</div><div class="lb"><span class="pin">1</span>Talking Points (for clients)</div><div class="in f">尾间，旁边是绿地。2023 年换新厨房。</div><div class="lb"><span class="pin">2</span>Website Visibility</div><div class="row"><span class="b">🌐 Public</span><span class="b on">🚫 Offline</span><span class="flag">系统默认是 Public</span></div><div class="save"><span class="pin" style="vertical-align:-3px;background:#fff;color:#1E5A47">3</span> Save Listing</div></div></div>'+
+ how('<ol class="pins"><li><span><b>Talking Points</b> '+REQ+' '+RED+'<small>公开栏位。写事实，至少 2 句。</small></span></li><li><span><b>Website Visibility</b> '+REQ+'<small>一定要手动按 <b>🚫 Offline</b>。</small></span></li><li><span><b>按 Save Listing</b><small>成功会跳到这间屋的页面。失败会跳出「Save failed」→ 截图发主管。</small></span></li></ol>'),
+ quiz:{q:'按 Save 之前，Website Visibility 要选？',o:['🌐 Public','🚫 Offline'],a:1,e:'系统默认是 Public，不改就直接公开了。'}},
+{ch:3,id:'k9',title:'步骤 9 · 上传照片',html:
+ why('买家先看封面，才决定要不要点进来。')+
+ '<div class="shot" aria-hidden="true"><div class="cap">画面示意 · 存好后，页面最下方 PHOTOS</div><div class="cd"><div class="row"><span class="b on"><span class="pin" style="vertical-align:-3px">1</span> 📸 Upload Public Photos</span><span class="b">🔒 Upload Private Photos</span></div><div class="upl"><span class="pin">2</span><br>📷 Tap to upload</div><div class="g3"><div class="ph cover"><i class="tl">📸</i><i class="tr">✕</i></div><div class="ph p2"><i class="tl">📸</i><i class="tr">✕</i><i class="bl">★</i></div><div class="ph p3"><i class="tl">📸</i><i class="tr">✕</i><i class="bl">★</i></div></div><div style="color:#6B7280;font-size:10.5px"><span class="pin">3</span> 黄框 = 封面 · 左下 ★ = 设成封面 · 右上 ✕ = 删除</div></div></div>'+
+ how('<ol class="pins"><li><span>先选 <b>📸 公开</b> 或 <b>🔒 私密</b>，再上传。</span></li><li><span><b>封面那一张先单独传。</b><small>系统规则：<mark>第一次上传的第一张会自动变封面</mark>。之后再一次选剩下的照片。</small></span></li><li><span>要换封面，按照片左下角 ★。<small>右上角红色 ✕ 按了马上删除，不会再问。</small></span></li></ol>'),
+ quiz:{q:'你想让屋子正面照当封面。怎么传？',o:['全部照片一起选，一次传','先单独传正面照那一张，再传其他的'],a:1,e:'第一次上传的第一张会自动变封面。'}},
+{ch:3,id:'k10',title:'公开还是私密',html:
+ why('私密照是为了保护屋主的安全和隐私。公开照片任何人都看得到。')+
+ '<div class="pair"><div><h3 class="g">📸 公开</h3><ul><li>屋外正面、院子</li><li>客厅、厨房、房间、厕所</li><li>阳台、景观、设施</li></ul></div><div><h3 class="b">🔒 私密（有一样就放私密）</h3><ul><li>门牌号、车牌</li><li>有人：屋主、家人、小孩</li><li>地契、合约、单据</li><li>家庭照、贵重物品</li><li>别家中介水印</li></ul></div></div>',
+ quiz:{q:'一张客厅照，墙上挂着屋主全家福。放？',o:['📸 公开，是客厅','🔒 私密，有家人的照片'],a:1,e:'有一样隐私，整张就放私密。'}},
+{ch:3,id:'k11',title:'封面怎么选',html:
+ why('封面是买家在一整排屋子里，决定要不要点进来的唯一理由。')+
+ '<div class="pair"><div><h3 class="g">✓ 对</h3><ul><li>白天、光线亮</li><li>横拍</li><li>有地屋：屋外正面，整间入镜</li><li>Condo：客厅或窗外景观</li></ul></div><div><h3 class="b">✗ 错</h3><ul><li>厕所、房间角落</li><li>晚上、阴暗</li><li>竖拍、歪、模糊</li><li>看得到门牌或车牌</li></ul></div></div>'+
+ '<p style="font-size:15px;color:var(--ink-2)">公开照目标 10–20 张。少于 6 张照样传，在 Hidden Notes 写「待补照片」。</p>'},
+{ch:3,id:'k12',title:'步骤 10 · 自查，交给主管',html:
+ why('先自己抓错，主管只做确认，省两个人的时间。这也是你学会独立的方法。')+
+ how('<ol><li>用最后一章的自查表，从头勾一次。</li><li>全部勾完，把这间屋的链接发给主管。</li><li>主管审核通过后，由主管转 Public。</li></ol>')},
+
+/* ───── 5 汇报 ───── */
+{ch:4,id:'report',title:'每天下班前，一行汇报',html:
+ why('主管要在 10 秒内知道：今天做了多少、卡在哪、要不要帮忙。固定格式、只写数字，最快。')+
+ '<pre class="fmt">日期｜收料 X｜入库 X｜照片齐 X｜待补 X（缺什么）｜问题 X</pre>'+
+ '<div class="defs" style="font-size:15px"><b>收料</b><span>今天收到几份新资料</span><b>入库</b><span>已经按了 Save 的数量</span><b>照片齐</b><span>公开照 ≥ 6 张，封面对</span><b>待补</b><span>还缺资料的数量，括号写缺什么</span><b>问题</b><span>问了主管、还没解决的</span></div>'+
+ '<div class="errs"><div class="wrong"><span class="v">✓</span><span class="mono">9/16｜收料 6｜入库 5｜照片齐 4｜待补 1（缺地段类别）｜问题 0</span></div><div class="wrong"><span class="x">✗</span><span>今天做了好几间，有些资料不齐，明天继续<br><small style="color:var(--ink-2)">没有数字，看不出进度。</small></span></div></div>',
+ quiz:{q:'今天没有收到新资料。汇报怎么写？',o:['「收料」那一格不写','写「收料 0」'],a:1,e:'没有的写 0，格式每天都一样，主管才好比较。'}},
+
+/* ───── 6 自查 ───── */
+{ch:5,id:'check',title:'自查表',kind:'check',html:
+ why('交出去之前自己先抓错。红线是会让买家白跑、或泄漏屋主隐私的错，一个都不能有。')+
+ '<p style="font-size:15px">每做完一间，从头勾一次。勾 = 这一项我检查过，没问题。</p>'+
+ '<div class="blk"><div style="display:flex;justify-content:space-between;align-items:baseline"><h3 style="color:var(--bad)">红线</h3><span class="cnt" id="cR"></span></div>'+
+ [['开价跟资料一样','数逗号：860,000 不是 860'],['卖点没有门牌、屋主资料、「急卖」',''],['公开照片没有门牌、车牌、人脸、文件',''],['地段类别有填，而且正确',''],['类型、中间/尾间/角头跟资料一样',''],['地契跟资料一样','不是系统自动填错'],['花园选对，没有新建',''],['没有重复入库','搜过同花园、同价钱'],['Website Visibility 是 Offline','']].map(function(r,i){return '<label class="chk red"><input type="checkbox" data-g="r" id="cr'+i+'"><span>'+r[0]+(r[1]?'<small>'+r[1]+'</small>':'')+'</span></label>'}).join('')+'</div>'+
+ '<div class="blk"><div style="display:flex;justify-content:space-between;align-items:baseline"><h3>一般</h3><span class="cnt" id="cG"></span></div>'+
+ [['屋主名字、电话、地址有填'],['缺的资料写在 Hidden Notes「待补」'],['层数正确；Condo 留空'],['地段 = 宽 × 深，单位是尺'],['建筑面积不大过「地段 × 层数」'],['房厕照资料写，例如「4+1」'],['保安正确；管理费是每月数字'],['装修和家具分开判断'],['屋龄是年数，不是年份'],['价钱类型照屋主原话'],['朝向有依据，否则留空'],['卖点写事实，至少 2 句'],['封面：白天、横拍、正面'],['公开照 ≥ 6 张，或写了「待补照片」']].map(function(r,i){return '<label class="chk"><input type="checkbox" data-g="g" id="cg'+i+'"><span>'+r[0]+'</span></label>'}).join('')+'</div>'+
+ '<button type="button" class="btn" id="clearChk" style="align-self:flex-start">清空，检查下一间</button>'},
+{ch:6,id:'me-intro',title:'认识你：没有对错',html:
+ why('每个人做事的方式不一样：有人喜欢先问清楚，有人喜欢先动手。主管知道你是哪一种，才能用适合你的方式带你。')+
+ how('<ul><li>接下来 12 题情境题，选<b>最像你平常</b>的那一个。</li><li>不要选你觉得主管想听的。选了不像你的答案，主管就会用不适合你的方式带你。</li><li>最后 3 题简单写几句，然后把结果发给主管。</li></ul>')},
+{ch:6,id:'me-name',kind:'name',title:'你的名字',html:'<p>写你的名字，主管收到结果时才知道是谁。</p>'},
+{ch:6,id:'s1',kind:'pick',title:'情境 1 / 12',q:"主管丢给你一个新任务，但没讲清楚怎么做。你通常会：",opts:["先问清楚每个细节和标准，再开始","先动手做，做到不对再调整","找同事聊聊，看大家以前怎么做","照以前类似的做法，稳稳地做"],html:''},
+{ch:6,id:'s2',kind:'pick',title:'情境 2 / 12',q:"一天里面，你最有满足感的时刻是：",opts:["把一堆资料整理得整整齐齐、没有错","帮到同事或客户，对方跟你说谢谢","比预定更快完成，超出目标","跟人聊得很开心，认识新朋友"],html:''},
+{ch:6,id:'s3',kind:'pick',title:'情境 3 / 12',q:"你发现同事输入的 listing 有错。你会：",opts:["直接告诉他哪里错，叫他改","私下轻轻提醒，怕他不好意思","用开玩笑的方式讲，气氛不要太僵","先确认自己没看错，找到依据再跟他说"],html:''},
+{ch:6,id:'s4',kind:'pick',title:'情境 4 / 12',q:"如果工作每天都差不多一样，你觉得：",opts:["很好，熟了就可以做得又快又稳","会闷，希望常常有新挑战","可以，只要规则清楚，我能做到零错误","会闷，希望多一点跟人接触"],html:''},
+{ch:6,id:'s5',kind:'pick',title:'情境 5 / 12',q:"主管突然改了做法，跟昨天教的不一样。你第一个反应：",opts:["想知道为什么改，新旧差在哪里","好，马上换，快点跟上","有点不习惯，需要一点时间适应","没关系，顺便跟大家分享新做法"],html:''},
+{ch:6,id:'s6',kind:'pick',title:'情境 6 / 12',q:"做事的时候，你最怕：",opts:["气氛不好，跟人起冲突","做错，被发现不专业","一个人闷着做，没人理","进度太慢，事情拖着没结果"],html:''},
+{ch:6,id:'s7',kind:'pick',title:'情境 7 / 12',q:"开会讨论的时候，你通常是：",opts:["先听，别人问我才讲","很快讲出想法，推动大家做决定","气氛比较活跃的那个，常有新点子","提出问题和风险，确保没有漏掉"],html:''},
+{ch:6,id:'s8',kind:'pick',title:'情境 8 / 12',q:"同时来了 5 份资料，每一份都说很急。你会：",opts:["自己判断哪个最重要，先做那个","照收到的顺序，一个一个做","问主管优先顺序，确认了再做","跟发资料的人沟通，看谁可以等"],html:''},
+{ch:6,id:'s9',kind:'pick',title:'情境 9 / 12',q:"别人对你的评价，最可能是：",opts:["做事可靠，交给他很放心","细心，很少出错","有冲劲，敢做决定","好相处，很会讲话"],html:''},
+{ch:6,id:'s10',kind:'pick',title:'情境 10 / 12',q:"学一个新系统，你喜欢：",opts:["有人在旁边示范，边做边聊","自己看说明，从头到尾看懂","直接上手按，按错再学","一步一步跟着做，同样的多练几次"],html:''},
+{ch:6,id:'s11',kind:'pick',title:'情境 11 / 12',q:"你发现一个更快的做法，但跟手册不一样。你会：",opts:["马上跟主管和同事分享这个方法","先照手册做，不想惹麻烦","直接用新方法，结果好就行","两种都试，比较哪个错比较少，再跟主管提"],html:''},
+{ch:6,id:'s12',kind:'pick',title:'情境 12 / 12',q:"一天工作完，你比较想：",opts:["回想今天做的，看有没有漏掉","跟朋友出去吃喝聊天","回家陪家人，过平常的生活","运动或做自己的项目，挑战一下自己"],html:''},
+{ch:6,id:'o1',kind:'open',title:'写几句 1 / 3',q:"以前工作或读书，你最有成就感的一件事是什么？",html:'<p class="meta">写发生了什么、你做了什么。至少 10 个字。</p>'},
+{ch:6,id:'o2',kind:'open',title:'写几句 2 / 3',q:"什么样的主管让你做得最好？什么样的让你想离开？",html:'<p class="meta">两个都写。至少 10 个字。</p>'},
+{ch:6,id:'o3',kind:'open',title:'写几句 3 / 3',q:"这份工作，你最担心自己哪里做不好？",html:'<p class="meta">老实写，主管会针对这里带你。至少 10 个字。</p>'},
+{ch:6,id:'done',kind:'send',title:'完成：把结果发给主管',html:
+ '<p class="big">记住一句话：让买家看到的每一个数字都可以相信。</p>'+
+ how('<ol><li>按「复制结果」，贴到 WhatsApp 发给主管。复制不了，就长按下面的框，全选后复制。</li><li>忘了哪一项，按上面「目录」回去看。</li><li>每做完一间，打开「自查表」勾一次。</li></ol>')}
+];
+
+/* ───── day plan (overrides + new cards) ───── */
+var ADD=[
+{id:'welcome',title:'欢迎，这是你的第一周',html:
+ '<p>这份引导<b>一天一段，一次只讲一件事</b>。读懂了，按下面的「我明白了，下一个」。</p>'+
+ '<p>有些卡片最后有一题，答对才能往下。这不是考试，是帮你确认自己真的懂了。</p>'+
+ '<ol class="chapters"><li><span>第 1 天 · 9/15</span><small>认识你、我们做什么、看懂资料、上广告</small></li><li><span>第 2 天</span><small>学会 key in</small></li><li><span>第 3 天</span><small>独立做：5 间</small></li><li><span>第 4 天</span><small>独立做：8 间</small></li><li><span>第 5 天</span><small>独立做：10 间</small></li></ol>'+
+ '<p style="color:var(--ink-2);font-size:15px">进度会自动记住，关掉再打开会回到这里。</p>'+
+ '<p style="color:var(--ink-2);font-size:15px">这份引导会记录你每张卡片读了多久、题目答错几次，每天下班跟汇报一起发给主管，用来安排怎么带你。</p>'},
+{id:'me-intro',title:'先认识你：没有对错',html:
+ why('每个人做事的方式不一样：有人喜欢先问清楚，有人喜欢先动手。主管知道你是哪一种，才能用适合你的方式带你。所以还没开始学之前，先答这一段。')+
+ how('<ul><li>12 题情境题，选<b>最像你平常</b>的那一个。</li><li>不要选你觉得主管想听的。选了不像你的答案，主管就会用不适合你的方式带你。</li><li>再写 3 题简单的，然后开始学。</li></ul>')},
+{id:'flow',title:'一间屋怎么走到成交',html:
+ why('我们要把二手买卖做成<b>工厂流水线</b>：每一站有人负责、有标准。前一站做好，下一站才能开工；一站停下来，整条线都停。')+
+ '<ol class="line">'+
+ '<li><span><b>找屋主</b><small>公司找到想卖房子的屋主。</small></span></li>'+
+ '<li class="me"><span><b>收资料</b><small>屋主有兴趣卖，我们拿到屋子的资料和照片。</small></span></li>'+
+ '<li class="me"><span><b>入库总站 Ownzon</b><small>把资料 key 进系统。公司只留这一份正确资料，后面每一站都从这里拿。</small></span></li>'+
+ '<li class="later"><span><b>重新检查、重新拍照和视频</b><small>到现场核对资料，拍公司标准的照片和视频。</small></span></li>'+
+ '<li class="me"><span><b>上广告</b><small>小红书、FB Marketplace、FB 群组，让更多买家看到。</small></span></li>'+
+ '<li><span><b>买家联系、带看</b><small>买家看了资料来问，约时间看屋。</small></span></li>'+
+ '<li><span><b>成交</b><small>买卖双方签约，公司收佣金。</small></span></li>'+
+ '</ol>'+
+ '<p>第一周，你负责<b>收资料、入库、上广告</b>三站。你这里错一处，后面每一站都跟着错。</p>'},
+{id:'week',title:'你的第一周怎么过',html:
+ why('一次学太多，错误会变成习惯。先做对，再做快，所以工作量是一天一天加上去的。')+
+ '<div class="tbl"><table><thead><tr><th>天</th><th>做什么</th><th>过关标准</th></tr></thead><tbody>'+
+ '<tr><td><b>1</b></td><td>认识你、我们做什么、看懂资料；下午开始上广告</td><td>题目全部答对；广告照规定发</td></tr>'+
+ '<tr><td><b>2</b></td><td>上广告；学 key in，练习 3 间</td><td>3 间做完，主管对答案</td></tr>'+
+ '<tr><td><b>3</b></td><td>上广告；key in 5 间</td><td>红线错误 0</td></tr>'+
+ '<tr><td><b>4</b></td><td>上广告；key in 8 间，用自查表</td><td>红线 0，一般错误每间 ≤ 2</td></tr>'+
+ '<tr><td><b>5</b></td><td>上广告；key in 10 间</td><td>红线 0，一般错误每间 ≤ 1</td></tr>'+
+ '</tbody></table></div>'+
+ '<p style="color:var(--ink-2);font-size:15px">达不到标准不用紧张：第二天重做前一天的量，不加量。</p>'},
+
+/* 上广告 */
+{id:'p-intro',title:'下午：开始上广告',html:
+ why('买家在哪里找屋，我们的屋子就要出现在哪里。很多买家会在小红书和 Facebook 上找屋。')+
+ how('<ul><li>文案和照片公司已经做好，放在 Google Drive「admin vivian long」文件夹。<b>你负责发，不负责写。</b></li><li>发三个地方：小红书、FB Marketplace、FB 群组。</li><li>第一篇主管会坐在你旁边，带你一起发。</li></ul>')+
+ '<div class="defs" style="font-size:15px"><b>00_今日要做</b><span>今天要发哪几间、删帖清单</span><b>01_房源</b><span>每间屋的文案和照片</span><b>02_已卖</b><span>卖掉的屋，不再发</span></div>'},
+{id:'p-order',title:'每天第一件事：先删，再发',html:
+ why('我们对买家承诺「<b>真实在卖</b>」：看到已卖没删的屋，告诉我们，请你喝咖啡。卖掉的屋还挂着，买家白问一场，这个承诺就破了。')+
+ how('<ol><li>打开「00_今日要做」，先看<b>删帖清单</b>：清单上的屋，在小红书、Marketplace、所有群组里全部删掉。</li><li>删完，再照「今天要发」的顺序发新的。</li></ol>'),
+ quiz:{q:'早上打开电脑：删帖清单有 1 间，今天要发的有 2 间。先做哪个？',o:['先发新的 2 间，删帖下午再做','先删清单上那 1 间，再发新的'],a:1,e:'先删再发。卖掉的屋多挂一天，就多一个买家白问。'}},
+{id:'p-spam',title:'一个一个发，不要一次发完',html:
+ why('平台会把「短时间发很多一样的内容」当成 spam：轻的不给人看到，重的直接封号。号被封，之前发的全部没了。')+
+ '<div class="blk"><span class="lab dim">公司规定</span><div class="tbl"><table><thead><tr><th>地方</th><th>每天最多</th><th>间隔</th></tr></thead><tbody>'+
+ '<tr><td><b>小红书</b></td><td>2 间</td><td>两篇之间至少隔 2 小时</td></tr>'+
+ '<tr><td><b>FB Marketplace</b></td><td>2 间</td><td>两篇之间至少隔 1 小时</td></tr>'+
+ '<tr><td><b>FB 群组</b></td><td>每个群每星期最多 2 间</td><td>换下一个群，至少隔 30 分钟</td></tr>'+
+ '</tbody></table></div></div>'+
+ errs([['今天比较闲，把明天的也一起发了。','不行。每天的量是固定的，闲下来就去 key in。'],['同一篇一口气贴 10 个群。','一次一个群，隔 30 分钟再贴下一个。']]),
+ quiz:{q:'你有空，想一次把 10 间都发上小红书。可以吗？',o:['可以，早点发完比较好','不可以，每天最多 2 间，隔 2 小时'],a:1,e:'一次发完最容易被当成 spam。'}},
+{id:'p-xhs',title:'小红书',html:
+ why('小红书不准把人带去别的地方。贴文里有电话、WhatsApp、网址，会被限流，严重的会封号。')+
+ how('<ol><li>只用<b>小红书版</b>的文案和照片，不用 FB 版。</li><li>整篇复制贴上，<b>不自己改字</b>。</li><li>发之前检查：文字和照片里都没有电话、WhatsApp、网址、二维码。</li><li>有人私信问联系方式：照主管教的方式回，不在贴文里放电话。</li></ol>')+
+ errs([['觉得少了电话，自己加上 WhatsApp。','不加。小红书版是故意不放联系方式的。'],['用了 FB 版的照片（上面有 lalala.my）。','小红书只用小红书版照片。']]),
+ quiz:{q:'小红书的贴文可以放 lalala.my 吗？',o:['可以，是我们自己的网站','不可以，小红书不放网址'],a:1,e:'网址也算把人带出去，一样会被限流。'}},
+{id:'p-fb',title:'FB Marketplace 和群组',html:
+ why('Marketplace 是买家直接搜屋的地方；群组是同一个地区的买家聚在一起的地方。两个都要有，买家才找得到。')+
+ how('<ol><li>用 <b>FB 版</b>的文案和照片（可以有 lalala.my）。</li><li>Marketplace：类别和地点照主管示范的填，价钱跟文案一样。</li><li>群组：发之前先读群规。群规说不准发卖屋广告，就不发。</li><li>同一个群每星期最多 2 间，轮流发不同的群。</li></ol>')+
+ errs([['群规写不准广告，觉得没人管就发了。','不发。被检举或踢出群，账号会留下记录。']])},
+{id:'p-check',title:'发之前核对，发完马上记录',html:
+ why('贴出去的资料就是我们对买家的承诺。不记录，明天就不知道哪间发过、发在哪里，会重复发，或者卖掉了忘记删。')+
+ '<div class="blk"><span class="lab dim">发之前（30 秒）</span><ol><li>在 Ownzon 打开这间屋：状态还是 <b>Active</b>，不是 On Hold 或 Sold。</li><li>价钱跟文案一样。</li></ol></div>'+
+ '<div class="blk"><span class="lab dim">发完</span><ol><li>在「发布助手」勾「已发」。</li><li>留下贴文链接，删帖时要用。</li></ol></div>',
+ quiz:{q:'文案写 RM860,000，Ownzon 里现在是 RM830,000。你怎么做？',o:['照文案发，文案是公司做好的','先不发这间，马上问主管'],a:1,e:'资料对不上就问。价钱错一次，买家就不信了。'}},
+
+{id:'report',title:'每天下班前，一行汇报',html:
+ why('主管要在 10 秒内知道：今天做了多少、卡在哪、要不要帮忙。固定格式、只写数字，最快。')+
+ '<pre class="fmt">日期｜入库 X｜上广告 X｜删帖 X｜待补 X（缺什么）｜问题 X</pre>'+
+ '<div class="defs" style="font-size:15px"><b>入库</b><span>今天按了 Save 的 listing 数量</span><b>上广告</b><span>今天发出去的贴文数量（每个平台、每个群各算一篇）</span><b>删帖</b><span>今天删掉的贴文数量</span><b>待补</b><span>还缺资料的数量，括号写缺什么</span><b>问题</b><span>问了主管、还没解决的</span></div>'+
+ '<div class="errs"><div class="wrong"><span class="v">✓</span><span class="mono">9/15｜入库 0｜上广告 4｜删帖 0｜待补 0｜问题 1</span></div><div class="wrong"><span class="x">✗</span><span>今天发了几篇广告，还在学<br><small style="color:var(--ink-2)">没有数字，看不出进度。</small></span></div></div>',
+ quiz:{q:'今天没有 key in 任何一间。汇报怎么写？',o:['「入库」那一格不写','写「入库 0」'],a:1,e:'没有的写 0，格式每天都一样，主管才好比较。'}},
+
+{id:'k12',title:'步骤 10 · 自查，交给主管',html:
+ why('先自己抓错，主管只做确认，省两个人的时间。这也是你学会独立的方法。')+
+ how('<ol><li>下一张就是自查表，从头勾一次。以后按上面「目录 → 自查表」随时打开。</li><li>全部勾完，把这间屋的链接发给主管。</li><li>主管审核通过后，由主管转 Public。</li></ol>')},
+
+{id:'d2-intro',title:'第 2 天：学会 key in',html:
+ why('广告发的内容，都从 Ownzon 里的资料来。你学会 key in，新的屋子才能进流水线。')+
+ how('<ol><li><b>早上</b>：删帖清单 → 上广告（照昨天的规定）。</li><li><b>上午</b>：读完这一段 Key in Ownzon。</li><li><b>下午</b>：练习输入 3 间：1 间排屋、1 间 Cluster 或 Semi-D、1 间 Condo。全部设 Offline，每间 45 分钟内，做完用自查表勾一次。</li><li><b>4:30</b>：主管对答案，错的地方你自己改。</li></ol>')},
+{id:'d3-intro',title:'第 3 天：开始独立',html:
+ why('前两天是学，今天开始是真的工作量。先求零红线，量少一点没关系。')+
+ how('<ol><li>早上：删帖清单 → 上广告。</li><li>其余时间：key in <b>5 间</b>，每间用自查表勾。</li><li>卡住 5 分钟，马上问。</li></ol>')+
+ '<p class="std-line"><b>过关标准：</b>红线错误 0 个。</p>'},
+{id:'d4-intro',title:'第 4 天：自己抓错',html:
+ why('主管不可能每间都帮你看。你要学会自己抓错，才能越做越快。')+
+ how('<ol><li>早上：删帖清单 → 上广告。</li><li>key in <b>8 间</b>。每间做完先自己用自查表勾，再交主管。</li></ol>')+
+ '<p class="std-line"><b>过关标准：</b>红线 0 个，一般错误每间 ≤ 2 个。</p>'},
+{id:'d5-intro',title:'第 5 天：正式工作量',html:
+ why('这是以后每天的正常工作量。今天达标，第一周就过关。')+
+ how('<ol><li>早上：删帖清单 → 上广告。</li><li>key in <b>10 间</b>，每间用自查表勾。</li></ol>')+
+ '<p class="std-line"><b>过关标准：</b>红线 0 个，一般错误每间 ≤ 1 个。</p>'},
+];
+function endCard(n,extra){return {id:'d'+n+'-end',kind:'send',day:n,title:'第 '+n+' 天下班：发汇报',html:
+ how('<ol>'+(extra||'')+'<li>写一行汇报：<span class="mono">日期｜入库 X｜上广告 X｜删帖 X｜待补 X｜问题 X</span></li><li>按「复制结果」，跟汇报一起用 WhatsApp 发给主管。</li></ol>')}}
+ADD.push(endCard(1,'<li>写「不懂清单」：今天还不熟的地方，至少 3 条。</li>'),endCard(2),endCard(3),endCard(4),
+ {id:'d5-end',kind:'send',day:5,title:'第 5 天下班：第一周完成',html:
+ '<p class="big">记住一句话：让买家看到的每一个数字都可以相信。</p>'+
+ how('<ol><li>写一行汇报，跟下面的结果一起发给主管。</li><li>以后忘了哪一项，按上面「目录」回去看。</li><li>每做完一间，打开「自查表」勾一次。</li></ol>')});
+
+var BY={};C.forEach(function(c){BY[c.id]=c});ADD.forEach(function(c){BY[c.id]=Object.assign(BY[c.id]||{},c)});
+function range(p,n){var a=[];for(var i=1;i<=n;i++)a.push(p+i);return a}
+var PLAN=[
+ {name:'第 1 天 · 9/15',secs:[['开始',['welcome']],['认识你',['me-intro','me-name'].concat(range('s',12),['o1','o2','o3'])],['我们做什么',['biz','flow','rules','ask','week']],['看懂资料',['read-intro'].concat(range('f',17),['missing'])],['上广告',['p-intro','p-order','p-spam','p-xhs','p-fb','p-check']],['下班',['report','d1-end']]]},
+ {name:'第 2 天',secs:[['今天做什么',['d2-intro']],['Key in Ownzon',['k-intro','k1','k2','k3','k4','k5a','k5b','k6','k7','k8','k9','k10','k11','k12']],['自查表',['check']],['下班',['d2-end']]]},
+ {name:'第 3 天',secs:[['今天做什么',['d3-intro']],['下班',['d3-end']]]},
+ {name:'第 4 天',secs:[['今天做什么',['d4-intro']],['下班',['d4-end']]]},
+ {name:'第 5 天',secs:[['今天做什么',['d5-intro']],['下班',['d5-end']]]}
+];
+CH=PLAN.map(function(d){return {name:d.name}});
+C=[];
+PLAN.forEach(function(d,k){d.secs.forEach(function(sec){sec[1].forEach(function(id){var c=BY[id];if(!c)throw new Error('missing card '+id);c.ch=k;c.sec=sec[0];C.push(c)})})});
+
+/* ───── engine ───── */
+var KEY='lalala-listing-guide-v3';
+var st={i:0,max:0,ok:{},chk:{},dw:{},ln:{},wr:{},ft:{},at:{},pk:{},op:{},name:'',back:0,jump:0,ses:0,start:0};
+try{var saved=JSON.parse(localStorage.getItem(KEY)||'null');if(saved&&typeof saved.i==='number'){st=Object.assign(st,saved)}}catch(e){}
+if(st.i>=C.length)st.i=C.length-1;
+st.ses++; if(!st.start)st.start=Date.now();
+function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+save();
+
+var card=document.getElementById('card'),nextBtn=document.getElementById('nextBtn'),prevBtn=document.getElementById('prevBtn'),hint=document.getElementById('hint');
+var bar=document.getElementById('bar');
+var t0=null,paused=false;
+function flush(){ if(t0!==null){var c=C[st.i];st.dw[c.id]=(st.dw[c.id]||0)+Math.min(Date.now()-t0,1800000);t0=Date.now();save()} }
+document.addEventListener('visibilitychange',function(){ if(document.hidden){flush();t0=null}else if(!paused){t0=Date.now()} });
+function go(n){flush();st.i=n;st.max=Math.max(st.max,st.i);save();render(true)}
+
+var chCount=CH.map(function(_,k){return C.filter(function(c){return c.ch===k}).length});
+bar.innerHTML=chCount.map(function(n){return '<div class="seg" style="flex:'+n+'"><i></i></div>'}).join('');
+
+function esc(t){return String(t==null?'':t).replace(/[&<>"]/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]})}
+
+function buildObj(){
+  flush();
+  var cards={};
+  C.forEach(function(c){ if(st.dw[c.id]||c.quiz){cards[c.id]=[Math.round((st.dw[c.id]||0)/1000),st.ln[c.id]||0,st.wr[c.id]||0,st.ft[c.id]===undefined?-1:st.ft[c.id],st.at[c.id]==null?-1:Math.round(st.at[c.id]/100)/10]} });
+  var pk={};Object.keys(st.pk).forEach(function(k){pk[k]=[st.pk[k].k,Math.round(st.pk[k].t/100)/10]});
+  return {v:1,n:(st.name||'').trim(),s:st.start,e:Date.now(),ses:st.ses,b:st.back,j:st.jump,d:C[st.max].ch+1,c:cards,p:pk,o:st.op};
+}
+function encodeObj(o){return 'LG1:'+btoa(unescape(encodeURIComponent(JSON.stringify(o))))}
+
+function render(focus){
+  var c=C[st.i];
+  var secCards=C.filter(function(x){return x.ch===c.ch&&x.sec===c.sec});
+  var pos=secCards.indexOf(c)+1;
+  document.getElementById('chName').innerHTML=CH[c.ch].name+' · <b>'+c.sec+'</b>';
+  document.getElementById('count').textContent=secCards.length>1?(pos+' / '+secCards.length):'';
+  var segs=bar.querySelectorAll('.seg i');
+  CH.forEach(function(_,k){
+    var idxs=C.map(function(x,j){return x.ch===k?j:-1}).filter(function(j){return j>=0});
+    var done=idxs.filter(function(j){return j<=Math.max(st.max,st.i)}).length;
+    segs[k].style.width=(done/idxs.length*100)+'%';
+  });
+
+  var h='<h2 tabindex="-1">'+c.title+'</h2>'+c.html;
+  if(c.quiz){
+    h+='<div class="quiz"><span class="lab">考考你</span><p class="q">'+c.quiz.q+'</p>'+c.quiz.o.map(function(o,k){return '<button type="button" class="opt" data-k="'+k+'" id="q-'+c.id+'-'+k+'">'+o+'</button>'}).join('')+'<p class="fb" id="fb" hidden></p></div>';
+  }
+  if(c.kind==='pick'){
+    h+='<p class="bigq">'+c.q+'</p><div class="blk">'+c.opts.map(function(o,k){return '<button type="button" class="opt" data-k="'+k+'" id="p-'+c.id+'-'+k+'">'+o+'</button>'}).join('')+'</div><p class="meta">选最像你平常的，没有对错。</p>';
+  }
+  if(c.kind==='open'){
+    h+='<p class="bigq">'+c.q+'</p><textarea class="ti" id="op-'+c.id+'" rows="5"></textarea><p class="meta" id="opc"></p>';
+  }
+  if(c.kind==='name'){
+    h+='<label class="blk" for="nm"><span class="lab dim">名字</span><input class="ti" id="nm" autocomplete="name"></label>';
+  }
+  if(c.kind==='send'){
+    var msg='【第 '+c.day+' 天下班】\n姓名：'+(st.name||'').trim()+'\n汇报：\n结果码（请整段复制）：\n'+encodeObj(buildObj());
+    h+='<div class="blk"><span class="lab dim">发给主管的内容</span><p class="meta">在「汇报：」后面补上你的一行汇报再发。</p><textarea class="ti" id="sendTa" rows="7">'+esc(msg)+'</textarea>'+
+      '<div class="sendrow"><button type="button" class="btn primary" id="copyBtn">复制结果</button><a class="btn wa" id="waBtn" target="_blank" rel="noopener" href="#">用 WhatsApp 发送</a></div><p class="meta" id="copyMsg"></p></div>';
+  }
+  card.innerHTML=h;
+  st.ln[c.id]=card.textContent.length;
+  t0=(document.hidden||paused)?null:Date.now();
+
+  if(c.quiz){
+    var opts=card.querySelectorAll('.opt'),fb=card.querySelector('#fb');
+    var markOk=function(){opts[c.quiz.a].classList.add('yes');fb.hidden=false;fb.className='fb yes';fb.textContent='答对了。'+c.quiz.e};
+    if(st.ok[c.id])markOk();
+    opts.forEach(function(b){b.addEventListener('click',function(){
+      var k=+b.getAttribute('data-k');
+      if(st.ft[c.id]===undefined){st.ft[c.id]=k===c.quiz.a?1:0;st.at[c.id]=t0?Date.now()-t0:0}
+      opts.forEach(function(x){x.classList.remove('no')});
+      if(k===c.quiz.a){st.ok[c.id]=1;save();markOk();updateNav();nextBtn.focus()}
+      else if(!st.ok[c.id]){st.wr[c.id]=(st.wr[c.id]||0)+1;save();b.classList.add('no');fb.hidden=false;fb.className='fb no';fb.textContent='再想一想，回到上面找答案。'}
+    })});
+  }
+  if(c.kind==='pick'){
+    var po=card.querySelectorAll('.opt');
+    var mark=function(){po.forEach(function(x,k){x.classList.toggle('sel',!!st.pk[c.id]&&st.pk[c.id].k===k)})};
+    mark();
+    po.forEach(function(b){b.addEventListener('click',function(){
+      var k=+b.getAttribute('data-k');
+      if(!st.pk[c.id])st.pk[c.id]={k:k,t:t0?Date.now()-t0:0};else st.pk[c.id].k=k;
+      save();mark();updateNav();
+    })});
+  }
+  if(c.kind==='open'){
+    var ta=card.querySelector('textarea'),opc=card.querySelector('#opc');
+    ta.value=st.op[c.id]||'';
+    var cnt=function(){var n=ta.value.trim().length;opc.textContent=n+' 个字'+(n<10?'，至少 10 个字':'')};
+    cnt();
+    ta.addEventListener('input',function(){st.op[c.id]=ta.value;save();cnt();updateNav()});
+  }
+  if(c.kind==='name'){
+    var nm=card.querySelector('#nm');nm.value=st.name||'';
+    nm.addEventListener('input',function(){st.name=nm.value;save();updateNav()});
+  }
+  if(c.kind==='send'){
+    var sendTa=card.querySelector('#sendTa'),cm=card.querySelector('#copyMsg'),wa=card.querySelector('#waBtn');
+    var syncWa=function(){wa.href='https://wa.me/?text='+encodeURIComponent(sendTa.value)};
+    syncWa();sendTa.addEventListener('input',syncWa);
+    card.querySelector('#copyBtn').addEventListener('click',function(){
+      var okFn=function(){cm.textContent='已复制。打开 WhatsApp，贴给主管。'};
+      var fail='复制不了：请长按上面的框，全选后复制。';
+      var fallback=function(){sendTa.focus();sendTa.select();try{if(document.execCommand('copy'))okFn();else cm.textContent=fail}catch(e){cm.textContent=fail}};
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(sendTa.value).then(okFn,fallback)}else fallback();
+    });
+  }
+  if(c.kind==='check'){
+    var boxes=[].slice.call(card.querySelectorAll('input[type=checkbox]'));
+    var cntc=function(){
+      var r=boxes.filter(function(b){return b.dataset.g==='r'}),g=boxes.filter(function(b){return b.dataset.g==='g'});
+      document.getElementById('cR').textContent=r.filter(function(b){return b.checked}).length+' / '+r.length;
+      document.getElementById('cG').textContent=g.filter(function(b){return b.checked}).length+' / '+g.length;
+    };
+    boxes.forEach(function(b){b.checked=!!st.chk[b.id];b.addEventListener('change',function(){if(b.checked)st.chk[b.id]=1;else delete st.chk[b.id];save();cntc()})});
+    document.getElementById('clearChk').addEventListener('click',function(){st.chk={};save();boxes.forEach(function(b){b.checked=false});cntc()});
+    cntc();
+  }
+  updateNav();
+  save();
+  if(focus){window.scrollTo(0,0);var t=card.querySelector('h2');if(t)t.focus({preventScroll:true})}
+}
+function lockReason(c){
+  if(c.quiz&&!st.ok[c.id])return '先答对上面的题目';
+  if(c.kind==='pick'&&!st.pk[c.id])return '选一个最像你的';
+  if(c.kind==='open'&&(st.op[c.id]||'').trim().length<10)return '至少写 10 个字';
+  if(c.kind==='name'&&!(st.name||'').trim())return '先写名字';
+  return '';
+}
+function updateNav(){
+  var c=C[st.i];
+  prevBtn.disabled=st.i===0;
+  var why=lockReason(c);
+  var last=st.i===C.length-1;
+  nextBtn.disabled=!!why||last;
+  var nx=C[st.i+1];
+  nextBtn.textContent=last?'完成':(nx.ch!==c.ch?('进入'+CH[nx.ch].name.split(' · ')[0]+' →'):'我明白了，下一个');
+  hint.textContent=why;
+}
+nextBtn.addEventListener('click',function(){ if(!nextBtn.disabled)go(st.i+1) });
+prevBtn.addEventListener('click',function(){ if(st.i>0){st.back++;go(st.i-1)} });
+
+/* menu */
+var menu=document.getElementById('menu');
+function jumpBtn(label,idx,small,cur){return '<button type="button" class="jump'+(cur?' cur':'')+'" data-i="'+idx+'" '+(idx>st.max?'disabled':'')+'><span>'+label+'</span><small>'+small+'</small></button>'}
+document.getElementById('menuBtn').addEventListener('click',function(){
+  var list=document.getElementById('jumpList');
+  var idOf=function(id){return C.findIndex(function(x){return x.id===id})};
+  list.innerHTML=CH.map(function(ch,k){
+    var first=C.findIndex(function(x){return x.ch===k});
+    return jumpBtn(ch.name,first,chCount[k]+' 张',C[st.i].ch===k);
+  }).join('')+'<span class="lab dim" style="margin-top:6px">常用</span>'+
+    jumpBtn('自查表',idOf('check'),'第 2 天解锁',C[st.i].id==='check')+
+    jumpBtn('汇报格式',idOf('report'),'第 1 天',C[st.i].id==='report')+
+    jumpBtn('上广告规定',idOf('p-spam'),'第 1 天',C[st.i].id==='p-spam');
+  list.querySelectorAll('.jump').forEach(function(b){b.addEventListener('click',function(){st.jump++;menu.close();go(+b.dataset.i)})});
+  if(menu.showModal)menu.showModal();
+});
+document.getElementById('closeMenu').addEventListener('click',function(){menu.close()});
+
+/* ───── 主管入口 ───── */
+var PIN='880915';
+var MAP={s1:'CDIS',s2:'CSDI',s3:'DSIC',s4:'SDCI',s5:'CDSI',s6:'SCID',s7:'SDIC',s8:'DSCI',s9:'SCDI',s10:'ICDS',s11:'ISDC',s12:'CISD'};
+var TYPES={
+ D:{name:'D 支配型',tag:'要结果',who:'做事快、敢决定，讨厌拖和啰嗦。喜欢挑战，喜欢看得到的成绩。',job:'入库和上广告速度快；但重复的工作容易闷，赶快时容易跳过细节，红线风险比较高。',lead:'给数字目标（每天几间、红线 0），不用讲太细。错了当场直接讲。做得好就给更难的任务。',watch:'自查表有没有真的一项一项勾；有没有嫌慢、一次发太多广告。',future:'比较适合开发屋主、谈判，不适合长期只做入库。'},
+ I:{name:'I 影响型',tag:'要人',who:'热情、会聊天，喜欢被认可。怕闷，怕一个人闷着做。',job:'收资料时跟屋主、中介沟通顺，适合回私信；入库时容易粗心，重复的部分容易拖。',lead:'常给认可，公开讲做得好的地方。把工作连到「帮到客户」。检查表一定要用，不能靠感觉。',watch:'价钱、面积这类数字细节；聊天占用工作时间。',future:'适合客服、回私信、带看、拍内容。'},
+ S:{name:'S 稳健型',tag:'要稳定',who:'可靠、有耐心，喜欢固定流程。怕冲突，怕突然改变。',job:'很适合每天固定的上广告和入库，做得久、做得稳。',lead:'流程要改就提前讲、讲原因。主动问「有没有卡住」。明确说：问问题不会被骂。',watch:'卡住了不敢问、不好意思麻烦你——「马上问，不要等」最容易在这一型出问题。',future:'适合做流水线的稳定核心，之后可以照 SOP 带新人。'},
+ C:{name:'C 谨慎型',tag:'要准确',who:'细心、讲规则，要清楚的标准。最怕做错。',job:'最适合入库和核对，错误率低。',lead:'给清楚的标准和对错例子。讲明白「资料不齐先存、写待补」是允许的。给时间限制。',watch:'太追求完美而变慢；资料不齐时卡住不敢决定，一直自己查，不开口问。',future:'适合做审核、质量把关。'}
+};
+var ORDER=['D','I','S','C'];
+function nameOf(id){var c=C.find(function(x){return x.id===id});return c?c.title.replace(/^\d+ · /,''):id}
+function decode(text){
+  var i=text.indexOf('LG1:');if(i<0)throw new Error('找不到结果码。请确认贴上的内容里有「LG1:」开头的一段。');
+  var raw=text.slice(i+4).replace(/\s+/g,'').match(/^[A-Za-z0-9+/=]+/);
+  if(!raw)throw new Error('结果码不完整，请员工重新复制整段。');
+  try{return JSON.parse(decodeURIComponent(escape(atob(raw[0]))))}catch(e){throw new Error('结果码坏掉了（复制时可能少了一部分），请员工重新复制整段。')}
+}
+function fmtDate(ms){var d=new Date(ms);return (d.getMonth()+1)+'/'+d.getDate()+' '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')}
+function analyse(o){
+  var c=o.c||{},p=o.p||{},op=o.o||{};
+  var skip=/^(s\d+|o\d|me-|d\d-|welcome|check)/;
+  var totalSec=0,eligible=0,rushed=[];
+  Object.keys(c).forEach(function(id){var v=c[id];totalSec+=v[0]||0;if(skip.test(id))return;if((v[1]||0)>=120){eligible++;if(v[0]<v[1]/15)rushed.push(id)}});
+  var qs=Object.keys(c).filter(function(id){return c[id][3]>=0});
+  var first=qs.filter(function(id){return c[id][3]===1}).length;
+  var wrongs=qs.filter(function(id){return c[id][2]>0}).sort(function(a,b){return c[b][2]-c[a][2]});
+  var guessed=qs.filter(function(id){return c[id][3]===0&&c[id][4]>=0&&c[id][4]<3});
+  var score={D:0,I:0,S:0,C:0},picks=0,fast=0;
+  Object.keys(MAP).forEach(function(id){if(!p[id])return;var t=MAP[id].charAt(p[id][0]);if(t){score[t]++;picks++;if(p[id][1]<2.5)fast++}});
+  var ranked=ORDER.slice().sort(function(a,b){return score[b]-score[a]||ORDER.indexOf(a)-ORDER.indexOf(b)});
+  var top=ranked[0],second=ranked[1];
+  var flags=[];
+  if(picks<12)flags.push('情境题只答了 '+picks+' / 12 题，类型结果不完整。');
+  if(eligible&&rushed.length/eligible>0.3)flags.push('有 '+rushed.length+' / '+eligible+' 张卡片读得太快（每秒超过 15 个字），可能跳着读。');
+  if(fast>=6)flags.push(fast+' 题情境题在 2.5 秒内就选了，可能没有认真想。');
+  if(score[top]>=10)flags.push('几乎全选同一类（'+score[top]+' / 12），可能照「理想的自己」在答。');
+  var lvl=flags.length===0?'hi':flags.length===1?'mid':'lo';
+  var h='';
+  h+='<section class="bpanel"><div class="who"><h2>'+esc(o.n||'（没写名字）')+'</h2><span class="meta">读到第 '+(o.d||'?')+' 天 · 发送 '+fmtDate(o.e)+'</span></div>'+
+    '<div class="facts"><div><b>'+Math.round(totalSec/60)+'</b><span>总阅读分钟</span></div><div><b>'+(o.ses||0)+'</b><span>打开次数</span></div><div><b>'+(o.b||0)+'</b><span>回头看次数</span></div><div><b>'+first+'/'+qs.length+'</b><span>第一次答对</span></div></div>'+
+    '<div class="trust '+lvl+'"><span class="pill">'+{hi:'可信度高',mid:'可信度中',lo:'可信度低'}[lvl]+'</span>'+(flags.length?'<ul>'+flags.map(function(f){return '<li>'+f+'</li>'}).join('')+'</ul>':'<p style="font-size:14.5px">读的速度正常，情境题有想过才选。下面的结果可以当参考。</p>')+'</div></section>';
+  if(picks){
+    var T=TYPES[top];
+    h+='<section class="bpanel"><span class="lab">做事类型</span><div class="dbars" role="img" aria-label="'+ORDER.map(function(k){return TYPES[k].name+' '+score[k]+' 题'}).join('，')+'">'+
+      ORDER.map(function(k){return '<div class="dbar'+(k===top?' top':'')+'" title="'+TYPES[k].name+'：'+score[k]+' / 12 题"><span class="nm">'+TYPES[k].name+'</span><div class="dtrack"><div class="dfill" style="width:'+(score[k]/12*100)+'%"></div></div><span class="v">'+score[k]+' 题</span></div>'}).join('')+
+      '<div class="dscale" aria-hidden="true"><span></span><div><span>0</span><span>6</span><span>12</span></div><span></span></div></div>'+
+      '<div class="type-h"><h3>主要是 '+T.name+'</h3><span>'+T.tag+'</span></div>'+
+      '<dl class="prof"><dt>这是怎样的人</dt><dd>'+T.who+'</dd><dt>在这个岗位</dt><dd>'+T.job+'</dd><dt>你怎么带</dt><dd>'+T.lead+'</dd><dt>要特别盯紧</dt><dd class="watch">'+T.watch+'</dd><dt>以后适合</dt><dd>'+T.future+'</dd></dl>'+
+      (score[top]-score[second]<=2&&score[second]>0?'<p class="blend">第二类型接近：<b>'+TYPES[second].name+'</b>（'+score[second]+' 题）。也要留意：'+TYPES[second].watch+'</p>':'')+'</section>';
+  }
+  var rate=qs.length?first/qs.length:0;
+  var verdict=!qs.length?'还没有答题记录。':rate>=0.9?'理解很好，照计划进度走。':rate>=0.7?'基本懂了。把下面答错的项目再讲一次。':'理解不够。先重讲答错的项目，再往下。';
+  var special=[];
+  if(c.ask&&c.ask[3]===0)special.push('「马上问，不要等」第一次答错：直觉是等或自己猜，前两周要特别盯。');
+  if(c.f5&&c.f5[3]===0)special.push('「地段类别」第一次答错：红线项目，审核时重点看。');
+  if(c.f16&&c.f16[3]===0)special.push('「开价」第一次答错：价钱位数是红线，审核时重点看。');
+  if(c['p-xhs']&&c['p-xhs'][3]===0)special.push('「小红书不放网址」第一次答错：头几篇小红书要亲自看过再发。');
+  if(guessed.length>=3)special.push('有 '+guessed.length+' 题在 3 秒内答错：没看完就先猜。');
+  h+='<section class="bpanel"><span class="lab">学习表现</span><p>'+verdict+'</p>'+
+    (special.length?'<ul style="margin:0;padding-left:1.2em;color:var(--bad)">'+special.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul>':'')+
+    (wrongs.length?'<div class="tbl"><table><thead><tr><th>答错过的题</th><th style="text-align:right">错几次</th></tr></thead><tbody>'+wrongs.map(function(id){return '<tr><td>'+esc(nameOf(id))+'</td><td class="n">'+c[id][2]+'</td></tr>'}).join('')+'</tbody></table></div>':(qs.length?'<p class="meta">题目都没有答错过。</p>':''))+
+    (rushed.length?'<p class="meta">读得太快的卡片：'+rushed.map(function(id){return esc(nameOf(id))}).join('、')+'</p>':'')+'</section>';
+  var Q={o1:'最有成就感的一件事',o2:'什么样的主管让他做得好 / 想离开',o3:'最担心自己哪里做不好'};
+  h+='<section class="bpanel"><span class="lab">写的话</span>'+Object.keys(Q).map(function(k){return '<div class="say"><b>'+Q[k]+'</b><p>'+esc(op[k]||'（没写）')+'</p></div>'}).join('')+'</section>';
+  h+='<div class="note"><b>怎么用这份结果</b><p>这是参考，不是诊断。12 题测不准一个人，新人也可能选觉得你想听的答案。把它当观察的起点，再对照第 1–5 天实际做事的样子：卡住有没有马上问、红线错多少、广告有没有照规定发。</p><p>想要更详细的分析，把整段结果码贴给 Claude，说「分析这个员工」。</p></div>';
+  return h;
+}
+var boss=document.getElementById('boss'),bossBody=document.getElementById('bossBody'),bossLock=document.getElementById('bossLock');
+function openBoss(){
+  menu.close();flush();t0=null;paused=true;
+  boss.hidden=false;document.body.style.overflow='hidden';
+  var ok=false;try{ok=sessionStorage.getItem('lg-boss')==='1'}catch(e){}
+  bossLock.hidden=ok;bossBody.hidden=!ok;
+  (ok?document.getElementById('bossCode'):document.getElementById('bossPin')).focus();
+}
+function closeBoss(){boss.hidden=true;document.body.style.overflow='';paused=false;t0=document.hidden?null:Date.now()}
+document.getElementById('bossBtn').addEventListener('click',openBoss);
+document.getElementById('bossClose').addEventListener('click',closeBoss);
+document.getElementById('bossLock').addEventListener('submit',function(e){
+  e.preventDefault();
+  var v=document.getElementById('bossPin').value.trim();
+  if(v===PIN){try{sessionStorage.setItem('lg-boss','1')}catch(err){}bossLock.hidden=true;bossBody.hidden=false;document.getElementById('bossCode').focus()}
+  else document.getElementById('pinErr').textContent='密码不对。';
+});
+function bossShow(o){document.getElementById('bossOut').innerHTML=analyse(o);document.getElementById('bossErr').textContent=''}
+document.getElementById('bossGo').addEventListener('click',function(){
+  try{bossShow(decode(document.getElementById('bossCode').value))}catch(e){document.getElementById('bossOut').innerHTML='';document.getElementById('bossErr').textContent=e.message}
+});
+document.getElementById('bossLocal').addEventListener('click',function(){bossShow(buildObj())});
+
+render(false);
+})();
+</script>
+
+</body>
+</html>
